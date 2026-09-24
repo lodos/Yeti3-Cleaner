@@ -8,8 +8,18 @@ VERSION="$(awk -F'"' '/^version = / {print $2; exit}' Cargo.toml)"
 
 ARCH="${1:-universal}"
 case "$ARCH" in arm64|x86_64|universal) ;; *) echo "Expected arm64, x86_64 or universal" >&2; exit 2;; esac
+MIN_MACOS="${2:-14.0}"
+case "$MIN_MACOS" in 12.0|14.0) ;; *) echo "Expected minimum macOS 12.0 or 14.0" >&2; exit 2;; esac
 BUNDLE_VERSION="${VERSION%%-*}"
-APP="$ROOT/dist/$ARCH/Yeti3-Cleaner.app"
+DIST_ARCH="$ARCH"
+RUST_TARGET_DIR="$ROOT/target"
+SWIFT_TARGET_SUFFIX=""
+if [ "$MIN_MACOS" = 12.0 ]; then
+  DIST_ARCH="$ARCH-macos12"
+  RUST_TARGET_DIR="$ROOT/target/macos12"
+  SWIFT_TARGET_SUFFIX="-macos12"
+fi
+APP="$ROOT/dist/$DIST_ARCH/Yeti3-Cleaner.app"
 CONTENTS="$APP/Contents"
 MACOS="$CONTENTS/MacOS"
 RESOURCES="$CONTENTS/Resources"
@@ -30,13 +40,14 @@ if [ "$ARCH" != universal ]; then BUILD_ARCHES=("$ARCH"); fi
 for CPU in "${BUILD_ARCHES[@]}"; do
   TARGET=aarch64-apple-darwin
   if [ "$CPU" = x86_64 ]; then TARGET=x86_64-apple-darwin; fi
-  RUSTC="$(rustup which --toolchain 1.86.0 rustc)" MACOSX_DEPLOYMENT_TARGET=14.0 RUSTFLAGS="-D warnings" \
+  RUSTC="$(rustup which --toolchain 1.86.0 rustc)" MACOSX_DEPLOYMENT_TARGET="$MIN_MACOS" \
+    CARGO_TARGET_DIR="$RUST_TARGET_DIR" RUSTFLAGS="-D warnings" \
     rustup run 1.86.0 cargo build --release --target "$TARGET" \
     --bin yeti3-cleaner --bin yeti3-cleaner-tray
-  mkdir -p "target/$CPU"
-  xcrun swiftc -O -parse-as-library -target "$CPU-apple-macosx14.0" \
+  mkdir -p "target/$CPU$SWIFT_TARGET_SUFFIX"
+  xcrun swiftc -O -parse-as-library -target "$CPU-apple-macosx$MIN_MACOS" \
     native/DiskScanner.swift native/LiveScan.swift native/DiskCache.swift native/SettingsPanel.swift native/UpdatePolicy.swift native/DiskMap.swift \
-    -o "target/$CPU/yeti3-disk-map"
+    -o "target/$CPU$SWIFT_TARGET_SUFFIX/yeti3-disk-map"
 done
 
 printf '\n===== APP BUNDLE =====\n'
@@ -48,13 +59,13 @@ mkdir -p \
   "$RESOURCES"
 
 if [ "$ARCH" = universal ]; then
-  lipo -create target/aarch64-apple-darwin/release/yeti3-cleaner-tray target/x86_64-apple-darwin/release/yeti3-cleaner-tray -output "$MACOS/Yeti3-Cleaner"
-  lipo -create target/aarch64-apple-darwin/release/yeti3-cleaner target/x86_64-apple-darwin/release/yeti3-cleaner -output "$MACOS/yeti3-cleaner-engine"
+  lipo -create "$RUST_TARGET_DIR/aarch64-apple-darwin/release/yeti3-cleaner-tray" "$RUST_TARGET_DIR/x86_64-apple-darwin/release/yeti3-cleaner-tray" -output "$MACOS/Yeti3-Cleaner"
+  lipo -create "$RUST_TARGET_DIR/aarch64-apple-darwin/release/yeti3-cleaner" "$RUST_TARGET_DIR/x86_64-apple-darwin/release/yeti3-cleaner" -output "$MACOS/yeti3-cleaner-engine"
 else
   TARGET=aarch64-apple-darwin
   if [ "$ARCH" = x86_64 ]; then TARGET=x86_64-apple-darwin; fi
-  cp "target/$TARGET/release/yeti3-cleaner-tray" "$MACOS/Yeti3-Cleaner"
-  cp "target/$TARGET/release/yeti3-cleaner" "$MACOS/yeti3-cleaner-engine"
+  cp "$RUST_TARGET_DIR/$TARGET/release/yeti3-cleaner-tray" "$MACOS/Yeti3-Cleaner"
+  cp "$RUST_TARGET_DIR/$TARGET/release/yeti3-cleaner" "$MACOS/yeti3-cleaner-engine"
 fi
 
 printf '\n===== PREMIUM RESOURCES =====\n'
@@ -108,7 +119,7 @@ cat > "$CONTENTS/Info.plist" <<PLIST
     <string>prerelease</string>
 
     <key>LSMinimumSystemVersion</key>
-    <string>14.0</string>
+    <string>${MIN_MACOS}</string>
 
     <key>LSUIElement</key>
     <true/>
@@ -126,9 +137,9 @@ chmod 755 \
 HELPER="$CONTENTS/Helpers/Yeti3-DiskMap.app"
 mkdir -p "$HELPER/Contents/MacOS" "$HELPER/Contents/Resources"
 if [ "$ARCH" = universal ]; then
-  lipo -create target/arm64/yeti3-disk-map target/x86_64/yeti3-disk-map -output "$HELPER/Contents/MacOS/yeti3-disk-map"
+  lipo -create "target/arm64$SWIFT_TARGET_SUFFIX/yeti3-disk-map" "target/x86_64$SWIFT_TARGET_SUFFIX/yeti3-disk-map" -output "$HELPER/Contents/MacOS/yeti3-disk-map"
 else
-  cp "target/$ARCH/yeti3-disk-map" "$HELPER/Contents/MacOS/yeti3-disk-map"
+  cp "target/$ARCH$SWIFT_TARGET_SUFFIX/yeti3-disk-map" "$HELPER/Contents/MacOS/yeti3-disk-map"
 fi
 cp "$ICON" "$HELPER/Contents/Resources/Yeti3.icns"
 cat > "$HELPER/Contents/Info.plist" <<PLIST
@@ -144,7 +155,7 @@ cat > "$HELPER/Contents/Info.plist" <<PLIST
 <key>CFBundleVersion</key><string>${BUNDLE_VERSION}</string>
 <key>YetiReleaseVersion</key><string>${VERSION}</string>
 <key>YetiReleaseChannel</key><string>prerelease</string>
-<key>LSMinimumSystemVersion</key><string>14.0</string>
+<key>LSMinimumSystemVersion</key><string>${MIN_MACOS}</string>
 </dict></plist>
 PLIST
 codesign --force --sign - "$HELPER"

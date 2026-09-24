@@ -791,6 +791,19 @@ pub struct StatisticsDetail {
 }
 
 impl HistoryDb {
+    pub fn latest_errors(&self) -> Result<Vec<(String, String, String)>> {
+        let mut statement = self.conn.prepare(
+            "SELECT category, path, COALESCE(error, 'Причина не указана') \
+             FROM cleanup_entries \
+             WHERE run_id = (SELECT MAX(id) FROM cleanup_runs WHERE status != 'running') \
+               AND result = 'error' ORDER BY id",
+        )?;
+        let rows = statement.query_map([], |row| {
+            Ok((row.get(0)?, row.get(1)?, row.get(2)?))
+        })?;
+        Ok(rows.collect::<rusqlite::Result<Vec<_>>>()?)
+    }
+
     pub fn statistics_details(
         &self,
         days: Option<u64>,

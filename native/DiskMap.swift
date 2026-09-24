@@ -4,6 +4,7 @@ import CryptoKit
 
 private let support = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/Yeti3-Cleaner")
 private let releaseVersion = Bundle.main.object(forInfoDictionaryKey: "YetiReleaseVersion") as? String ?? "0.4.1-rc.3"
+private let minimumMacOS = Bundle.main.object(forInfoDictionaryKey: "LSMinimumSystemVersion") as? String ?? "14.0"
 private let cyan = Color(red: 0.2, green: 0.85, blue: 0.95)
 private func human(_ bytes: Int64) -> String { ByteCountFormatter.string(fromByteCount: bytes, countStyle: .file) }
 
@@ -363,8 +364,8 @@ struct DiskView: View {
     private var updateView: some View {
         VStack(alignment: .leading, spacing: 20) {
             Label("Обновление YETI³ Cleaner", systemImage: "arrow.down.circle").font(.title.bold())
-            Text("Предрелиз \(releaseVersion) · Intel + Apple Silicon · macOS 14+").foregroundStyle(.secondary)
-            Toggle("Получать предварительные версии", isOn: $model.includePrerelease).onChange(of: model.includePrerelease) { _, _ in model.pendingUpdate = nil }
+            Text("Предрелиз \(releaseVersion) · Intel + Apple Silicon · macOS \(minimumMacOS)+").foregroundStyle(.secondary)
+            Toggle("Получать предварительные версии", isOn: $model.includePrerelease).onChange(of: model.includePrerelease) { _ in model.pendingUpdate = nil }
             Text(model.updateStatus).textSelection(.enabled)
             HStack {
                 Button("Проверить обновление") { model.checkUpdate() }.disabled(model.updateBusy)
@@ -376,5 +377,5 @@ struct DiskView: View {
     }
 }
 @main struct DiskMapApp: App {
-    var body: some Scene { WindowGroup("YETI³ · Карта диска") { DiskView() }.defaultSize(width: 1080, height: 760) }
+    var body: some Scene { WindowGroup("YETI³ · Карта диска") { DiskView() } }
 }

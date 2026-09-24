@@ -5,10 +5,14 @@ mod folders;
 use anyhow::{Context, Result};
 use clap::{Args, Parser, Subcommand};
 use humansize::{BINARY, format_size};
+use serde::{Deserialize, Serialize};
 use std::{
+    collections::hash_map::DefaultHasher,
     ffi::CString,
     fs,
+    hash::{Hash, Hasher},
     io::{self, Write},
+    os::unix::fs::OpenOptionsExt,
     path::{Path, PathBuf},
     process::Command,
     time::{Instant, SystemTime},
@@ -55,6 +59,10 @@ struct Opts {
 
     #[arg(short, long)]
     verbose: bool,
+
+    /// Save candidates for cleanup after review in the macOS UI.
+    #[arg(long)]
+    plan_out: Option<PathBuf>,
 }
 
 #[derive(Args)]
@@ -69,15 +77,39 @@ struct CleanOpts {
     /// Skip confirmation
     #[arg(long)]
     yes: bool,
+
+    #[arg(long)]
+    plan_in: Option<PathBuf>,
+
+    #[arg(long, value_delimiter = ',')]
+    selected: Vec<String>,
+
+    #[arg(long)]
+    include_backups: bool,
+    #[arg(long)]
+    include_homebrew: bool,
+    #[arg(long)]
+    include_docker: bool,
+    #[arg(long)]
+    include_xcode: bool,
 }
 
-#[derive(Clone)]
+#[derive(Clone, Serialize, Deserialize)]
 struct Candidate {
-    label: &'static str,
+    label: String,
     path: PathBuf,
     root: PathBuf,
     bytes: u64,
     min_age: u64,
+    signature: Option<u64>,
+}
+
+#[derive(Serialize, Deserialize)]
+struct ScanPlan {
+    candidates: Vec<Candidate>,
+    mobile_signature: Option<u64>,
+    mobile_bytes: u64,
+    managed_commands: Vec<(String, Vec<String>)>,
 }
 
 struct Disk {
@@ -95,7 +127,7 @@ fn main() -> Result<()> {
         Cmd::SettingsData => {
             let settings = config::load()?;
             let defaults = config::settings::Settings::default();
-            let presets = roots_for(&Opts { deep: true, dev: true, max: true, verbose: false }, &defaults, &folders::FolderRules::default())?;
+            let presets = roots_for(&Opts { deep: true, dev: true, max: true, verbose: false, plan_out: None }, &defaults, &folders::FolderRules::default())?;
             println!("{}", serde_json::json!({"settings": settings, "defaults": defaults, "presets": presets.iter().map(|p| serde_json::json!({"label": p.label, "path": p.path, "days": p.min_age})).collect::<Vec<_>>() }));
             Ok(())
         }
@@ -123,14 +155,15 @@ fn roots_for(o: &Opts, settings: &config::settings::Settings, rules: &folders::F
     let h = home()?;
     let mut v = Vec::new();
 
-    let mut add = |label, rel: &str, age| {
+    let mut add = |label: &str, rel: &str, age| {
         let p = h.join(rel);
         if !folders::preset_enabled(label, &settings) || rules.excludes(&p) { return; }
         v.push(Candidate {
-            label,
+            label: label.to_string(),
             path: p.clone(),
             root: p,
             bytes: 0,
+            signature: None,
             min_age: match label { "Logs" => settings.macos.logs_min_age_days, "Xcode SourcePackages" => settings.development.xcode_source_packages_min_age_days, "Gradle cache" => settings.development.gradle_min_age_days, _ => age },
         });
     };
@@ -174,7 +207,7 @@ fn roots_for(o: &Opts, settings: &config::settings::Settings, rules: &folders::F
     for path in &rules.include {
         folders::validate_custom(path)?;
         if !rules.excludes(path) {
-            v.push(Candidate { label: "Пользовательский каталог", path: path.clone(), root: path.clone(), bytes: 0, min_age: 0 });
+            v.push(Candidate { label: "Пользовательский каталог".to_string(), path: path.clone(), root: path.clone(), bytes: 0, min_age: 0, signature: None });
         }
     }
     Ok(v)
@@ -184,8 +217,9 @@ fn collect(o: &Opts) -> Result<Vec<Candidate>> {
     let mut result = Vec::new();
     let settings = config::load()?;
     let rules = folders::effective_rules(&settings)?;
+    let allowed_roots = roots(o)?;
 
-    for root in roots(o)? {
+    for root in &allowed_roots {
         if !root.path.is_dir() {
             continue;
         }
@@ -221,11 +255,14 @@ fn collect(o: &Opts) -> Result<Vec<Candidate>> {
             }
 
             result.push(Candidate {
-                label: root.label,
+                label: if group(&root.label) == "caches"
+                    && allowed_roots.iter().any(|nested| nested.path == p && group(&nested.label) == "development")
+                { "Development cache".to_string() } else { root.label.clone() },
                 path: p,
                 root: root.path.clone(),
                 bytes,
                 min_age: root.min_age,
+                signature: None,
             });
         }
     }
@@ -241,16 +278,72 @@ fn collect(o: &Opts) -> Result<Vec<Candidate>> {
     Ok(result)
 }
 
+fn signature(path: &Path) -> Result<u64> {
+    let mut hash = DefaultHasher::new();
+    for entry in WalkDir::new(path).follow_links(false).sort_by_file_name() {
+        let entry = entry?;
+        let metadata = fs::symlink_metadata(entry.path())?;
+        entry.path().hash(&mut hash);
+        metadata.len().hash(&mut hash);
+        metadata.is_dir().hash(&mut hash);
+        metadata.modified()?.duration_since(std::time::UNIX_EPOCH)?.as_nanos().hash(&mut hash);
+    }
+    Ok(hash.finish())
+}
+
+fn group(label: &str) -> &'static str {
+    match label {
+        "Trash" => "trash",
+        "Application caches" | "AppSupport caches" | "CoreML cache" | "Safari cache" => "caches",
+        "Logs" | "Crash reports" => "logs",
+        "Пользовательский каталог" => "custom",
+        _ => "development",
+    }
+}
+
 fn scan_command(o: &Opts) -> Result<()> {
     let disk = disk("/")?;
-    let files = collect(o)?;
+    let mut files = collect(o)?;
+    if o.plan_out.is_some() {
+        files.retain_mut(|candidate| match signature(&candidate.path) {
+            Ok(value) => { candidate.signature = Some(value); true }
+            Err(error) => { eprintln!("Cannot preview {}: {error}", candidate.path.display()); false }
+        });
+    }
     let regular = total(&files);
 
-    let mobile = if o.max && folders::mobile_enabled(&config::load()?)? {
-        tree_size(&home()?.join("Library/Application Support/MobileSync/Backup"))
+    let mobile_path = home()?.join("Library/Application Support/MobileSync/Backup");
+    let mobile_signature = if o.plan_out.is_some() && mobile_path.is_dir() {
+        signature(&mobile_path).ok()
+    } else { None };
+    let mobile = if o.max && folders::mobile_enabled(&config::load()?)?
+        && (o.plan_out.is_none() || mobile_signature.is_some()) {
+        tree_size(&mobile_path)
     } else {
         0
     };
+
+    if let Some(path) = &o.plan_out {
+        let managed_commands = if o.max {
+            managed_plan(&config::load()?)?.into_iter()
+                .map(|(program, args)| {
+                    (program.to_string(), args.into_iter().map(str::to_string).collect())
+                }).collect()
+        } else { Vec::new() };
+        let bytes = serde_json::to_vec(&ScanPlan {
+            candidates: files.clone(), mobile_signature, mobile_bytes: mobile, managed_commands,
+        })?;
+        let mut plan_file = fs::OpenOptions::new().write(true).create_new(true)
+            .mode(0o600).open(path)?;
+        plan_file.write_all(&bytes)?;
+        println!("ПУТИ К УДАЛЕНИЮ — ТОЛЬКО ЕСЛИ ОТМЕЧЕНА КАТЕГОРИЯ");
+        if files.is_empty() { println!("Прямых кандидатов на удаление нет."); }
+        for candidate in &files {
+            println!("{}  {}", human(candidate.bytes), candidate.label);
+            println!("  {}", candidate.path.display());
+        }
+        println!();
+    }
 
     println!("YETI³ CLEANER");
     println!("────────────────────────────────────────────");
@@ -279,7 +372,7 @@ fn scan_command(o: &Opts) -> Result<()> {
         human(regular.saturating_add(mobile))
     );
 
-    if o.verbose {
+    if o.verbose && o.plan_out.is_none() {
         println!();
         for c in &files {
             println!(
@@ -291,6 +384,30 @@ fn scan_command(o: &Opts) -> Result<()> {
         }
     }
 
+    if o.plan_out.is_some() && o.max {
+        let settings = config::load()?;
+        for (program, args) in managed_plan(&settings)? {
+            if program != "brew" || !command_exists("brew") { continue; }
+            println!("\nHOMEBREW PREVIEW (only if selected; can change before cleanup)");
+            let mut dry_args = args.clone();
+            dry_args.push("--dry-run");
+            println!("$ brew {}", dry_args.join(" "));
+            match Command::new("brew").args(&dry_args).output() {
+                Ok(output) => {
+                    let stdout = String::from_utf8_lossy(&output.stdout);
+                    let stderr = String::from_utf8_lossy(&output.stderr);
+                    for line in stdout.lines().chain(stderr.lines()) {
+                        if line.starts_with("Warning: Skipping ")
+                            || line.trim_start().starts_with("✔︎ JSON API ") { continue; }
+                        println!("{line}");
+                    }
+                    if !output.status.success() { println!("Homebrew preview exited with {}", output.status); }
+                }
+                Err(error) => eprintln!("Homebrew preview unavailable: {error}"),
+            }
+        }
+    }
+
     println!();
     println!("READ-ONLY MODE — nothing was deleted.");
     Ok(())
@@ -299,13 +416,39 @@ fn scan_command(o: &Opts) -> Result<()> {
 fn clean_command(c: &CleanOpts) -> Result<()> {
     let started = Instant::now();
     let before = disk("/")?;
-    let files = collect(&c.opts)?;
+    let plan: Option<ScanPlan> = c.plan_in.as_ref()
+        .map(|path| fs::read(path).with_context(|| format!("read plan {}", path.display()))
+            .and_then(|bytes| serde_json::from_slice(&bytes).context("invalid plan")))
+        .transpose()?;
+    let files: Vec<Candidate> = if let Some(plan) = &plan {
+        let allowed_roots = roots(&c.opts)?;
+        plan.candidates.iter()
+            .filter(|candidate| {
+                candidate.signature.is_some()
+                    && allowed_roots.iter().any(|root| {
+                        root.path == candidate.root
+                            && (root.label == candidate.label
+                                || (root.label == "Application caches"
+                                    && candidate.label == "Development cache"
+                                    && allowed_roots.iter().any(|nested| {
+                                        nested.path == candidate.path
+                                            && group(&nested.label) == "development"
+                                    })))
+                            && candidate.path.parent() == Some(root.path.as_path())
+                    })
+                    && c.selected.iter().any(|selected| selected == group(&candidate.label))
+            })
+            .cloned().collect()
+    } else { collect(&c.opts)? };
 
     let mobile = home()?.join("Library/Application Support/MobileSync/Backup");
 
     let settings = config::load()?;
-    let mobile_allowed = c.opts.max && folders::mobile_enabled(&settings)?;
-    let mobile_bytes = if mobile_allowed { tree_size(&mobile) } else { 0 };
+    let mobile_allowed = c.opts.max && folders::mobile_enabled(&settings)?
+        && (plan.is_none() || c.include_backups);
+    let mobile_bytes = if mobile_allowed {
+        plan.as_ref().map_or_else(|| tree_size(&mobile), |p| p.mobile_bytes)
+    } else { 0 };
 
     let regular = total(&files);
     let direct = regular.saturating_add(mobile_bytes);
@@ -317,7 +460,11 @@ fn clean_command(c: &CleanOpts) -> Result<()> {
     if c.opts.max {
         println!("ALL MobileSync backups    {:>16}", human(mobile_bytes));
         println!("Docker volumes            PROTECTED");
-        for (program, args) in managed_plan(&settings)? { println!("MANAGED  {} {}", program, args.join(" ")); }
+        for (program, args) in managed_plan(&settings)? {
+            if managed_allowed(program, &args, c, plan.as_ref()) {
+                println!("MANAGED  {} {}", program, args.join(" "));
+            }
+        }
     }
 
     println!("────────────────────────────────────────────");
@@ -378,7 +525,11 @@ fn clean_command(c: &CleanOpts) -> Result<()> {
     for x in &files {
         let was_dir = x.path.is_dir();
 
-        match validate(&x.path, &x.root).and_then(|_| remove(&x.path)) {
+        let unchanged = x.signature.map_or(Ok(()), |expected| {
+            anyhow::ensure!(signature(&x.path)? == expected, "changed since preview");
+            Ok(())
+        });
+        match unchanged.and_then(|_| validate(&x.path, &x.root)).and_then(|_| remove(&x.path)) {
             Ok(_) => {
                 removed = removed.saturating_add(x.bytes);
 
@@ -437,7 +588,12 @@ fn clean_command(c: &CleanOpts) -> Result<()> {
             // User policy: remove ALL local iPhone/iPad backups.
             let backup_root = home()?.join("Library/Application Support/MobileSync");
 
-            match validate(&mobile, &backup_root).and_then(|_| empty_directory(&mobile)) {
+            let unchanged = plan.as_ref().map_or(Ok(()), |p| {
+                let expected = p.mobile_signature.context("backups were not readable during preview")?;
+                anyhow::ensure!(signature(&mobile)? == expected, "backups changed since preview");
+                Ok(())
+            });
+            match unchanged.and_then(|_| validate(&mobile, &backup_root)).and_then(|_| empty_directory(&mobile)) {
                 Ok(_) => {
                     removed = removed.saturating_add(mobile_bytes);
                     dirs_deleted = dirs_deleted.saturating_add(1);
@@ -483,7 +639,9 @@ fn clean_command(c: &CleanOpts) -> Result<()> {
         }
 
         for (program, args) in managed_plan(&settings)? {
-            if !run_managed(program, &args) { failures += 1; }
+            if managed_allowed(program, &args, c, plan.as_ref()) && !run_managed(program, &args) {
+                failures += 1;
+            }
         }
     }
 
@@ -519,6 +677,19 @@ fn clean_command(c: &CleanOpts) -> Result<()> {
     println!("Failed/skipped            {:>16}", failures);
 
     Ok(())
+}
+
+fn managed_allowed(program: &str, args: &[&str], c: &CleanOpts, plan: Option<&ScanPlan>) -> bool {
+    let Some(plan) = plan else { return true; };
+    if !plan.managed_commands.iter().any(|(saved_program, saved_args)| {
+        saved_program == program && saved_args.iter().map(String::as_str).eq(args.iter().copied())
+    }) { return false; }
+    match program {
+        "brew" => c.include_homebrew,
+        "docker" => c.include_docker,
+        "xcrun" => c.include_xcode,
+        _ => false,
+    }
 }
 
 fn print_special_status() {
@@ -732,4 +903,29 @@ fn managed_plan(s: &config::settings::Settings) -> Result<Vec<(&'static str, Vec
     }
     if s.development.unavailable_simulators { commands.push(("xcrun", vec!["simctl", "delete", "unavailable"])); }
     Ok(commands)
+}
+
+#[cfg(test)]
+mod reviewed_cleanup_tests {
+    use super::*;
+
+    #[test]
+    fn changed_directory_is_rejected_after_preview() {
+        let timestamp = SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_nanos();
+        let dir = std::env::temp_dir().join(format!("yeti3-plan-test-{}-{timestamp}", std::process::id()));
+        fs::create_dir(&dir).unwrap();
+        let file = dir.join("cache");
+        fs::write(&file, b"before").unwrap();
+        let before = signature(&dir).unwrap();
+        fs::write(&file, b"different contents").unwrap();
+        assert_ne!(signature(&dir).unwrap(), before);
+        fs::remove_dir_all(dir).unwrap();
+    }
+
+    #[test]
+    fn custom_and_backup_categories_require_separate_selection() {
+        assert_eq!(group("Пользовательский каталог"), "custom");
+        assert_eq!(group("Application caches"), "caches");
+        assert_eq!(group("Cargo cache"), "development");
+    }
 }

@@ -12,6 +12,8 @@ mod ui;
 
 use std::{
     cell::{Cell, RefCell},
+    fs,
+    time::{SystemTime, UNIX_EPOCH},
     path::PathBuf,
     process::{Child, Command, Stdio},
 };
@@ -65,6 +67,9 @@ thread_local! {
 #[derive(Debug, Default)]
 struct ControllerIvars {
     child: RefCell<Option<Child>>,
+    scan_child: RefCell<Option<Child>>,
+    scan_report_path: RefCell<Option<PathBuf>>,
+    plan_path: RefCell<Option<PathBuf>>,
     paused: Cell<bool>,
     animation_frame: Cell<usize>,
     launch_frame: Cell<usize>,
@@ -111,6 +116,10 @@ define_class!(
         fn start_pause(&self, _sender: Option<&AnyObject>) {
             self.reap_finished();
 
+            if self.ivars().scan_child.borrow().is_some() {
+                return;
+            }
+
             let mut child_slot = self.ivars().child.borrow_mut();
 
             if let Some(child) = child_slot.as_mut() {
@@ -139,44 +148,50 @@ define_class!(
                 return;
             }
 
-            let alert = NSAlert::new(self.mtm());
-            alert.setMessageText(&ns("Начать очистку?"));
-            alert.setInformativeText(&ns("Будут удалены данные из включённых категорий и дополнительных папок. Максимальный пресет может удалять локальные резервные копии устройств. Проверьте набор каталогов и план очистки в окне карты диска."));
-            alert.addButtonWithTitle(&ns("Отмена"));
-            alert.addButtonWithTitle(&ns("Очистить"));
-            if alert.runModal() != 1001 { return; }
+            drop(child_slot);
 
             let executable = cleaner_path();
-
-            self.ivars()
-                .result_before_run
-                .set(latest_result_id());
+            let timestamp = SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap_or_default()
+                .as_nanos();
+            let report_path = std::env::temp_dir().join(format!(
+                "yeti3-scan-{}-{timestamp}.txt",
+                std::process::id()
+            ));
+            let plan_path = report_path.with_extension("json");
+            let report_file = match fs::OpenOptions::new()
+                .write(true)
+                .create_new(true)
+                .open(&report_path)
+            {
+                Ok(file) => file,
+                Err(error) => {
+                    eprintln!("Yeti3-Cleaner: cannot save scan report: {error}");
+                    self.set_status_text("Y³ !");
+                    return;
+                }
+            };
 
             match Command::new(&executable)
-                .args(["clean", "--max", "--yes"])
+                .args(["scan", "--max", "--verbose", "--plan-out"])
+                .arg(&plan_path)
                 .stdin(Stdio::null())
-                .stdout(Stdio::null())
+                .stdout(Stdio::from(report_file))
                 .stderr(Stdio::null())
                 .spawn()
             {
                 Ok(child) => {
-                    *child_slot = Some(child);
-                    self.ivars().paused.set(false);
-                    self.ivars().animation_frame.set(0);
-                    self.set_start_title("Пауза");
+                    *self.ivars().scan_child.borrow_mut() = Some(child);
+                    *self.ivars().scan_report_path.borrow_mut() = Some(report_path);
+                    *self.ivars().plan_path.borrow_mut() = Some(plan_path);
+                    self.set_start_title("Сканирование…");
                     self.set_stop_visible(true);
                     self.set_status_text("Y³ ·");
                 }
-
                 Err(error) => {
-                    eprintln!(
-                        "Yeti3-Cleaner: cannot start {}: {}",
-                        executable.display(),
-                        error
-                    );
-
-                    self.set_start_title("Старт очистки");
-                    self.set_stop_visible(false);
+                    let _ = fs::remove_file(report_path);
+                    eprintln!("Yeti3-Cleaner: cannot scan: {error}");
                     self.set_status_text("Y³ !");
                 }
             }
@@ -189,16 +204,21 @@ define_class!(
 
         #[unsafe(method(resetStatusIcon:))]
         fn reset_status_icon(&self, _sender: Option<&AnyObject>) {
-            if self.ivars().child.borrow().is_none() {
+            if self.ivars().child.borrow().is_none()
+                && self.ivars().scan_child.borrow().is_none()
+            {
                 self.set_status_text("Y³");
             }
         }
 
         #[unsafe(method(animationTick:))]
         fn animation_tick(&self, _sender: Option<&AnyObject>) {
+            self.reap_scan_finished();
             self.reap_finished();
 
-            if self.ivars().child.borrow().is_none() {
+            if self.ivars().child.borrow().is_none()
+                && self.ivars().scan_child.borrow().is_none()
+            {
                 return;
             }
 
@@ -208,26 +228,12 @@ define_class!(
             }
 
             const FRAMES: [&str; 8] = [
-                "Y³ ·",
-                "Y³ •",
-                "Y³ ●",
-                "Y³ •",
-                "Y³ ·",
-                "Y³  ",
-                "Y³ ·",
-                "Y³ •",
+                "Y³ ·", "Y³ •", "Y³ ●", "Y³ •", "Y³ ·", "Y³  ", "Y³ ·", "Y³ •",
             ];
 
-            let frame =
-                self.ivars().animation_frame.get();
-
-            self.set_status_text(
-                FRAMES[frame % FRAMES.len()]
-            );
-
-            self.ivars()
-                .animation_frame
-                .set((frame + 1) % FRAMES.len());
+            let frame = self.ivars().animation_frame.get();
+            self.set_status_text(FRAMES[frame % FRAMES.len()]);
+            self.ivars().animation_frame.set((frame + 1) % FRAMES.len());
         }
 
         #[unsafe(method(launchTick:))]
@@ -323,6 +329,11 @@ define_class!(
             _sender: Option<&AnyObject>,
         ) {
             show_statistics_window(self);
+        }
+
+        #[unsafe(method(openCleanupErrors:))]
+        fn open_cleanup_errors(&self, _sender: Option<&AnyObject>) {
+            show_cleanup_errors(self.mtm());
         }
 
         #[unsafe(method(openDiskMap:))]
@@ -481,6 +492,17 @@ impl Controller {
     }
 
     fn stop_child(&self) {
+        if let Some(mut scan) = self.ivars().scan_child.borrow_mut().take() {
+            let _ = scan.kill();
+            let _ = scan.wait();
+        }
+        if let Some(path) = self.ivars().scan_report_path.borrow_mut().take() {
+            let _ = fs::remove_file(path);
+        }
+        if let Some(path) = self.ivars().plan_path.borrow_mut().take() {
+            let _ = fs::remove_file(path);
+        }
+
         let mut slot = self.ivars().child.borrow_mut();
 
         if let Some(child) = slot.as_mut() {
@@ -507,6 +529,109 @@ impl Controller {
         self.set_status_text("Y³");
     }
 
+    fn reap_scan_finished(&self) {
+        let finished = {
+            let mut slot = self.ivars().scan_child.borrow_mut();
+            match slot.as_mut() {
+                Some(child) => match child.try_wait() {
+                    Ok(Some(_)) => true,
+                    Ok(None) => false,
+                    Err(error) => {
+                        eprintln!("Yeti3-Cleaner: scan status failed: {error}");
+                        true
+                    }
+                },
+                None => false,
+            }
+        };
+
+        if !finished {
+            return;
+        }
+
+        let Some(mut child) = self.ivars().scan_child.borrow_mut().take() else {
+            return;
+        };
+
+        self.set_start_title("Старт очистки");
+        self.set_stop_visible(false);
+
+        let report_path = self.ivars().scan_report_path.borrow_mut().take();
+        let status = child.wait();
+        let report = report_path.as_ref().map(fs::read_to_string);
+        if let Some(path) = report_path {
+            let _ = fs::remove_file(path);
+        }
+
+        match (status, report) {
+            (Ok(status), Some(Ok(report))) if status.success() => {
+                self.set_status_text("Y³");
+                if let Some(selection) = confirm_cleanup(self.mtm(), &report) {
+                    self.start_cleaning(selection);
+                } else if let Some(path) = self.ivars().plan_path.borrow_mut().take() {
+                    let _ = fs::remove_file(path);
+                }
+            }
+            (Ok(status), _) => {
+                eprintln!("Yeti3-Cleaner: scan failed: {status}");
+                self.set_status_text("Y³ !");
+                if let Some(path) = self.ivars().plan_path.borrow_mut().take() {
+                    let _ = fs::remove_file(path);
+                }
+            }
+            (Err(error), _) => {
+                eprintln!("Yeti3-Cleaner: scan status failed: {error}");
+                self.set_status_text("Y³ !");
+                if let Some(path) = self.ivars().plan_path.borrow_mut().take() {
+                    let _ = fs::remove_file(path);
+                }
+            }
+        }
+    }
+
+    fn start_cleaning(&self, selection: CleanupSelection) {
+        let executable = cleaner_path();
+        self.ivars().result_before_run.set(latest_result_id());
+
+        let plan_path = self.ivars().plan_path.borrow().clone();
+        let Some(plan_path) = plan_path else {
+            self.set_status_text("Y³ !");
+            return;
+        };
+        let mut command = Command::new(&executable);
+        command.args(["clean", "--max", "--yes", "--plan-in"])
+            .arg(&plan_path);
+        if !selection.groups.is_empty() {
+            command.arg("--selected").arg(selection.groups.join(","));
+        }
+        if selection.backups { command.arg("--include-backups"); }
+        if selection.homebrew { command.arg("--include-homebrew"); }
+        if selection.docker { command.arg("--include-docker"); }
+        if selection.xcode { command.arg("--include-xcode"); }
+
+        match command.stdin(Stdio::null())
+            .stdout(Stdio::null())
+            .stderr(Stdio::null())
+            .spawn()
+        {
+            Ok(child) => {
+                *self.ivars().child.borrow_mut() = Some(child);
+                self.ivars().paused.set(false);
+                self.ivars().animation_frame.set(0);
+                self.set_start_title("Пауза");
+                self.set_stop_visible(true);
+                self.set_status_text("Y³ ·");
+            }
+            Err(error) => {
+                eprintln!("Yeti3-Cleaner: cannot start {}: {error}", executable.display());
+                self.set_status_text("Y³ !");
+                if let Some(path) = self.ivars().plan_path.borrow_mut().take() {
+                    let _ = fs::remove_file(path);
+                }
+            }
+        }
+    }
+
     fn reap_finished(&self) {
         let mut slot = self.ivars().child.borrow_mut();
 
@@ -522,6 +647,9 @@ impl Controller {
 
         if finished {
             *slot = None;
+            if let Some(path) = self.ivars().plan_path.borrow_mut().take() {
+                let _ = fs::remove_file(path);
+            }
             self.ivars().paused.set(false);
             self.set_start_title("Старт очистки");
             self.set_stop_visible(false);
@@ -1902,6 +2030,11 @@ fn show_statistics_window(controller: &Controller) {
             },
         );
 
+        make_action_button(
+            mtm, &content, controller, "Ошибки последней очистки…",
+            objc2::sel!(openCleanupErrors:), 645.0, 12.0, 250.0,
+        );
+
         window.makeKeyAndOrderFront(None);
 
         let app = NSApplication::sharedApplication(mtm);
@@ -2335,6 +2468,55 @@ fn show_about_window(controller: &Controller) {
     });
 }
 
+fn show_cleanup_errors(mtm: MainThreadMarker) {
+    let report = match history::HistoryDb::open().and_then(|db| db.latest_errors()) {
+        Ok(errors) if errors.is_empty() => "Ошибок в последней очистке нет.".to_string(),
+        Ok(errors) => errors.into_iter().enumerate().map(|(index, (category, path, reason))| {
+            format!("{}. {}\n{}\nПричина: {}\n", index + 1, category, path, reason)
+        }).collect::<Vec<_>>().join("\n"),
+        Err(error) => format!("Не удалось загрузить ошибки: {error}"),
+    };
+    let alert: Retained<NSAlert> = unsafe {
+        msg_send![NSAlert::alloc(mtm), init]
+    };
+    alert.setMessageText(&ns("Ошибки последней очистки"));
+    let lines = report.lines().count();
+    let longest = report.lines().map(str::len).max().unwrap_or(0);
+    let document_width = ((longest as f64) * 7.5 + 24.0).clamp(740.0, 6000.0);
+    let document_height = ((lines as f64) * 18.0 + 24.0).max(240.0);
+    let scroll: Retained<NSScrollView> = unsafe {
+        msg_send![
+            NSScrollView::alloc(mtm),
+            initWithFrame: NSRect::new(NSPoint::new(0.0, 0.0), NSSize::new(740.0, 240.0))
+        ]
+    };
+    let document: Retained<NSView> = unsafe {
+        msg_send![
+            NSView::alloc(mtm),
+            initWithFrame: NSRect::new(
+                NSPoint::new(0.0, 0.0),
+                NSSize::new(document_width, document_height)
+            )
+        ]
+    };
+    let label = NSTextField::labelWithString(&ns(&report), mtm);
+    label.setFrame(NSRect::new(
+        NSPoint::new(8.0, 4.0),
+        NSSize::new(document_width - 16.0, document_height - 8.0),
+    ));
+    unsafe {
+        let _: () = msg_send![&*label, setSelectable: true];
+        let _: () = msg_send![&*label, setUsesSingleLineMode: false];
+        let _: () = msg_send![&*scroll, setHasVerticalScroller: true];
+        let _: () = msg_send![&*scroll, setHasHorizontalScroller: true];
+        document.addSubview(&label);
+        let _: () = msg_send![&*scroll, setDocumentView: &*document];
+        let _: () = msg_send![&*alert, setAccessoryView: &*scroll];
+    }
+    alert.addButtonWithTitle(&ns("Закрыть"));
+    let _: isize = unsafe { msg_send![&*alert, runModal] };
+}
+
 fn cleaner_path() -> PathBuf {
     if let Ok(exe) = std::env::current_exe() {
         if let Some(dir) = exe.parent() {
@@ -2347,6 +2529,151 @@ fn cleaner_path() -> PathBuf {
     }
 
     PathBuf::from("yeti3-cleaner")
+}
+
+struct CleanupSelection {
+    groups: Vec<&'static str>,
+    backups: bool,
+    homebrew: bool,
+    docker: bool,
+    xcode: bool,
+}
+
+fn confirm_cleanup(mtm: MainThreadMarker, scan_report: &str) -> Option<CleanupSelection> {
+    let total = scan_report
+        .lines()
+        .find_map(|line| line.strip_prefix("Known direct total"))
+        .map(str::trim)
+        .unwrap_or("неизвестно");
+    let backups = scan_report
+        .lines()
+        .find_map(|line| line.strip_prefix("MobileSync backups"))
+        .map(str::trim)
+        .unwrap_or("неизвестно");
+
+    let alert: Retained<NSAlert> = unsafe {
+        msg_send![NSAlert::alloc(mtm), init]
+    };
+
+    alert.setMessageText(&ns("Сканирование завершено. Очистить найденное?"));
+    alert.setInformativeText(&ns(&format!(
+        "Найдено: {total}. Копии iPhone/iPad: {backups} (0 Б может означать отсутствие доступа).\nПроверь пути ниже и отметь категории. Изменившиеся после скана каталоги будут пропущены."
+    )));
+
+    let report = format!(
+        "{scan_report}\nДОПОЛНИТЕЛЬНЫЕ ДЕЙСТВИЯ — ТОЛЬКО ЕСЛИ ОТМЕЧЕНЫ\n\
+         • Копии iPhone/iPad: содержимое ~/Library/Application Support/MobileSync/Backup (если доступно).\n\
+         • Homebrew: команды, включённые в настройках. Предпросмотр Homebrew выше может измениться.\n\
+         • Docker: включённые в настройках виды очистки (volumes сохраняются).\n\
+         • Xcode: delete unavailable simulators, если включено в настройках.\n"
+    );
+
+    let lines = report.lines().count();
+    let longest = report.lines().map(str::len).max().unwrap_or(0);
+    let document_width = ((longest as f64) * 7.5 + 24.0).clamp(740.0, 6000.0);
+    let document_height = ((lines as f64) * 18.0 + 24.0).max(140.0);
+    let accessory: Retained<NSView> = unsafe {
+        msg_send![
+            NSView::alloc(mtm),
+            initWithFrame: NSRect::new(NSPoint::new(0.0, 0.0), NSSize::new(740.0, 278.0))
+        ]
+    };
+    let scroll: Retained<NSScrollView> = unsafe {
+        msg_send![
+            NSScrollView::alloc(mtm),
+            initWithFrame: NSRect::new(NSPoint::new(0.0, 138.0), NSSize::new(740.0, 140.0))
+        ]
+    };
+    let document: Retained<NSView> = unsafe {
+        msg_send![
+            NSView::alloc(mtm),
+            initWithFrame: NSRect::new(
+                NSPoint::new(0.0, 0.0),
+                NSSize::new(document_width, document_height)
+            )
+        ]
+    };
+    let label = NSTextField::labelWithString(&ns(&report), mtm);
+    label.setFrame(NSRect::new(
+        NSPoint::new(8.0, 4.0),
+        NSSize::new(document_width - 16.0, document_height - 8.0),
+    ));
+    unsafe {
+        let _: () = msg_send![&*label, setSelectable: true];
+        let _: () = msg_send![&*label, setUsesSingleLineMode: false];
+        let _: () = msg_send![&*scroll, setHasVerticalScroller: true];
+        let _: () = msg_send![&*scroll, setHasHorizontalScroller: true];
+        document.addSubview(&label);
+        let _: () = msg_send![&*scroll, setDocumentView: &*document];
+        accessory.addSubview(&scroll);
+        let clip: *mut AnyObject = msg_send![&*scroll, contentView];
+        let _: () = msg_send![
+            clip,
+            scrollToPoint: NSPoint::new(0.0, (document_height - 140.0).max(0.0))
+        ];
+        let _: () = msg_send![&*scroll, reflectScrolledClipView: clip];
+    }
+
+    let choices = [
+        ("Корзина", "trash", false),
+        ("Кэши приложений", "caches", true),
+        ("Логи", "logs", true),
+        ("Кэши разработки", "development", true),
+        ("Копии iPhone/iPad", "backups", false),
+        ("Homebrew", "homebrew", false),
+        ("Docker", "docker", false),
+        ("Симуляторы Xcode", "xcode", false),
+        ("Свои каталоги", "custom", false),
+    ];
+    let mut buttons = Vec::new();
+    for (index, (title, key, checked)) in choices.iter().enumerate() {
+        let button: Retained<NSButton> = unsafe {
+            msg_send![
+                NSButton::alloc(mtm),
+                initWithFrame: NSRect::new(
+                    NSPoint::new((index % 2) as f64 * 370.0, 110.0 - (index / 2) as f64 * 26.0),
+                    NSSize::new(360.0, 24.0)
+                )
+            ]
+        };
+        unsafe {
+            let _: () = msg_send![&*button, setButtonType: 3isize];
+            let _: () = msg_send![&*button, setTitle: &*ns(title)];
+        }
+        button.setState(if *checked { NSControlStateValueOn } else { NSControlStateValueOff });
+        accessory.addSubview(&button);
+        buttons.push((*key, button));
+    }
+    unsafe {
+        let _: () = msg_send![&*alert, setAccessoryView: &*accessory];
+    }
+
+    alert.addButtonWithTitle(&ns("Отмена"));
+    alert.addButtonWithTitle(&ns("Очистить"));
+
+    // AppKit returns 1000 for the first button and 1001 for the second.
+    let response: isize = unsafe { msg_send![&*alert, runModal] };
+    if response != 1001 {
+        return None;
+    }
+    let selected = |key: &str| buttons.iter().any(|(name, button)| {
+        *name == key && button.state() == NSControlStateValueOn
+    });
+    let groups = ["trash", "caches", "logs", "development", "custom"]
+        .into_iter().filter(|key| selected(key)).collect();
+    let selection = CleanupSelection {
+        groups,
+        backups: selected("backups"),
+        homebrew: selected("homebrew"),
+        docker: selected("docker"),
+        xcode: selected("xcode"),
+    };
+    if selection.groups.is_empty() && !selection.backups && !selection.homebrew
+        && !selection.docker && !selection.xcode
+    {
+        return None;
+    }
+    Some(selection)
 }
 
 fn make_label(

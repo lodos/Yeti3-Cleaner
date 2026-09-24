@@ -58,8 +58,19 @@ with tempfile.TemporaryDirectory(prefix='yeti3-cleaner-test-') as temp:
     preview = run('clean', '--max', '--dry-run').stdout
     deletes = [line for line in preview.splitlines() if line.startswith('DELETE') and '/pip' in line]
     assert len(deletes) == 1, deletes
+    # A reviewed cleanup removes only selected, unchanged paths from the saved plan.
+    approved = file('Library/Caches/approved/a')
+    changed = file('Library/Caches/changed/a')
+    plan_path = home / 'review.json'
+    report = run('scan', '--max', '--plan-out', str(plan_path)).stdout
+    assert str(approved.parent) in report
+    later = file('Library/Caches/new-after-scan/a')
+    changed.write_bytes(b'updated after preview')
+    run('clean', '--max', '--yes', '--plan-in', str(plan_path), '--selected', 'caches')
+    assert not approved.exists()
+    assert changed.exists() and later.exists() and pip.exists()
     # Bad rules must fail closed, not revert to broader defaults.
     rules_path.write_text('{broken')
     assert run('clean', '--yes', ok=False).returncode != 0
     assert pip.exists() and keep.exists()
-print('PASS: settings, exclusions, custom folders, protected paths, deduplication, dry-run history and malformed-rule fail-closed behavior')
+print('PASS: settings, exclusions, custom folders, protected paths, deduplication, reviewed plan and malformed-rule fail-closed behavior')
