@@ -2563,7 +2563,7 @@ fn confirm_cleanup(mtm: MainThreadMarker, scan_report: &str) -> Option<CleanupSe
     let report = format!(
         "{scan_report}\nДОПОЛНИТЕЛЬНЫЕ ДЕЙСТВИЯ — ТОЛЬКО ЕСЛИ ОТМЕЧЕНЫ\n\
          • Копии iPhone/iPad: содержимое ~/Library/Application Support/MobileSync/Backup (если доступно).\n\
-         • Homebrew: команды, включённые в настройках. Предпросмотр Homebrew выше может измениться.\n\
+         • Homebrew: кэш и команды, включённые в настройках. Предпросмотр Homebrew выше может измениться.\n\
          • Docker: включённые в настройках виды очистки (volumes сохраняются).\n\
          • Xcode: delete unavailable simulators, если включено в настройках.\n"
     );

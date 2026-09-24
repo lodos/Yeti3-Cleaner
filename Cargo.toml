@@ -1,6 +1,6 @@
 [package]
 name = "yeti3-cleaner"
-version = "0.4.1-rc.3"
+version = "0.4.1-rc.4"
 edition = "2024"
 description = "High quality macOS disk cleaner for Apple Silicon"
 

@@ -1,8 +1,8 @@
 {
-  "version": "0.4.1-rc.3",
+  "version": "0.4.1-rc.4",
   "prerelease": true,
   "architecture": "universal",
   "minimum_macos": "14.0",
-  "url": "https://raw.githubusercontent.com/lodos/Yeti3-Cleaner/master/downloads/Yeti3-Cleaner-0.4.1-rc.3-universal.dmg",
-  "sha256": "104db10fdb3ab3b7c83799ae0882543d7e9f8cdbaaeec8f546872b7b982695bb"
+  "url": "https://raw.githubusercontent.com/lodos/Yeti3-Cleaner/master/downloads/Yeti3-Cleaner-0.4.1-rc.4-universal.dmg",
+  "sha256": "2d33ad497ca2edb15c383e411613b71707dd0e95a33b9e6d5e0e76a5fe46ea74"
 }

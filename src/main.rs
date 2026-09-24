@@ -422,9 +422,12 @@ fn clean_command(c: &CleanOpts) -> Result<()> {
         .transpose()?;
     let files: Vec<Candidate> = if let Some(plan) = &plan {
         let allowed_roots = roots(&c.opts)?;
+        let homebrew_cache = home()?.join("Library/Caches/Homebrew");
         plan.candidates.iter()
             .filter(|candidate| {
                 candidate.signature.is_some()
+                    && (c.include_homebrew || !(candidate.path.starts_with(&homebrew_cache)
+                        || homebrew_cache.starts_with(&candidate.path)))
                     && allowed_roots.iter().any(|root| {
                         root.path == candidate.root
                             && (root.label == candidate.label
@@ -639,8 +642,22 @@ fn clean_command(c: &CleanOpts) -> Result<()> {
         }
 
         for (program, args) in managed_plan(&settings)? {
-            if managed_allowed(program, &args, c, plan.as_ref()) && !run_managed(program, &args) {
+            if !managed_allowed(program, &args, c, plan.as_ref()) { continue; }
+            if let Err(error) = run_managed(program, &args) {
                 failures += 1;
+                history.add_cleanup_entry(&history::CleanupEntry {
+                    run_id,
+                    category: program.to_string(),
+                    path: PathBuf::from(program),
+                    parent_path: None,
+                    kind: "command".to_string(),
+                    bytes_before: 0,
+                    bytes_reclaimed: 0,
+                    action: "managed".to_string(),
+                    rule: args.join(" "),
+                    result: "error".to_string(),
+                    error: Some(format!("{} {}: {error}", program, args.join(" "))),
+                })?;
             }
         }
     }
@@ -712,14 +729,15 @@ fn print_special_status() {
     }
 }
 
-fn run_managed(program: &str, args: &[&str]) -> bool {
+fn run_managed(program: &str, args: &[&str]) -> Result<()> {
     println!("$ {} {}", program, args.join(" "));
-
-    match Command::new(program).args(args).status() {
-        Ok(status) if status.success() => true,
-        Ok(status) => { eprintln!("{program} exited with {status}"); false },
-        Err(e) => { eprintln!("{program}: {e}"); false },
-    }
+    let output = Command::new(program).args(args).output()
+        .with_context(|| format!("cannot start {program}"))?;
+    io::stdout().write_all(&output.stdout)?;
+    io::stderr().write_all(&output.stderr)?;
+    anyhow::ensure!(output.status.success(), "exited with {}: {}", output.status,
+        String::from_utf8_lossy(&output.stderr).trim());
+    Ok(())
 }
 
 fn command_ok(program: &str, args: &[&str]) -> bool {

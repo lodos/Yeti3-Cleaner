@@ -2,6 +2,7 @@
 import json
 import os
 import subprocess
+import sqlite3
 import tempfile
 import time
 from pathlib import Path
@@ -9,7 +10,14 @@ from pathlib import Path
 engine = Path(os.environ.get('YETI_TEST_ENGINE', str(Path(__file__).resolve().parents[1] / 'target/release/yeti3-cleaner')))
 with tempfile.TemporaryDirectory(prefix='yeti3-cleaner-test-') as temp:
     home = Path(temp).resolve()
-    env = {**os.environ, 'HOME': str(home)}
+    # No host package manager or Docker command may run during this test.
+    tools = home / 'test-bin'
+    tools.mkdir()
+    for name in ('brew', 'docker', 'xcrun'):
+        stub = tools / name
+        stub.write_text('#!/bin/sh\necho simulated-cleaner-failure >&2\nexit 7\n')
+        stub.chmod(0o755)
+    env = {**os.environ, 'HOME': str(home), 'PATH': str(tools) + ':/usr/bin:/bin'}
     def run(*args, ok=True):
         p = subprocess.run([str(engine), *args], env=env, text=True, capture_output=True)
         if ok:
@@ -61,6 +69,8 @@ with tempfile.TemporaryDirectory(prefix='yeti3-cleaner-test-') as temp:
     # A reviewed cleanup removes only selected, unchanged paths from the saved plan.
     approved = file('Library/Caches/approved/a')
     changed = file('Library/Caches/changed/a')
+    brew_cache = file('Library/Caches/Homebrew/downloads/cache')
+    os.utime(brew_cache.parent.parent, (time.time() - 30*86400,)*2)
     plan_path = home / 'review.json'
     report = run('scan', '--max', '--plan-out', str(plan_path)).stdout
     assert str(approved.parent) in report
@@ -69,6 +79,14 @@ with tempfile.TemporaryDirectory(prefix='yeti3-cleaner-test-') as temp:
     run('clean', '--max', '--yes', '--plan-in', str(plan_path), '--selected', 'caches')
     assert not approved.exists()
     assert changed.exists() and later.exists() and pip.exists()
+    assert brew_cache.exists(), 'unchecked Homebrew category deleted its cache'
+    run('clean', '--max', '--yes', '--plan-in', str(plan_path), '--include-docker')
+    db = sqlite3.connect(home / 'Documents/Yeti3Cleaner/history.sqlite3')
+    errors = db.execute("SELECT error FROM cleanup_entries WHERE run_id=(SELECT MAX(id) FROM cleanup_runs WHERE status != 'running') AND result='error'").fetchall()
+    assert errors and all('simulated-cleaner-failure' in row[0] for row in errors), errors
+    db.close()
+    run('clean', '--max', '--yes', '--plan-in', str(plan_path), '--selected', 'caches', '--include-homebrew')
+    assert not brew_cache.exists(), 'selected Homebrew cache was not cleaned'
     # Bad rules must fail closed, not revert to broader defaults.
     rules_path.write_text('{broken')
     assert run('clean', '--yes', ok=False).returncode != 0

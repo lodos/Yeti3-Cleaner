@@ -1,15 +1,15 @@
-# YETI³ Cleaner 0.4.1-rc.3 — ПРЕДРЕЛИЗ
+# YETI³ Cleaner 0.4.1-rc.4 — ПРЕДРЕЛИЗ
 
 Нативная утилита macOS для анализа диска и очистки выбранных каталогов.
 **Universal: Apple Silicon и Intel x86_64, macOS 14+.** Запуск на настоящем Intel пока не проверен.
 Поддержка PowerPC, Classic Mac OS и ранних OS X остаётся в работе; этот DMG для них не подходит.
 [Отдельный экспериментальный прототип Classic PowerPC](legacy/classic/README.md) собран, но не проверен запуском.
-[Протокол проверок и оставшаяся совместимость](docs/verification-0.4.1-rc.3.md).
+[Протокол проверок и оставшаяся совместимость](docs/verification-0.4.1-rc.4.md).
 
 ## Скачать
 
-- [Установщик DMG](downloads/Yeti3-Cleaner-0.4.1-rc.3-universal.dmg)
-- [Приложение в ZIP](downloads/Yeti3-Cleaner-0.4.1-rc.3-universal.zip)
+- [Установщик DMG](downloads/Yeti3-Cleaner-0.4.1-rc.4-universal.dmg)
+- [Приложение в ZIP](downloads/Yeti3-Cleaner-0.4.1-rc.4-universal.zip)
 - [SHA-256](downloads/SHA256SUMS-universal.txt)
 - [Установка, обновление и удаление](docs/INSTALL-RU.txt)
 
