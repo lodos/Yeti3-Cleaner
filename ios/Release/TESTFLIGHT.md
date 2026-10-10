@@ -1,11 +1,11 @@
 # Подготовка к TestFlight
 
-Подготовлен iOS-проект с automatic signing. Team ID намеренно не выбран: Apple ID и отображаемое имя команды не заменяют десятисимвольный Team ID. Идентификатор приложения `ru.yeti3.cleaner.ios` — предложенный, ещё не зарегистрирован. Не загружайте unsigned archive: он подтверждает компиляцию, но не является дистрибутивом.
+Подготовлен iOS-проект с automatic signing для ViShu (`49PHJ38L7T`). Подписанный архив 1.0.0 (2) собран 10.10.2026. Регистрация `ru.yeti3.cleaner.ios` и создание карточки App Store Connect пока заблокированы: текущая сессия Developer Portal показывает Access Unavailable. Это не успешная загрузка или отправка на проверку.
 
 ## Параметры
 
 - Deployment target: iOS 17.0; iPhone и iPad; без Mac Catalyst.
-- Version/build: 1.0.0 / 1. Перед повторной загрузкой увеличивать build.
+- Version/build: 1.0.0 / 2. Перед повторной загрузкой увеличивать build.
 - Signing: Automatic; в Xcode → Settings → Accounts войти в нужный Apple ID, пройти 2FA, выбрать платную команду Developer Program в Signing & Capabilities.
 - Bundle ID должен совпадать с зарегистрированным App ID и карточкой App Store Connect. При изменении обновить `project.yml` и сгенерировать проект.
 - Специальные capabilities не нужны. Пустой entitlements-файл намеренный. Доступы к Photo Library и Contacts задаются usage descriptions, Files — системным picker. iCloud entitlement для чтения PhotoKit или выбранного документа не требуется. Нет Push, Background Modes, App Groups, Tracking, Contacts Notes.
