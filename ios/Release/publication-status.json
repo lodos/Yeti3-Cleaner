@@ -25,7 +25,7 @@
   "ipa": {
     "Yeti3Cleaner.ipa": "d63853ea801a39e40797aa1a1a0cdece9836b6ea2de57270aa50e96f2335211d"
   },
-  "required_user_action": "Content-rights declaration pending",
+  "required_user_action": null,
   "app_store_connect_id": "6821407841",
   "store_metadata": "Russian description, keywords, support URL, review notes, subtitle and categories saved",
   "store_screenshots": "5 iPhone and 5 iPad accepted by App Store Connect",
@@ -37,5 +37,8 @@
   "price": "Free; saved for 175 regions; owner approved",
   "external_group": "YETI3 Cleaner Beta; build 2 included; Waiting for Review",
   "beta_review_information": "Description, testing scenarios, owner-approved contact and no-sign-in review instructions saved",
-  "store_submission": "Not submitted; owner content-rights declaration pending"
+  "store_submission": "Submitted to App Review; Waiting for Review verified",
+  "content_rights": "No third-party content; owner confirmed and saved",
+  "store_submission_id": "0c78e696-f732-423f-91b3-17c3e4fe7c6d",
+  "store_release": "Automatic after Apple approval"
 }
