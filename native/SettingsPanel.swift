@@ -81,13 +81,13 @@ struct SettingsPanel: View {
             ForEach(store.presets.indices, id: \.self) { index in
                 if let path = store.presets[index]["path"] as? String {
                     HStack {
-                        Toggle(YetiL10n.text(isOn: Binding(get: { !model.exclude.contains { path == $0 || path.hasPrefix($0 + "/") } }, set: { enabled in
+                        Toggle(isOn: Binding(get: { !model.exclude.contains { path == $0 || path.hasPrefix($0 + "/") } }, set: { enabled in
                             guard model.reloadRules() else { return }
                             if enabled {
                                 if model.exclude.contains(where: { path.hasPrefix($0 + "/") }) { model.error = "Путь находится внутри исключённой папки. Сначала измените это исключение ниже."; return }
                                 model.saveRules(model.include, model.exclude.filter { $0 != path })
                             } else { model.saveRules(model.include, Array(Set(model.exclude + [path])).sorted()) }
-                        }))) { Text(path.replacingOccurrences(of: FileManager.default.homeDirectoryForCurrentUser.path, with: "~")).font(.system(.callout, design: .monospaced)).textSelection(.enabled) }
+                        })) { Text(path.replacingOccurrences(of: FileManager.default.homeDirectoryForCurrentUser.path, with: "~")).font(.system(.callout, design: .monospaced)).textSelection(.enabled) }
                         Button("Заменить…") { model.choose { model.replacePreset(path, with: $0) } }
                     }.padding(8).background(Color.white.opacity(0.035)).clipShape(RoundedRectangle(cornerRadius: 8))
                 }
