@@ -12,8 +12,8 @@
   "keywords": "очистка,фото,дубликаты,хранилище,файлы,контакты,скриншоты",
   "privacy": "Data Not Collected",
   "tracking": false,
-  "supportURL": null,
-  "privacyPolicyURL": null,
+  "supportURL": "https://cleaner.yeti3.ru/static/cleaner/apple/app-support.html",
+  "privacyPolicyURL": "https://cleaner.yeti3.ru/static/cleaner/apple/privacy-policy.html",
   "copyright": "2026 YETI³",
   "reviewContact": {
     "firstName": null,
@@ -26,5 +26,6 @@
     "betaDescription": "Локальный анализ фото, видео, доступных файлов и контактов. Три стратегии и подтверждение удаления.",
     "whatToTest": "Разрешения: отказ, ограниченный и полный доступ. Точные и похожие фото. Live Photo и облачные ресурсы. Создание JPEG-копии с сохранением оригинала. Поиск файлов-дубликатов. Защита изменённых файлов и последнего дубликата. Крупный текст, VoiceOver, iPad и поворот экрана. Используйте тестовые данные и резервные копии."
   },
-  "ageRatingGuidance": "Нет пользовательских публикаций, рекламы, чата, насилия, азартных игр или медицинских функций. Заполнить актуальную анкету App Store Connect; итоговый рейтинг назначает Apple."
+  "ageRatingGuidance": "Нет пользовательских публикаций, рекламы, чата, насилия, азартных игр или медицинских функций. Заполнить актуальную анкету App Store Connect; итоговый рейтинг назначает Apple.",
+  "publicSupportEmail": "ursolov@gmail.com"
 }

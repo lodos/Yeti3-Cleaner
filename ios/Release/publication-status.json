@@ -1,0 +1,22 @@
+{
+  "checked": "2026-10-10",
+  "bundle_id": "ru.yeti3.cleaner.ios",
+  "version": "1.0.0",
+  "build": "2",
+  "signed_archive_verified": true,
+  "asset_hashes_verified": 13,
+  "unit_tests_passed": 16,
+  "iphone_and_ipad_ui_tests_passed": true,
+  "public_pages": {
+    "privacy-policy.html": {
+      "url": "https://cleaner.yeti3.ru/static/cleaner/apple/privacy-policy.html",
+      "sha256": "bc3a93787cbcae1207ba990c7c664ac331b28a0b6e5d018688102b4179e8e654"
+    },
+    "app-support.html": {
+      "url": "https://cleaner.yeti3.ru/static/cleaner/apple/app-support.html",
+      "sha256": "73289391a6dc5286480d12ba8fdfee9127cf78d5d9a35aa47f501febeed0fc72"
+    }
+  },
+  "apple_submission": "blocked: ViShu two-factor sign-in and identifier registration pending",
+  "real_device_photo_file_provider_checks": "not completed this run"
+}
