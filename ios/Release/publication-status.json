@@ -17,6 +17,13 @@
       "sha256": "73289391a6dc5286480d12ba8fdfee9127cf78d5d9a35aa47f501febeed0fc72"
     }
   },
-  "apple_submission": "blocked: ViShu two-factor sign-in and identifier registration pending",
-  "real_device_photo_file_provider_checks": "not completed this run"
+  "apple_submission": "Upload attempted: App record with bundle identifier ru.yeti3.cleaner.ios not found on App Store Connect",
+  "real_device_photo_file_provider_checks": "not completed this run",
+  "archive_path": "output/apple-20261010/Cleaner-iOS-1.0.0-2.xcarchive",
+  "in_app_support": "Settings links to public support and developer email",
+  "export_preparation": "App Store Connect export succeeded with system PATH",
+  "ipa": {
+    "Yeti3Cleaner.ipa": "d63853ea801a39e40797aa1a1a0cdece9836b6ea2de57270aa50e96f2335211d"
+  },
+  "required_user_action": "Complete ViShu two-factor browser sign-in to create the App Store Connect record"
 }

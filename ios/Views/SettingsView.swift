@@ -36,6 +36,11 @@ struct SettingsView: View {
                     Picker("Длинная сторона", selection: option(\.maxPixel)) { Text("2048 px").tag(2048); Text("2560 px").tag(2560); Text("4096 px").tag(4096) }
                     Text("Оригинал сохраняется. Копия не содержит геопозиции и EXIF. RAW, HDR, Live Photo, панорамы и отредактированные снимки исключены.").font(.caption)
                 }
+                Section("Помощь") {
+                    Link("Поддержка и инструкции", destination: URL(string: "https://cleaner.yeti3.ru/static/cleaner/apple/app-support.html")!)
+                    Link("Написать разработчику", destination: URL(string: "mailto:ursolov@gmail.com?subject=YETI3%20Cleaner%20iOS")!)
+                    Text("В письме укажите версию приложения, устройство и действия до ошибки. Не прикладывайте личные фото и контакты без необходимости.").font(.caption)
+                }
                 Section("Данные приложения") {
                     Button("Сбросить временный просмотр…") { cacheConfirmation = true }
                     Button("Восстановить настройки этой стратегии") { settings.reset() }
