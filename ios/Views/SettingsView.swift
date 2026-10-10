@@ -10,7 +10,16 @@ struct SettingsView: View {
                 Section("Стратегия очистки") {
                     Picker("Режим", selection: $settings.strategy) { ForEach(Strategy.allCases) { Text($0.title).tag($0) } }.accessibilityIdentifier("strategyPicker")
                     Text(settings.strategy.detail).font(.footnote)
-                    Text("Настройки сохраняются отдельно для каждой стратегии. Автоматического выбора и удаления нет.").font(.caption)
+                    Text("Настройки сохраняются отдельно для каждой стратегии. Личные данные удаляются только после dry run и подтверждения.").font(.caption)
+                }
+                Section("Автоматический dry run") {
+                    Toggle("Анализировать при открытии приложения", isOn: $settings.automation.enabled)
+                    Picker("Не чаще", selection: $settings.automation.intervalHours) {
+                        Text("Каждые 6 часов").tag(6); Text("Раз в день").tag(24); Text("Раз в неделю").tag(168)
+                    }
+                    Toggle("Только на зарядке", isOn: $settings.automation.requireCharging)
+                    Stepper("Заряд не ниже \(settings.automation.minimumBatteryPercent)%", value: $settings.automation.minimumBatteryPercent, in: 20...90, step: 10)
+                    Text("Без запросов новых разрешений и удаления. При энергосбережении и перегреве анализ откладывается. iOS не гарантирует запуск по расписанию в закрытом приложении. Фото и файлы выбираете вы; контакты изменяются только вручную.").font(.caption)
                 }
                 Section("Локальное сканирование") {
                     Toggle("Фото и видео", isOn: option(\.photos))
@@ -31,7 +40,7 @@ struct SettingsView: View {
                     Button("Сбросить временный просмотр…") { cacheConfirmation = true }
                     Button("Восстановить настройки этой стратегии") { settings.reset() }
                     NavigationLink("Конфиденциальность") { PrivacyView() }
-                    Text("Версия 1.0.0 (1) · iOS 17+").font(.caption)
+                    Text("Версия 1.0.0 (2) · iOS 17+").font(.caption)
                 }
             }.disabled(model.busy).navigationTitle("Настройки")
             .confirmationDialog("Сбросить только временные данные Cleaner?", isPresented: $cacheConfirmation, titleVisibility: .visible) { Button("Сбросить", role: .destructive) { model.clearCache() }; Button("Отмена", role: .cancel) {} }

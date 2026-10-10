@@ -119,3 +119,31 @@ final class PhotoEncoderTests: XCTestCase {
         XCTAssertThrowsError(try PhotoEncoder.encode(Data("not an image".utf8), options: ScanOptions()))
     }
 }
+
+final class CleanupPolicyTests: XCTestCase {
+    func testAutomationRequiresOptInPowerAndSafeTemperature() {
+        var policy = AutomationPolicy(); let now = Date()
+        XCTAssertFalse(policy.due(now: now, lastAttempt: nil, batteryPercent: 100, charging: true, lowPower: false, thermalSafe: true))
+        policy.enabled = true
+        XCTAssertTrue(policy.due(now: now, lastAttempt: nil, batteryPercent: nil, charging: true, lowPower: false, thermalSafe: true))
+        XCTAssertFalse(policy.due(now: now, lastAttempt: nil, batteryPercent: 100, charging: false, lowPower: false, thermalSafe: true))
+        XCTAssertFalse(policy.due(now: now, lastAttempt: nil, batteryPercent: 100, charging: true, lowPower: true, thermalSafe: true))
+        XCTAssertFalse(policy.due(now: now, lastAttempt: nil, batteryPercent: 100, charging: true, lowPower: false, thermalSafe: false))
+        XCTAssertFalse(policy.due(now: now, lastAttempt: now, batteryPercent: 100, charging: true, lowPower: false, thermalSafe: true))
+        policy.requireCharging = false
+        XCTAssertFalse(policy.due(now: now, lastAttempt: nil, batteryPercent: nil, charging: false, lowPower: false, thermalSafe: true))
+        XCTAssertFalse(policy.due(now: now, lastAttempt: nil, batteryPercent: 20, charging: false, lowPower: false, thermalSafe: true))
+    }
+    func testDryRunRejectsUnknownLastDuplicateAndMissingScan() {
+        let now = Date(); let sizes: [String:Int64] = ["a": 100, "b": 100]
+        XCTAssertFalse(CleanupDryRun.make(selected: ["a", "b"], sizes: sizes, groups: [["a", "b"]], scanDate: now).allowed)
+        XCTAssertFalse(CleanupDryRun.make(selected: ["unknown"], sizes: sizes, groups: [], scanDate: now).allowed)
+        XCTAssertFalse(CleanupDryRun.make(selected: ["a"], sizes: sizes, groups: [], scanDate: nil).allowed)
+        let plan = CleanupDryRun.make(selected: ["a"], sizes: sizes, groups: [["a", "b"]], scanDate: now, now: now)
+        XCTAssertEqual(plan.estimatedBytes, 100)
+        XCTAssertTrue(plan.isCurrent(selection: ["a"], scanDate: now, now: now))
+        XCTAssertFalse(plan.isCurrent(selection: ["b"], scanDate: now, now: now))
+        XCTAssertFalse(plan.isCurrent(selection: ["a"], scanDate: now.addingTimeInterval(1), now: now))
+        XCTAssertFalse(plan.isCurrent(selection: ["a"], scanDate: now, now: now.addingTimeInterval(901)))
+    }
+}

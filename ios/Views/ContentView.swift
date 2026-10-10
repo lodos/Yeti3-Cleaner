@@ -17,11 +17,12 @@ struct ContentView: View {
             ContactsView().tabItem { Label("Контакты", systemImage: "person.crop.circle") }
             SettingsView().tabItem { Label("Настройки", systemImage: "slider.horizontal.3") }
         }
+        .task { model.automaticScan(settings: settings) }
         .tint(Color(red: 0.1, green: 0.72, blue: 1))
         .alert("YETI³ Cleaner", isPresented: Binding(get: { model.message != nil }, set: { if !$0 { model.message = nil } })) { Button("Понятно", role: .cancel) {} } message: { Text(model.message ?? "") }
         .sheet(item: $model.preview) { preview in OptimizationView(preview: preview) }
         .onChange(of: scenePhase) { _, phase in
-            if phase == .active { model.refreshAccess() }
+            if phase == .active { model.refreshAccess(); model.automaticScan(settings: settings) }
             if phase == .background { model.cancel() }
         }
     }
@@ -128,7 +129,7 @@ struct PhotosView: View {
                 }
             }.navigationTitle("Фото и видео")
             .sheet(isPresented: $confirm) {
-                DeletionReview(title: "Удаление фото", explanation: "Будут удалены только перечисленные объекты. Изменение синхронизируется через iCloud Фото с другими устройствами. Восстановление обычно доступно в «Недавно удалённых» в течение 30 дней. Размеры логические, освобождение места не гарантируется сразу.", names: model.photos.items.filter { model.selectedPhotos.contains($0.id) }.map { "\($0.date?.formatted() ?? "Без даты") · \(bytesLabel($0.bytes))" }) { model.deletePhotos() }
+                DeletionReview(plan: model.photoDryRun(), title: "Dry run · Фото", explanation: "Будут удалены только перечисленные объекты. Изменение синхронизируется через iCloud Фото с другими устройствами. Восстановление обычно доступно в «Недавно удалённых» в течение 30 дней. Размеры логические, освобождение места не гарантируется сразу.", names: model.photos.items.filter { model.selectedPhotos.contains($0.id) }.map { "\($0.date?.formatted() ?? "Без даты") · \(bytesLabel($0.bytes))" }) { plan in model.deletePhotos(plan: plan) }
             }
         }
     }
@@ -230,26 +231,32 @@ struct FilesView: View {
             .quickLookPreview($previewURL)
             .onChange(of: previewURL) { _, value in if value == nil { accessRoot?.stopAccessingSecurityScopedResource(); accessRoot = nil } }
             .sheet(isPresented: $confirm) {
-                DeletionReview(title: "Удаление файлов", explanation: "Удаление может быть необратимым: наличие корзины зависит от провайдера. Изменения в облачной папке могут синхронизироваться на другие устройства. Сделайте резервную копию. Изменённые после анализа файлы будут пропущены.", names: model.files.items.filter { model.selectedFiles.contains($0.id) }.map { $0.url.lastPathComponent + " · " + bytesLabel($0.digest.bytes) }) { model.deleteFiles() }
+                DeletionReview(plan: model.fileDryRun(), title: "Dry run · Файлы", explanation: "Удаление может быть необратимым: наличие корзины зависит от провайдера. Изменения в облачной папке могут синхронизироваться на другие устройства. Сделайте резервную копию. Изменённые после анализа файлы будут пропущены.", names: model.files.items.filter { model.selectedFiles.contains($0.id) }.map { $0.url.lastPathComponent + " · " + bytesLabel($0.digest.bytes) }) { plan in model.deleteFiles(plan: plan) }
             }
         }
     }
 }
 struct DeletionReview: View {
     @Environment(\.dismiss) private var dismiss
+    @State var plan: CleanupDryRun
     let title: String
     let explanation: String
     let names: [String]
-    let action: () -> Void
+    let action: (CleanupDryRun) -> Void
     @State private var acknowledged = false
     var body: some View {
         NavigationStack {
             List {
-                Section { Text(explanation) }
+                Section("Предварительный план · ничего не удалено") {
+                    Text(explanation)
+                    LabeledContent("Логический размер", value: bytesLabel(plan.estimatedBytes))
+                    Text("План действует 15 минут. Перед выполнением содержимое проверяется повторно.").font(.caption)
+                    if !plan.allowed { Text("Удаление заблокировано: оставьте минимум один экземпляр каждого дубликата и повторите анализ.").foregroundStyle(.red) }
+                }
                 Section("Будет удалено: \(names.count)") { ForEach(Array(names.enumerated()), id: \.offset) { _, name in Text(name) } }
                 Section {
                     Toggle("Я проверил список и подтверждаю удаление", isOn: $acknowledged)
-                    Button("Удалить выбранное", role: .destructive) { dismiss(); action() }.disabled(!acknowledged || names.isEmpty)
+                    Button("Удалить выбранное", role: .destructive) { dismiss(); action(plan) }.disabled(!acknowledged || names.isEmpty || !plan.allowed)
                 }
             }.navigationTitle(title).toolbar { Button("Отмена") { dismiss() } }
         }

@@ -1,6 +1,15 @@
 import XCTest
 
 final class LaunchTests: XCTestCase {
+    @MainActor func testStoreScreenshots() {
+        let app = XCUIApplication(); app.launch()
+        XCTAssertTrue(app.buttons["startScan"].waitForExistence(timeout:15))
+        for (name, tab) in [("01-Overview", "Обзор"), ("02-Photos", "Фото"), ("03-Files", "Файлы"), ("04-Contacts", "Контакты"), ("05-Settings", "Настройки")] {
+            app.tabBars.buttons[tab].tap()
+            let image = XCTAttachment(screenshot: app.screenshot())
+            image.name = name; image.lifetime = .keepAlways; add(image)
+        }
+    }
     @MainActor func testLaunchAndSettingsWithoutPermissionPrompts() throws {
         let app = XCUIApplication(); app.launch()
         XCTAssertTrue(app.buttons["startScan"].waitForExistence(timeout: 15))

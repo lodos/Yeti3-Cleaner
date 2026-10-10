@@ -6,22 +6,22 @@
   "secondaryCategory": "Photo & Video",
   "bundleID": "ru.yeti3.cleaner.ios",
   "version": "1.0.0",
-  "build": "1",
+  "build": "2",
   "skuSuggestion": "YETI3-CLEANER-IOS",
-  "description": "Локальный помощник для освобождения места на iPhone и iPad. Находите точные дубликаты и похожие фотографии, крупные видео, старые скриншоты и повторяющиеся файлы. Создавайте уменьшенные JPEG-копии с предварительным просмотром, сохраняя оригиналы. Проверяйте повторяющиеся и неполные контакты. Три настраиваемые стратегии, доступ только к разрешённым данным, просмотр и подтверждение перед удалением. Приложение не очищает системные кэши или данные других приложений. Облачные оригиналы Фото при сканировании не скачиваются. Сохранение копии сначала занимает дополнительное место. Данные не передаются разработчику.",
+  "description": "Локальный помощник для освобождения места на iPhone и iPad. Находите точные дубликаты и похожие фотографии, крупные видео, старые скриншоты и повторяющиеся файлы. Создавайте уменьшенные JPEG-копии с предварительным просмотром, сохраняя оригиналы. Проверяйте повторяющиеся и неполные контакты. Три настраиваемые стратегии, доступ только к разрешённым данным, просмотр и подтверждение перед удалением. Приложение не очищает системные кэши или данные других приложений. Облачные оригиналы Фото при сканировании не скачиваются. Сохранение копии сначала занимает дополнительное место. Данные не передаются разработчику. Автоматический dry run при открытии приложения: выберите интервал и условия питания. Удаление личных данных всегда требует просмотра плана и вашего подтверждения.",
   "keywords": "очистка,фото,дубликаты,хранилище,файлы,контакты,скриншоты",
   "privacy": "Data Not Collected",
   "tracking": false,
   "supportURL": null,
   "privacyPolicyURL": null,
-  "copyright": null,
+  "copyright": "2026 YETI³",
   "reviewContact": {
     "firstName": null,
     "lastName": null,
     "email": null,
     "phone": null
   },
-  "reviewNotes": "No sign-in required. Scan starts only after tapping Начать анализ. Enable Contacts in Settings to request contact access. Files must be selected through the system picker. All processing is local; Photos originals are not downloaded from iCloud. No system or third-party app caches are accessed. Photo optimization saves a new JPEG and never deletes the source. Destructive actions require a separate review and confirmation. Contacts are edited only through the system Contacts UI.",
+  "reviewNotes": "No sign-in required. Scan starts only after tapping Начать анализ. Enable Contacts in Settings to request contact access. Files must be selected through the system picker. All processing is local; Photos originals are not downloaded from iCloud. No system or third-party app caches are accessed. Photo optimization saves a new JPEG and never deletes the source. Destructive actions require a separate review and confirmation. Contacts are edited only through the system Contacts UI. Optional automatic scan runs on foreground activation only with existing permissions and user-selected power conditions. Dry-run deletion plans expire after 15 minutes and are invalidated by changed selections or rescans. Every delete rechecks content.",
   "testFlight": {
     "betaDescription": "Локальный анализ фото, видео, доступных файлов и контактов. Три стратегии и подтверждение удаления.",
     "whatToTest": "Разрешения: отказ, ограниченный и полный доступ. Точные и похожие фото. Live Photo и облачные ресурсы. Создание JPEG-копии с сохранением оригинала. Поиск файлов-дубликатов. Защита изменённых файлов и последнего дубликата. Крупный текст, VoiceOver, iPad и поворот экрана. Используйте тестовые данные и резервные копии."

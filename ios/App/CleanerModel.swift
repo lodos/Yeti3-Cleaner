@@ -1,6 +1,7 @@
 import SwiftUI
 import Photos
 import Contacts
+import UIKit
 
 @MainActor final class CleanerModel: ObservableObject {
     @Published var photos = PhotoReport()
@@ -70,6 +71,32 @@ import Contacts
             catch { status = "Анализ не завершён"; message = error.localizedDescription }
         }
     }
+    func automaticScan(settings: SettingsStore) {
+        guard !busy else { return }
+        refreshAccess()
+        UIDevice.current.isBatteryMonitoringEnabled = true
+        let device = UIDevice.current
+        let level = device.batteryLevel >= 0 ? Int(device.batteryLevel * 100) : nil
+        let charging = device.batteryState == .charging || device.batteryState == .full
+        let thermal = ProcessInfo.processInfo.thermalState
+        let last = UserDefaults.standard.object(forKey: "automaticScanAttempt") as? Date
+        guard settings.automation.due(now: Date(), lastAttempt: last, batteryPercent: level,
+            charging: charging, lowPower: ProcessInfo.processInfo.isLowPowerModeEnabled,
+            thermalSafe: thermal == .nominal || thermal == .fair) else { return }
+        var options = settings.options
+        options.photos = options.photos && (photoAccess == .authorized || photoAccess == .limited)
+        options.contacts = options.contacts && contactsReadable(contactAccess)
+        options.files = options.files && !roots.isEmpty
+        guard options.photos || options.contacts || options.files else { return }
+        UserDefaults.standard.set(Date(), forKey: "automaticScanAttempt")
+        scan(options)
+    }
+    func photoDryRun() -> CleanupDryRun {
+        .make(selected: selectedPhotos, sizes: Dictionary(uniqueKeysWithValues: photos.items.filter { !$0.favorite && $0.digest != nil }.map { ($0.id, $0.bytes) }), groups: photos.duplicates, scanDate: lastScan)
+    }
+    func fileDryRun() -> CleanupDryRun {
+        .make(selected: selectedFiles, sizes: Dictionary(uniqueKeysWithValues: files.items.map { ($0.id, $0.digest.bytes) }), groups: files.duplicates, scanDate: lastScan)
+    }
     func cancel() { guard task != nil else { return }; task?.cancel(); status = "Остановка после текущего локального ресурса…" }
     func optimize(_ item: PhotoItem, options: ScanOptions) {
         run { self.preview = try await self.photoService.optimize(item, options: options) }
@@ -81,7 +108,8 @@ import Contacts
             self.message = "Копия сохранена. Оригинал остался в медиатеке. Сейчас копия занимает дополнительное место. Проверьте её в «Фото», прежде чем отдельно решать, нужен ли оригинал."
         }
     }
-    func deletePhotos() {
+    func deletePhotos(plan: CleanupDryRun) {
+        guard plan.isCurrent(selection: selectedPhotos, scanDate: lastScan) else { message = "Dry run устарел или выбор небезопасен. Повторите анализ и просмотр."; return }
         let selected = photos.items.filter { selectedPhotos.contains($0.id) }; let report = photos
         run {
             try await self.photoService.delete(selected, report: report)
@@ -89,7 +117,8 @@ import Contacts
             self.message = "Выбранные объекты перемещены в «Недавно удалённые» в Фото. iCloud может синхронизировать удаление. Место может освободиться позже."
         }
     }
-    func deleteFiles() {
+    func deleteFiles(plan: CleanupDryRun) {
+        guard plan.isCurrent(selection: selectedFiles, scanDate: lastScan) else { message = "Dry run устарел или выбор небезопасен. Повторите анализ и просмотр."; return }
         let selected = files.items.filter { selectedFiles.contains($0.id) }; let report = files
         run {
             let errors = try await self.fileService.delete(selected, report: report)
