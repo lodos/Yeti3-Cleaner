@@ -1,0 +1,39 @@
+name: Yeti3CleanerMac
+options:
+  deploymentTarget:
+    macOS: "14.0"
+settings:
+  base:
+    ARCHS: "arm64 x86_64"
+    ONLY_ACTIVE_ARCH: NO
+    DEVELOPMENT_TEAM: 49PHJ38L7T
+    CODE_SIGN_STYLE: Automatic
+    MARKETING_VERSION: "0.4.1"
+    CURRENT_PROJECT_VERSION: 1
+    ENABLE_APP_SANDBOX: NO
+    ENABLE_HARDENED_RUNTIME: YES
+    ENABLE_USER_SCRIPT_SANDBOXING: NO
+targets:
+  Yeti3Cleaner-macOS:
+    type: application
+    platform: macOS
+    sources:
+      - path: ../assets/generated/appicon/Yeti3.icns
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ru.yeti3.cleaner
+        EXECUTABLE_NAME: Yeti3-Cleaner
+        INFOPLIST_FILE: Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        SKIP_INSTALL: NO
+    postBuildScripts:
+      - name: Package existing native Mac client
+        script: 'bash "$SRCROOT/../scripts/package-xcode-macos.sh"'
+        basedOnDependencyAnalysis: false
+schemes:
+  Yeti3Cleaner-macOS:
+    build:
+      targets:
+        Yeti3Cleaner-macOS: all
+    archive:
+      config: Release

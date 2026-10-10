@@ -11,3 +11,8 @@
 /dist/
 /release/
 /target/
+
+xcuserdata/
+/ios/build/
+*.xcarchive/
+*.xcresult/

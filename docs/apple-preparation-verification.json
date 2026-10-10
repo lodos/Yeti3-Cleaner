@@ -1,0 +1,68 @@
+{
+  "prepared_at": "2026-10-10",
+  "team": "49PHJ38L7T",
+  "new_uploads_in_preparation": false,
+  "archives": [
+    {
+      "product": "Node iOS",
+      "bundle_id": "ru.yeti3.node.ios",
+      "version": "1.2.8",
+      "build": "2",
+      "archive_succeeded": true,
+      "route": "TestFlight; signed archive"
+    },
+    {
+      "product": "Node macOS",
+      "bundle_id": "ru.linecloud.node",
+      "version": "1.2.8",
+      "build": "2",
+      "archive_succeeded": true,
+      "route": "Developer ID; unsigned archive; sandbox migration required for TestFlight"
+    },
+    {
+      "product": "Cleaner iOS",
+      "bundle_id": "ru.yeti3.cleaner.ios",
+      "version": "1.0.0",
+      "build": "1",
+      "archive_succeeded": true,
+      "route": "Signed archive; identifier registration blocked"
+    },
+    {
+      "product": "Cleaner macOS",
+      "bundle_id": "ru.yeti3.cleaner",
+      "version": "0.4.1",
+      "build": "1",
+      "archive_succeeded": true,
+      "route": "Developer ID; unsigned archive; sandbox migration required for TestFlight"
+    },
+    {
+      "product": "Connector iOS",
+      "bundle_id": "ru.yeti3.connector.ios",
+      "version": "1.0.2",
+      "build": "23",
+      "archive_succeeded": true,
+      "route": "TestFlight; signed archive"
+    },
+    {
+      "product": "Connector macOS Store",
+      "bundle_id": "ru.yeti3.connector.ios",
+      "version": "1.0.2",
+      "build": "23",
+      "archive_succeeded": true,
+      "route": "TestFlight prototype; signed archive; native parity incomplete"
+    },
+    {
+      "product": "Connector macOS Native",
+      "bundle_id": "ru.yeti3.connector",
+      "version": "0.3.1",
+      "build": "14",
+      "archive_succeeded": true,
+      "route": "Developer ID; unsigned archive"
+    }
+  ],
+  "limits": [
+    "Archive checks only; no new physical-device functional run",
+    "Native Mac archives unsigned; Developer ID signing and notarization required",
+    "Connector Store Mac prototype does not have native feature parity"
+  ]
+}

@@ -1,0 +1,584 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		012AB5750593D564431B8DEF /* CleanerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1482EED0F78DA4D60DB54C /* CleanerModel.swift */; };
+		19231D892CC3CF5CE6E3DE2A /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE45136FF902B41CE0F2DA /* FileService.swift */; };
+		446C266AD267B9589B6CF9D0 /* CleanerPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F22BA813303E174D983538 /* CleanerPolicy.swift */; };
+		499D9A0A99EF5BB12849A016 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53EC3BE1577E28669A1640F8 /* Assets.xcassets */; };
+		5B14DEF96D36FFF00B4D3746 /* Yeti3CleanerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B141730CAB23D0744B016B /* Yeti3CleanerApp.swift */; };
+		78673A938F433376DBCB6B7F /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A71CB8F73731E99FA1A72 /* SettingsStore.swift */; };
+		78C2E56150F2D58B8FDF9FC0 /* SafetyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2669595935E0B45924A900C /* SafetyTests.swift */; };
+		7B8674659D59BB75714A9E0F /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E888CA4A1578FA044719085 /* PhotoService.swift */; };
+		87CF0E8E79BDD23A00535302 /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BDA221FDD7706E430CA75B /* ContactService.swift */; };
+		AE4C4426AF186763C643B221 /* LaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D57C072C3A53AFC7E41D1A /* LaunchTests.swift */; };
+		D0CA28973ACBF6E0BF0CEAF6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8ADA2F76B0679589AC11C /* SettingsView.swift */; };
+		DCC02AD3DB61A9E921F011D4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1045B7CCEEC7715A9CCC9712 /* PrivacyInfo.xcprivacy */; };
+		E45FE1447C2C5E722A4097D8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B226401D21F5EC6B35FECA /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		195439BF9C48E13059AE64FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F14F8E33226D47B2A984FEF9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DB4B9A3DC1A3BB45C6E9F2D;
+			remoteInfo = Yeti3Cleaner;
+		};
+		AF57022EC41890D0E99E1A1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F14F8E33226D47B2A984FEF9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DB4B9A3DC1A3BB45C6E9F2D;
+			remoteInfo = Yeti3Cleaner;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1045B7CCEEC7715A9CCC9712 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		2A1482EED0F78DA4D60DB54C /* CleanerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanerModel.swift; sourceTree = "<group>"; };
+		43BDA221FDD7706E430CA75B /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
+		44B141730CAB23D0744B016B /* Yeti3CleanerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yeti3CleanerApp.swift; sourceTree = "<group>"; };
+		53EC3BE1577E28669A1640F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		80F22BA813303E174D983538 /* CleanerPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanerPolicy.swift; sourceTree = "<group>"; };
+		8AC8ADA2F76B0679589AC11C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		8E888CA4A1578FA044719085 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
+		95A05B5479974B679FE782BA /* Yeti3CleanerTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = Yeti3CleanerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C662F7BDE435BDF7C3DCE93 /* Yeti3CleanerUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = Yeti3CleanerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4836FC967D23CF5CFDD4993 /* Yeti3Cleaner.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Yeti3Cleaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B68A71CB8F73731E99FA1A72 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
+		B7B226401D21F5EC6B35FECA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C2669595935E0B45924A900C /* SafetyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyTests.swift; sourceTree = "<group>"; };
+		E2CE45136FF902B41CE0F2DA /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
+		E5D57C072C3A53AFC7E41D1A /* LaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0765B2ACD41B836EDFEDB527 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				43BDA221FDD7706E430CA75B /* ContactService.swift */,
+				E2CE45136FF902B41CE0F2DA /* FileService.swift */,
+				8E888CA4A1578FA044719085 /* PhotoService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0B297C159792856A19471BFC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B4836FC967D23CF5CFDD4993 /* Yeti3Cleaner.app */,
+				95A05B5479974B679FE782BA /* Yeti3CleanerTests.xctest */,
+				9C662F7BDE435BDF7C3DCE93 /* Yeti3CleanerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2E93FAB4C609DFE7C6A4CAC2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				53EC3BE1577E28669A1640F8 /* Assets.xcassets */,
+				1045B7CCEEC7715A9CCC9712 /* PrivacyInfo.xcprivacy */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		64F1B5B7F3124BAB0DDD2983 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C2669595935E0B45924A900C /* SafetyTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		8E698289BFF152F9AD99276A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2A1482EED0F78DA4D60DB54C /* CleanerModel.swift */,
+				B68A71CB8F73731E99FA1A72 /* SettingsStore.swift */,
+				44B141730CAB23D0744B016B /* Yeti3CleanerApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		924EF5B14AEBF83DDC5FA3B0 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				80F22BA813303E174D983538 /* CleanerPolicy.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		B329A0BEB11661D9020CB1D4 = {
+			isa = PBXGroup;
+			children = (
+				8E698289BFF152F9AD99276A /* App */,
+				924EF5B14AEBF83DDC5FA3B0 /* Core */,
+				2E93FAB4C609DFE7C6A4CAC2 /* Resources */,
+				0765B2ACD41B836EDFEDB527 /* Services */,
+				64F1B5B7F3124BAB0DDD2983 /* Tests */,
+				F53EE88B08EDF55B8E1BA436 /* UITests */,
+				C59790B482D1B7EA6E20F601 /* Views */,
+				0B297C159792856A19471BFC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C59790B482D1B7EA6E20F601 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B7B226401D21F5EC6B35FECA /* ContentView.swift */,
+				8AC8ADA2F76B0679589AC11C /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F53EE88B08EDF55B8E1BA436 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				E5D57C072C3A53AFC7E41D1A /* LaunchTests.swift */,
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		603281D76A515B63DAF587E5 /* Yeti3CleanerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2A48F1E751C541D0B10FB99 /* Build configuration list for PBXNativeTarget "Yeti3CleanerTests" */;
+			buildPhases = (
+				41EE70C1CA21A36A75968998 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2E5045F9CBD74C559E70872F /* PBXTargetDependency */,
+			);
+			name = Yeti3CleanerTests;
+			productName = Yeti3CleanerTests;
+			productReference = 95A05B5479974B679FE782BA /* Yeti3CleanerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		6DB4B9A3DC1A3BB45C6E9F2D /* Yeti3Cleaner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C4170D0694E15B9065A7649 /* Build configuration list for PBXNativeTarget "Yeti3Cleaner" */;
+			buildPhases = (
+				A8270348077679464195AB42 /* Sources */,
+				0C6F09CF509F1C195642D588 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Yeti3Cleaner;
+			productName = Yeti3Cleaner;
+			productReference = B4836FC967D23CF5CFDD4993 /* Yeti3Cleaner.app */;
+			productType = "com.apple.product-type.application";
+		};
+		876828FA44060081E6D3517E /* Yeti3CleanerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3044EB9D53280B9D6AE29F68 /* Build configuration list for PBXNativeTarget "Yeti3CleanerUITests" */;
+			buildPhases = (
+				CB52CAAC103FAEB2C11FAB87 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				51178B6D0FB9A009ED125FBA /* PBXTargetDependency */,
+			);
+			name = Yeti3CleanerUITests;
+			productName = Yeti3CleanerUITests;
+			productReference = 9C662F7BDE435BDF7C3DCE93 /* Yeti3CleanerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F14F8E33226D47B2A984FEF9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					603281D76A515B63DAF587E5 = {
+						DevelopmentTeam = 49PHJ38L7T;
+						ProvisioningStyle = Automatic;
+					};
+					6DB4B9A3DC1A3BB45C6E9F2D = {
+						DevelopmentTeam = 49PHJ38L7T;
+						ProvisioningStyle = Automatic;
+					};
+					876828FA44060081E6D3517E = {
+						DevelopmentTeam = 49PHJ38L7T;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6DB4B9A3DC1A3BB45C6E9F2D;
+					};
+				};
+			};
+			buildConfigurationList = 9A4C33B47818DA2DBF4F24D3 /* Build configuration list for PBXProject "Yeti3Cleaner" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = B329A0BEB11661D9020CB1D4;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6DB4B9A3DC1A3BB45C6E9F2D /* Yeti3Cleaner */,
+				603281D76A515B63DAF587E5 /* Yeti3CleanerTests */,
+				876828FA44060081E6D3517E /* Yeti3CleanerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0C6F09CF509F1C195642D588 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				499D9A0A99EF5BB12849A016 /* Assets.xcassets in Resources */,
+				DCC02AD3DB61A9E921F011D4 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		41EE70C1CA21A36A75968998 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78C2E56150F2D58B8FDF9FC0 /* SafetyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8270348077679464195AB42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				012AB5750593D564431B8DEF /* CleanerModel.swift in Sources */,
+				446C266AD267B9589B6CF9D0 /* CleanerPolicy.swift in Sources */,
+				87CF0E8E79BDD23A00535302 /* ContactService.swift in Sources */,
+				E45FE1447C2C5E722A4097D8 /* ContentView.swift in Sources */,
+				19231D892CC3CF5CE6E3DE2A /* FileService.swift in Sources */,
+				7B8674659D59BB75714A9E0F /* PhotoService.swift in Sources */,
+				78673A938F433376DBCB6B7F /* SettingsStore.swift in Sources */,
+				D0CA28973ACBF6E0BF0CEAF6 /* SettingsView.swift in Sources */,
+				5B14DEF96D36FFF00B4D3746 /* Yeti3CleanerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB52CAAC103FAEB2C11FAB87 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE4C4426AF186763C643B221 /* LaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2E5045F9CBD74C559E70872F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DB4B9A3DC1A3BB45C6E9F2D /* Yeti3Cleaner */;
+			targetProxy = 195439BF9C48E13059AE64FF /* PBXContainerItemProxy */;
+		};
+		51178B6D0FB9A009ED125FBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DB4B9A3DC1A3BB45C6E9F2D /* Yeti3Cleaner */;
+			targetProxy = AF57022EC41890D0E99E1A1D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		03FA1818CC90351E1A289516 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Config/Yeti3Cleaner.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Config/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yeti3.cleaner.ios;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		07DCCA697A66F00AFD154958 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yeti3.Yeti3CleanerTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Yeti3Cleaner.app/Yeti3Cleaner";
+			};
+			name = Debug;
+		};
+		1E836552ADEA254A5603FE49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yeti3.Yeti3CleanerUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Yeti3Cleaner;
+			};
+			name = Debug;
+		};
+		246BAEF2175A1A90A4E2EA53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yeti3.Yeti3CleanerTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Yeti3Cleaner.app/Yeti3Cleaner";
+			};
+			name = Release;
+		};
+		35818D22A6F0D243F888DBCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yeti3.Yeti3CleanerUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Yeti3Cleaner;
+			};
+			name = Release;
+		};
+		96B93C914BFC10049475F3B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Config/Yeti3Cleaner.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Config/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yeti3.cleaner.ios;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CFF9498345E3879680AB57F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 49PHJ38L7T;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DA31265C78B48DBD7439330C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 49PHJ38L7T;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0C4170D0694E15B9065A7649 /* Build configuration list for PBXNativeTarget "Yeti3Cleaner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96B93C914BFC10049475F3B8 /* Debug */,
+				03FA1818CC90351E1A289516 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3044EB9D53280B9D6AE29F68 /* Build configuration list for PBXNativeTarget "Yeti3CleanerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E836552ADEA254A5603FE49 /* Debug */,
+				35818D22A6F0D243F888DBCE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9A4C33B47818DA2DBF4F24D3 /* Build configuration list for PBXProject "Yeti3Cleaner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CFF9498345E3879680AB57F4 /* Debug */,
+				DA31265C78B48DBD7439330C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D2A48F1E751C541D0B10FB99 /* Build configuration list for PBXNativeTarget "Yeti3CleanerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07DCCA697A66F00AFD154958 /* Debug */,
+				246BAEF2175A1A90A4E2EA53 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F14F8E33226D47B2A984FEF9 /* Project object */;
+}
