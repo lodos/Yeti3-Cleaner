@@ -2,9 +2,9 @@
   "checked": "2026-10-10",
   "bundle_id": "ru.yeti3.cleaner.ios",
   "version": "1.0.0",
-  "build": "2",
+  "build": "3",
   "signed_archive_verified": true,
-  "asset_hashes_verified": 13,
+  "asset_hashes_verified": 23,
   "unit_tests_passed": 16,
   "iphone_and_ipad_ui_tests_passed": true,
   "public_pages": {
@@ -17,14 +17,11 @@
       "sha256": "73289391a6dc5286480d12ba8fdfee9127cf78d5d9a35aa47f501febeed0fc72"
     }
   },
-  "apple_submission": "TestFlight external beta submitted; build 1.0.0 (2) Waiting for Review verified in App Store Connect",
+  "apple_submission": "Build 3 upload and processing succeeded; external beta review submitted",
   "real_device_photo_file_provider_checks": "not completed this run",
-  "archive_path": "output/apple-20261010/Cleaner-iOS-1.0.0-2.xcarchive",
+  "archive_path": "output/apple-20261010/Cleaner-iOS-1.0.0-3.xcarchive",
   "in_app_support": "Settings links to public support and developer email",
   "export_preparation": "App Store Connect export succeeded with system PATH",
-  "ipa": {
-    "Yeti3Cleaner.ipa": "d63853ea801a39e40797aa1a1a0cdece9836b6ea2de57270aa50e96f2335211d"
-  },
   "required_user_action": null,
   "app_store_connect_id": "6821407841",
   "store_metadata": "Russian description, keywords, support URL, review notes, subtitle and categories saved",
@@ -35,10 +32,20 @@
   "store_build_selected": true,
   "review_contact": "Owner-approved contact saved in App Store Connect only",
   "price": "Free; saved for 175 regions; owner approved",
-  "external_group": "YETI3 Cleaner Beta; build 2 included; Waiting for Review",
+  "external_group": "YETI3 Cleaner Beta; build 3 submitted for review",
   "beta_review_information": "Description, testing scenarios, owner-approved contact and no-sign-in review instructions saved",
-  "store_submission": "Submitted to App Review; Waiting for Review verified",
+  "store_submission": "Build 3 submitted to App Review; Waiting for Review verified",
   "content_rights": "No third-party content; owner confirmed and saved",
-  "store_submission_id": "0c78e696-f732-423f-91b3-17c3e4fe7c6d",
-  "store_release": "Automatic after Apple approval"
+  "store_submission_id": "5f291f81-3b7f-41d8-bdaf-f1db0f170630",
+  "store_release": "Automatic after Apple approval",
+  "icon_verification": "Opaque RGB iOS master visually verified; compiled AppIcon60x60@2x decoded and visually verified",
+  "ipa": {
+    "path": "output/apple-20261010/AppStoreExport-3/Yeti3Cleaner.ipa",
+    "sha256": "7ee1d8edc97766d42897b105e4c6da3f3c7ee23ff839ee1cc2d0e02385a5b097"
+  },
+  "asset_pack": {
+    "path": "output/apple-assets-20261010/YETI3-Cleaner-Apple-AssetPack.zip",
+    "files": 85,
+    "sha256": "5a10d75bcb7689db287f86e9e9efec06609b005ba66ad93c340031915621578d"
+  }
 }

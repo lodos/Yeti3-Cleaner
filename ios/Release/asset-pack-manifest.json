@@ -1,0 +1,427 @@
+[
+  {
+    "path": "assets/generated/Yeti3-Cleaner-Master.png",
+    "sha256": "7b4ac6e454614b2ac1f7eb10f33d2507db508aaedefb3b090785f00e5d8cf970",
+    "bytes": 3284660
+  },
+  {
+    "path": "assets/generated/about/Yeti3-About.png",
+    "sha256": "469ddc6dd1fb91a537b8c554801700be5b57a11beccb8b7c75a7c89a5a513020",
+    "bytes": 1100930
+  },
+  {
+    "path": "assets/generated/appicon/Yeti3-AppIcon-1024.png",
+    "sha256": "37567a88c109b81005f169340a59a1847b2f722c5aba39f9e5647e9dcb4ea590",
+    "bytes": 1655972
+  },
+  {
+    "path": "assets/generated/appicon/Yeti3.icns",
+    "sha256": "82b4e76b27be6353f29ef379df9ce78ef49b65f52b9cc6d4ce4d4a89ee6087ae",
+    "bytes": 2888829
+  },
+  {
+    "path": "assets/generated/appicon/Yeti3.iconset/icon_128x128.png",
+    "sha256": "49ac7bfeec98d4734f9e2313f700955061e1ad15361b42add315cbf5a1214173",
+    "bytes": 32384
+  },
+  {
+    "path": "assets/generated/appicon/Yeti3.iconset/icon_128x128@2x.png",
+    "sha256": "f79575c492c0afdb36bb9ad287aab05147e03d39c6259931c367d2ad24e03866",
+    "bytes": 117588
+  },
+  {
+    "path": "assets/generated/appicon/Yeti3.iconset/icon_16x16.png",
+    "sha256": "e1b39fe85db786afe7358da8b0f135ae6830384e979bcba262e9cd2f95ee6c7d",
+    "bytes": 822
+  },
+  {
+    "path": "assets/generated/appicon/Yeti3.iconset/icon_16x16@2x.png",
+    "sha256": "ba84de70ce2fc6c80ed2b78f187d51c4120c4965799c66766389bb010dfab04e",
+    "bytes": 2451
+  },
+  {
+    "path": "assets/generated/appicon/Yeti3.iconset/icon_256x256.png",
+    "sha256": "f79575c492c0afdb36bb9ad287aab05147e03d39c6259931c367d2ad24e03866",
+    "bytes": 117588
+  },
+  {
+    "path": "assets/generated/appicon/Yeti3.iconset/icon_256x256@2x.png",
+    "sha256": "8848afad843d7770ab8b17233e4cdd9e09c51a80db27ec9e88a12261428e7f21",
+    "bytes": 451256
+  },
+  {
+    "path": "assets/generated/appicon/Yeti3.iconset/icon_32x32.png",
+    "sha256": "ba84de70ce2fc6c80ed2b78f187d51c4120c4965799c66766389bb010dfab04e",
+    "bytes": 2451
+  },
+  {
+    "path": "assets/generated/appicon/Yeti3.iconset/icon_32x32@2x.png",
+    "sha256": "9e9609dc770b505ce745eeeb5b524d05771e76cc4d72fef4a7fdf3c73ee36d13",
+    "bytes": 8757
+  },
+  {
+    "path": "assets/generated/appicon/Yeti3.iconset/icon_512x512.png",
+    "sha256": "8848afad843d7770ab8b17233e4cdd9e09c51a80db27ec9e88a12261428e7f21",
+    "bytes": 451256
+  },
+  {
+    "path": "assets/generated/appicon/Yeti3.iconset/icon_512x512@2x.png",
+    "sha256": "37567a88c109b81005f169340a59a1847b2f722c5aba39f9e5647e9dcb4ea590",
+    "bytes": 1655972
+  },
+  {
+    "path": "assets/generated/launcher/frame-00.png",
+    "sha256": "e50a4481ffca88299db73426820ef820ed5e8984642519ffe505e195dc11abe1",
+    "bytes": 868183
+  },
+  {
+    "path": "assets/generated/launcher/frame-01.png",
+    "sha256": "929fe8d5e3e55c098c733787b0c9c0f5bbfdeb7e9e87a11d9c8c903695885514",
+    "bytes": 868910
+  },
+  {
+    "path": "assets/generated/launcher/frame-02.png",
+    "sha256": "df828a3bf0b521fea260597dbe25adddd51e19b46b8a20c23e7db032d55c88cd",
+    "bytes": 868550
+  },
+  {
+    "path": "assets/generated/launcher/frame-03.png",
+    "sha256": "c679df1bf00b02e972fc0a11fd874e8249315c10a4ba639b3c46c4e88edd1d36",
+    "bytes": 869615
+  },
+  {
+    "path": "assets/generated/launcher/frame-04.png",
+    "sha256": "830fa9d6b198eb91cfbc2613e34a1f473ae9c285f6eec298fbb32f0311653193",
+    "bytes": 872599
+  },
+  {
+    "path": "assets/generated/launcher/frame-05.png",
+    "sha256": "1cd6710d914e275d891ebfc3b18df96ff02b5ae66c188403775a2f323a8dbf22",
+    "bytes": 868612
+  },
+  {
+    "path": "assets/generated/launcher/frame-06.png",
+    "sha256": "ca1307bb380305b7c9f2ecb3838c307be4b8b5564f23f451ffad11c3a4de2562",
+    "bytes": 871188
+  },
+  {
+    "path": "assets/generated/launcher/frame-07.png",
+    "sha256": "1cd6710d914e275d891ebfc3b18df96ff02b5ae66c188403775a2f323a8dbf22",
+    "bytes": 868612
+  },
+  {
+    "path": "assets/generated/launcher/frame-08.png",
+    "sha256": "830fa9d6b198eb91cfbc2613e34a1f473ae9c285f6eec298fbb32f0311653193",
+    "bytes": 872599
+  },
+  {
+    "path": "assets/generated/launcher/frame-09.png",
+    "sha256": "c679df1bf00b02e972fc0a11fd874e8249315c10a4ba639b3c46c4e88edd1d36",
+    "bytes": 869615
+  },
+  {
+    "path": "assets/generated/launcher/frame-10.png",
+    "sha256": "df828a3bf0b521fea260597dbe25adddd51e19b46b8a20c23e7db032d55c88cd",
+    "bytes": 868550
+  },
+  {
+    "path": "assets/generated/launcher/frame-11.png",
+    "sha256": "929fe8d5e3e55c098c733787b0c9c0f5bbfdeb7e9e87a11d9c8c903695885514",
+    "bytes": 868910
+  },
+  {
+    "path": "assets/generated/launcher/frame-12.png",
+    "sha256": "e50a4481ffca88299db73426820ef820ed5e8984642519ffe505e195dc11abe1",
+    "bytes": 868183
+  },
+  {
+    "path": "assets/generated/launcher/frame-13.png",
+    "sha256": "305d12512156988e141b1084afcaf0add1c79fece382b26a030982c2e4437c2d",
+    "bytes": 859821
+  },
+  {
+    "path": "assets/generated/launcher/frame-14.png",
+    "sha256": "33fd62d22603ccf4dcba3c9fc76e8bfe5250f7349ee6bead76b24929f469cb10",
+    "bytes": 858214
+  },
+  {
+    "path": "assets/generated/launcher/frame-15.png",
+    "sha256": "b0e5ab3e92a54daf71320c6f54a0ef2f7838c201bad39c3517eec4236953db10",
+    "bytes": 852218
+  },
+  {
+    "path": "assets/generated/launcher/frame-16.png",
+    "sha256": "4b1efc9ef7102c3afd6bb08a6a7a8ab77ec88e3dfdf1f972df1981e22b2aa30f",
+    "bytes": 849559
+  },
+  {
+    "path": "assets/generated/launcher/frame-17.png",
+    "sha256": "372e9acbf6698703c052801e3a16bf7c0321095c0d2b53cf785f23c0d9476e7c",
+    "bytes": 846478
+  },
+  {
+    "path": "assets/generated/launcher/frame-18.png",
+    "sha256": "a615ecad236a07f86f7bd30a177a3879e0c94c1d70ebaf40fb55c43672b8f070",
+    "bytes": 846253
+  },
+  {
+    "path": "assets/generated/launcher/frame-19.png",
+    "sha256": "372e9acbf6698703c052801e3a16bf7c0321095c0d2b53cf785f23c0d9476e7c",
+    "bytes": 846478
+  },
+  {
+    "path": "assets/generated/launcher/frame-20.png",
+    "sha256": "4b1efc9ef7102c3afd6bb08a6a7a8ab77ec88e3dfdf1f972df1981e22b2aa30f",
+    "bytes": 849559
+  },
+  {
+    "path": "assets/generated/launcher/frame-21.png",
+    "sha256": "b0e5ab3e92a54daf71320c6f54a0ef2f7838c201bad39c3517eec4236953db10",
+    "bytes": 852218
+  },
+  {
+    "path": "assets/generated/launcher/frame-22.png",
+    "sha256": "78b5b6b0119914db8658e9af5fa500fd4550cdbf87c9b06039572215010535dd",
+    "bytes": 858215
+  },
+  {
+    "path": "assets/generated/launcher/frame-23.png",
+    "sha256": "305d12512156988e141b1084afcaf0add1c79fece382b26a030982c2e4437c2d",
+    "bytes": 859821
+  },
+  {
+    "path": "assets/generated/tray/cleaning-00.png",
+    "sha256": "9d5008902aaa33b47008b5ff7c38c8b658c68d21d64788d015879e10c1617191",
+    "bytes": 38986
+  },
+  {
+    "path": "assets/generated/tray/cleaning-01.png",
+    "sha256": "e30a888d54ee7f05eb14e03f3b054645a83f29e755ab0b033e6dda5d1768e36a",
+    "bytes": 38533
+  },
+  {
+    "path": "assets/generated/tray/cleaning-02.png",
+    "sha256": "d118485b7aaf0bb2ccd31b81ff5982a6c07c9e97040fe69384d0f0f90f6e6658",
+    "bytes": 38157
+  },
+  {
+    "path": "assets/generated/tray/cleaning-03.png",
+    "sha256": "61c4b8f95b495de0ea16701f69467e03f1c94d82814960dc1ee6bead0b1fdc00",
+    "bytes": 37978
+  },
+  {
+    "path": "assets/generated/tray/cleaning-04.png",
+    "sha256": "d118485b7aaf0bb2ccd31b81ff5982a6c07c9e97040fe69384d0f0f90f6e6658",
+    "bytes": 38157
+  },
+  {
+    "path": "assets/generated/tray/cleaning-05.png",
+    "sha256": "e30a888d54ee7f05eb14e03f3b054645a83f29e755ab0b033e6dda5d1768e36a",
+    "bytes": 38533
+  },
+  {
+    "path": "assets/generated/tray/cleaning-06.png",
+    "sha256": "9d5008902aaa33b47008b5ff7c38c8b658c68d21d64788d015879e10c1617191",
+    "bytes": 38986
+  },
+  {
+    "path": "assets/generated/tray/cleaning-07.png",
+    "sha256": "77175369425af9959c55eb1738c82b2c35b6f09f97bfa66c23bb6d7cb2d0fd9b",
+    "bytes": 39002
+  },
+  {
+    "path": "assets/generated/tray/cleaning-08.png",
+    "sha256": "178ed5607866d499b8f6619f209254b61fc7f061a559b1784d21cac3e5452e31",
+    "bytes": 38686
+  },
+  {
+    "path": "assets/generated/tray/cleaning-09.png",
+    "sha256": "e8192103ae3160ad3dd623eb3187bcdeabe0cde1ddd3d778b1ace4e033c00de5",
+    "bytes": 38613
+  },
+  {
+    "path": "assets/generated/tray/cleaning-10.png",
+    "sha256": "178ed5607866d499b8f6619f209254b61fc7f061a559b1784d21cac3e5452e31",
+    "bytes": 38686
+  },
+  {
+    "path": "assets/generated/tray/cleaning-11.png",
+    "sha256": "77175369425af9959c55eb1738c82b2c35b6f09f97bfa66c23bb6d7cb2d0fd9b",
+    "bytes": 39002
+  },
+  {
+    "path": "assets/generated/tray/complete.png",
+    "sha256": "13055cb6e2b6819a1146cda08005c79e67d37ec11c25e8259677b60d00fea8c5",
+    "bytes": 37853
+  },
+  {
+    "path": "assets/generated/tray/error.png",
+    "sha256": "820dbc1bf498ce74e820cdbeeb543c8bb47868dd5402384169b84a1a575e867d",
+    "bytes": 37709
+  },
+  {
+    "path": "assets/generated/tray/idle.png",
+    "sha256": "8b67d0ccd68ccb18872491d8eb26d8f7dfa41af5215e6a6fa75875781accd283",
+    "bytes": 39095
+  },
+  {
+    "path": "assets/generated/tray/paused.png",
+    "sha256": "a8b8d47d8bfb7dd6e707b2fdb278efbd63b65eee8f588cc82a652e5f6af411eb",
+    "bytes": 34697
+  },
+  {
+    "path": "assets/source/Yeti3-Premium-Asset-Sheet.png",
+    "sha256": "c696b8a706200d9528d994b1ce1e8ec43a937268a55e99c096d36a374c2c3bb0",
+    "bytes": 2776179
+  },
+  {
+    "path": "ios/Release/AppStoreMetadata.json",
+    "sha256": "be7c506f35a7c733b9437df82bf85ea8337d75a2baf47add6c7ea2c87b5d8b31",
+    "bytes": 4313
+  },
+  {
+    "path": "ios/Release/StoreAssets/README.md",
+    "sha256": "aafb6adaee3e53071338f48bb443dd30585fae290e07c920ee6fb943f341b134",
+    "bytes": 1842
+  },
+  {
+    "path": "ios/Release/StoreAssets/icons/iOS-AppIcon-1024.png",
+    "sha256": "786ae009e5e11496f42918846798b0e2a750a33afb0f8b58bc1aad9420392c72",
+    "bytes": 1477680
+  },
+  {
+    "path": "ios/Release/StoreAssets/icons/macOS-AppIcon-1024.png",
+    "sha256": "37567a88c109b81005f169340a59a1847b2f722c5aba39f9e5647e9dcb4ea590",
+    "bytes": 1655972
+  },
+  {
+    "path": "ios/Release/StoreAssets/icons/macOS-AppIcon.icns",
+    "sha256": "82b4e76b27be6353f29ef379df9ce78ef49b65f52b9cc6d4ce4d4a89ee6087ae",
+    "bytes": 2888829
+  },
+  {
+    "path": "ios/Release/StoreAssets/icons/macOS.iconset/icon_128x128.png",
+    "sha256": "584701f7d0345eb914b907a846fb4769f4638d855977193df9797309c2fc9857",
+    "bytes": 32372
+  },
+  {
+    "path": "ios/Release/StoreAssets/icons/macOS.iconset/icon_128x128@2x.png",
+    "sha256": "bf199b0a763be5b76b0e035566f00173a19e00075eb13dccff44328891d08e74",
+    "bytes": 117576
+  },
+  {
+    "path": "ios/Release/StoreAssets/icons/macOS.iconset/icon_16x16.png",
+    "sha256": "7f605bb99f82980e2d62a988696291ea430d197abecb204e114879b4c457ebfc",
+    "bytes": 810
+  },
+  {
+    "path": "ios/Release/StoreAssets/icons/macOS.iconset/icon_16x16@2x.png",
+    "sha256": "55993a4947be184440bc5c750305b495c53792bfada6418511a28b17b64ab545",
+    "bytes": 2439
+  },
+  {
+    "path": "ios/Release/StoreAssets/icons/macOS.iconset/icon_256x256.png",
+    "sha256": "bf199b0a763be5b76b0e035566f00173a19e00075eb13dccff44328891d08e74",
+    "bytes": 117576
+  },
+  {
+    "path": "ios/Release/StoreAssets/icons/macOS.iconset/icon_256x256@2x.png",
+    "sha256": "b83a944560c4d77a30c364c25c4c4bf0650d0d28811989fd0cc8c2990067fc91",
+    "bytes": 451244
+  },
+  {
+    "path": "ios/Release/StoreAssets/icons/macOS.iconset/icon_32x32.png",
+    "sha256": "55993a4947be184440bc5c750305b495c53792bfada6418511a28b17b64ab545",
+    "bytes": 2439
+  },
+  {
+    "path": "ios/Release/StoreAssets/icons/macOS.iconset/icon_32x32@2x.png",
+    "sha256": "2e96e4eff3213ba502fb49793eadb044dbe93f928c62844b17196d8beffa0f4e",
+    "bytes": 8745
+  },
+  {
+    "path": "ios/Release/StoreAssets/icons/macOS.iconset/icon_512x512.png",
+    "sha256": "b83a944560c4d77a30c364c25c4c4bf0650d0d28811989fd0cc8c2990067fc91",
+    "bytes": 451244
+  },
+  {
+    "path": "ios/Release/StoreAssets/icons/macOS.iconset/icon_512x512@2x.png",
+    "sha256": "f6a48b75502758dce23d62d3ac4c5a2286f5aa2a16c5392e3dd676c106e941f3",
+    "bytes": 1711050
+  },
+  {
+    "path": "ios/Release/StoreAssets/manifest.json",
+    "sha256": "99243795b6c1fef6267580bd7bf3d86ef134ca64c767fa4235bc3dbb6b7bac4b",
+    "bytes": 4595
+  },
+  {
+    "path": "ios/Release/StoreAssets/screenshots/ipad-12.9/01-Overview.png",
+    "sha256": "3fc4ea8d64e2b7d6f2a00b9b11cef09cb72c563ca1ea8fab1c2aa96c80ead834",
+    "bytes": 262347
+  },
+  {
+    "path": "ios/Release/StoreAssets/screenshots/ipad-12.9/02-Photos.png",
+    "sha256": "f8a3493178f6751d080c590d842742c174d678cbef7f4b5866017db167b3c0c3",
+    "bytes": 152810
+  },
+  {
+    "path": "ios/Release/StoreAssets/screenshots/ipad-12.9/03-Files.png",
+    "sha256": "41871d85676bd3f93ef3540d592e2cb8e1aff9b44c80a96e8fb68a4ca4842e28",
+    "bytes": 173698
+  },
+  {
+    "path": "ios/Release/StoreAssets/screenshots/ipad-12.9/04-Contacts.png",
+    "sha256": "635ca1067b276869f113e0a4197c88a1709469765df896190ddd03fc15fe0ea0",
+    "bytes": 167585
+  },
+  {
+    "path": "ios/Release/StoreAssets/screenshots/ipad-12.9/05-Settings.png",
+    "sha256": "3186967dcad42d3af6da5e55b9f54b92fe5a095b7cfdd0270dde53fd58e98451",
+    "bytes": 375051
+  },
+  {
+    "path": "ios/Release/StoreAssets/screenshots/iphone-6.7/01-Overview.png",
+    "sha256": "05b8ba23f1718e02730f4924888ad8b3ac6cac4e5cb795e45f171bbd56536eb6",
+    "bytes": 337029
+  },
+  {
+    "path": "ios/Release/StoreAssets/screenshots/iphone-6.7/02-Photos.png",
+    "sha256": "0e3460bf870c5a55c8882c64a30b71834508da24b386e828570872e68dd345ec",
+    "bytes": 150778
+  },
+  {
+    "path": "ios/Release/StoreAssets/screenshots/iphone-6.7/03-Files.png",
+    "sha256": "2a0366d19ea4dc2b388b1e9b7a815d8bed380aa3f11e60c5890ee820f8c7aef4",
+    "bytes": 188568
+  },
+  {
+    "path": "ios/Release/StoreAssets/screenshots/iphone-6.7/04-Contacts.png",
+    "sha256": "8493b3d6ad65e7b25a4bb1690ac876013250551f8c2ff4039e2b83b7f1a27bbe",
+    "bytes": 185784
+  },
+  {
+    "path": "ios/Release/StoreAssets/screenshots/iphone-6.7/05-Settings.png",
+    "sha256": "8f200366cf78e1b5e6fd047849f3328dddd328c312b1d9eacb14d39bcff7c477",
+    "bytes": 407721
+  },
+  {
+    "path": "ios/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
+    "sha256": "786ae009e5e11496f42918846798b0e2a750a33afb0f8b58bc1aad9420392c72",
+    "bytes": 1477680
+  },
+  {
+    "path": "ios/Resources/Assets.xcassets/AppIcon.appiconset/Contents.json",
+    "sha256": "1b2cc6b6e1ad340faeaae5f07d292eb20c7a22c9995ac8795ea6aa604efa491d",
+    "bytes": 146
+  },
+  {
+    "path": "ios/Resources/Assets.xcassets/Contents.json",
+    "sha256": "e8e8ef4b27126d62305af321d12a6e64b866ca0b160f0f83efae90111f0ee576",
+    "bytes": 43
+  },
+  {
+    "path": "scripts/prepare-apple-assets.swift",
+    "sha256": "a3aa2a85bb69c62913bf30019449b691ba4859d0518de1cd6f42da0883a64657",
+    "bytes": 3277
+  }
+]
