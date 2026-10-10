@@ -64,5 +64,12 @@
     "Archive checks only; no new physical-device functional run",
     "Native Mac archives unsigned; Developer ID signing and notarization required",
     "Connector Store Mac prototype does not have native feature parity"
-  ]
+  ],
+  "cleaner_ios_unit_tests": {
+    "destination": "iPhone 15 Pro simulator, iOS 17.5",
+    "passed": 14,
+    "failed": 0,
+    "result": "TEST SUCCEEDED",
+    "physical_device": false
+  }
 }
