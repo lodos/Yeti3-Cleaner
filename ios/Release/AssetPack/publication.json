@@ -1,5 +1,12 @@
 {
   "archive_url": "https://cleaner.yeti3.ru/static/cleaner/apple/assets/YETI3-Cleaner-AssetPack.zip",
   "manifest_url": "https://cleaner.yeti3.ru/static/cleaner/apple/assets/manifest.json",
-  "scope": "Application artwork, icons, theme assets and App Store screenshots. Not an installer or Apple approval."
+  "scope": "Application artwork, icons, theme assets and App Store screenshots. Not an installer or Apple approval.",
+  "verified": "2026-10-10",
+  "http_status": 200,
+  "download_sha256": "32da1791c0d59323cc1ae386ec982ba4f49c0a48d7d304a4ecd18899a082e6ce",
+  "files": 83,
+  "deployed_hosts": [
+    "45.137.190.123"
+  ]
 }
