@@ -17,7 +17,7 @@
       "sha256": "73289391a6dc5286480d12ba8fdfee9127cf78d5d9a35aa47f501febeed0fc72"
     }
   },
-  "apple_submission": "Upload and processing succeeded; build 1.0.0 (2) ready to submit in TestFlight",
+  "apple_submission": "TestFlight external beta submitted; build 1.0.0 (2) Waiting for Review verified in App Store Connect",
   "real_device_photo_file_provider_checks": "not completed this run",
   "archive_path": "output/apple-20261010/Cleaner-iOS-1.0.0-2.xcarchive",
   "in_app_support": "Settings links to public support and developer email",
@@ -34,5 +34,8 @@
   "internal_group": "ViShu Internal; build 2 included; owner invited",
   "store_build_selected": true,
   "review_contact": "Owner-approved contact saved in App Store Connect only",
-  "price": "Free, owner approved"
+  "price": "Free; saved for 175 regions; owner approved",
+  "external_group": "YETI3 Cleaner Beta; build 2 included; Waiting for Review",
+  "beta_review_information": "Description, testing scenarios, owner-approved contact and no-sign-in review instructions saved",
+  "store_submission": "Not submitted; owner content-rights declaration pending"
 }
