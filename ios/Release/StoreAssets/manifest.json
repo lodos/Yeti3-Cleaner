@@ -1,81 +1,143 @@
 {
-  "screenshots": "Native simulator UI; no private library or fabricated scan results",
-  "files": [
+  "files" : [
     {
-      "path": "icons/iOS-AppIcon-1024.png",
-      "sha256": "21732f7fb04677779d5167292f05a21ca0343c320fe98ac86456f7bea9e224cc",
-      "width": 1024,
-      "height": 1024
+      "height" : 1024,
+      "path" : "icons/iOS-AppIcon-1024.png",
+      "sha256" : "786ae009e5e11496f42918846798b0e2a750a33afb0f8b58bc1aad9420392c72",
+      "width" : 1024
     },
     {
-      "path": "icons/macOS-AppIcon-1024.png",
-      "sha256": "37567a88c109b81005f169340a59a1847b2f722c5aba39f9e5647e9dcb4ea590",
-      "width": 1024,
-      "height": 1024
+      "height" : 1024,
+      "path" : "icons/macOS-AppIcon-1024.png",
+      "sha256" : "37567a88c109b81005f169340a59a1847b2f722c5aba39f9e5647e9dcb4ea590",
+      "width" : 1024
     },
     {
-      "path": "icons/macOS-AppIcon.icns",
-      "sha256": "82b4e76b27be6353f29ef379df9ce78ef49b65f52b9cc6d4ce4d4a89ee6087ae"
+      "height" : 1024,
+      "path" : "icons/macOS-AppIcon.icns",
+      "sha256" : "82b4e76b27be6353f29ef379df9ce78ef49b65f52b9cc6d4ce4d4a89ee6087ae",
+      "width" : 1024
     },
     {
-      "path": "screenshots/ipad-12.9/01-Overview.png",
-      "sha256": "3fc4ea8d64e2b7d6f2a00b9b11cef09cb72c563ca1ea8fab1c2aa96c80ead834",
-      "width": 2048,
-      "height": 2732
+      "height" : 128,
+      "path" : "icons/macOS.iconset/icon_128x128.png",
+      "sha256" : "584701f7d0345eb914b907a846fb4769f4638d855977193df9797309c2fc9857",
+      "width" : 128
     },
     {
-      "path": "screenshots/ipad-12.9/02-Photos.png",
-      "sha256": "f8a3493178f6751d080c590d842742c174d678cbef7f4b5866017db167b3c0c3",
-      "width": 2048,
-      "height": 2732
+      "height" : 256,
+      "path" : "icons/macOS.iconset/icon_128x128@2x.png",
+      "sha256" : "bf199b0a763be5b76b0e035566f00173a19e00075eb13dccff44328891d08e74",
+      "width" : 256
     },
     {
-      "path": "screenshots/ipad-12.9/03-Files.png",
-      "sha256": "41871d85676bd3f93ef3540d592e2cb8e1aff9b44c80a96e8fb68a4ca4842e28",
-      "width": 2048,
-      "height": 2732
+      "height" : 16,
+      "path" : "icons/macOS.iconset/icon_16x16.png",
+      "sha256" : "7f605bb99f82980e2d62a988696291ea430d197abecb204e114879b4c457ebfc",
+      "width" : 16
     },
     {
-      "path": "screenshots/ipad-12.9/04-Contacts.png",
-      "sha256": "635ca1067b276869f113e0a4197c88a1709469765df896190ddd03fc15fe0ea0",
-      "width": 2048,
-      "height": 2732
+      "height" : 32,
+      "path" : "icons/macOS.iconset/icon_16x16@2x.png",
+      "sha256" : "55993a4947be184440bc5c750305b495c53792bfada6418511a28b17b64ab545",
+      "width" : 32
     },
     {
-      "path": "screenshots/ipad-12.9/05-Settings.png",
-      "sha256": "3186967dcad42d3af6da5e55b9f54b92fe5a095b7cfdd0270dde53fd58e98451",
-      "width": 2048,
-      "height": 2732
+      "height" : 256,
+      "path" : "icons/macOS.iconset/icon_256x256.png",
+      "sha256" : "bf199b0a763be5b76b0e035566f00173a19e00075eb13dccff44328891d08e74",
+      "width" : 256
     },
     {
-      "path": "screenshots/iphone-6.7/01-Overview.png",
-      "sha256": "05b8ba23f1718e02730f4924888ad8b3ac6cac4e5cb795e45f171bbd56536eb6",
-      "width": 1290,
-      "height": 2796
+      "height" : 512,
+      "path" : "icons/macOS.iconset/icon_256x256@2x.png",
+      "sha256" : "b83a944560c4d77a30c364c25c4c4bf0650d0d28811989fd0cc8c2990067fc91",
+      "width" : 512
     },
     {
-      "path": "screenshots/iphone-6.7/02-Photos.png",
-      "sha256": "0e3460bf870c5a55c8882c64a30b71834508da24b386e828570872e68dd345ec",
-      "width": 1290,
-      "height": 2796
+      "height" : 32,
+      "path" : "icons/macOS.iconset/icon_32x32.png",
+      "sha256" : "55993a4947be184440bc5c750305b495c53792bfada6418511a28b17b64ab545",
+      "width" : 32
     },
     {
-      "path": "screenshots/iphone-6.7/03-Files.png",
-      "sha256": "2a0366d19ea4dc2b388b1e9b7a815d8bed380aa3f11e60c5890ee820f8c7aef4",
-      "width": 1290,
-      "height": 2796
+      "height" : 64,
+      "path" : "icons/macOS.iconset/icon_32x32@2x.png",
+      "sha256" : "2e96e4eff3213ba502fb49793eadb044dbe93f928c62844b17196d8beffa0f4e",
+      "width" : 64
     },
     {
-      "path": "screenshots/iphone-6.7/04-Contacts.png",
-      "sha256": "8493b3d6ad65e7b25a4bb1690ac876013250551f8c2ff4039e2b83b7f1a27bbe",
-      "width": 1290,
-      "height": 2796
+      "height" : 512,
+      "path" : "icons/macOS.iconset/icon_512x512.png",
+      "sha256" : "b83a944560c4d77a30c364c25c4c4bf0650d0d28811989fd0cc8c2990067fc91",
+      "width" : 512
     },
     {
-      "path": "screenshots/iphone-6.7/05-Settings.png",
-      "sha256": "8f200366cf78e1b5e6fd047849f3328dddd328c312b1d9eacb14d39bcff7c477",
-      "width": 1290,
-      "height": 2796
+      "height" : 1024,
+      "path" : "icons/macOS.iconset/icon_512x512@2x.png",
+      "sha256" : "f6a48b75502758dce23d62d3ac4c5a2286f5aa2a16c5392e3dd676c106e941f3",
+      "width" : 1024
+    },
+    {
+      "height" : 2732,
+      "path" : "screenshots/ipad-12.9/01-Overview.png",
+      "sha256" : "3fc4ea8d64e2b7d6f2a00b9b11cef09cb72c563ca1ea8fab1c2aa96c80ead834",
+      "width" : 2048
+    },
+    {
+      "height" : 2732,
+      "path" : "screenshots/ipad-12.9/02-Photos.png",
+      "sha256" : "f8a3493178f6751d080c590d842742c174d678cbef7f4b5866017db167b3c0c3",
+      "width" : 2048
+    },
+    {
+      "height" : 2732,
+      "path" : "screenshots/ipad-12.9/03-Files.png",
+      "sha256" : "41871d85676bd3f93ef3540d592e2cb8e1aff9b44c80a96e8fb68a4ca4842e28",
+      "width" : 2048
+    },
+    {
+      "height" : 2732,
+      "path" : "screenshots/ipad-12.9/04-Contacts.png",
+      "sha256" : "635ca1067b276869f113e0a4197c88a1709469765df896190ddd03fc15fe0ea0",
+      "width" : 2048
+    },
+    {
+      "height" : 2732,
+      "path" : "screenshots/ipad-12.9/05-Settings.png",
+      "sha256" : "3186967dcad42d3af6da5e55b9f54b92fe5a095b7cfdd0270dde53fd58e98451",
+      "width" : 2048
+    },
+    {
+      "height" : 2796,
+      "path" : "screenshots/iphone-6.7/01-Overview.png",
+      "sha256" : "05b8ba23f1718e02730f4924888ad8b3ac6cac4e5cb795e45f171bbd56536eb6",
+      "width" : 1290
+    },
+    {
+      "height" : 2796,
+      "path" : "screenshots/iphone-6.7/02-Photos.png",
+      "sha256" : "0e3460bf870c5a55c8882c64a30b71834508da24b386e828570872e68dd345ec",
+      "width" : 1290
+    },
+    {
+      "height" : 2796,
+      "path" : "screenshots/iphone-6.7/03-Files.png",
+      "sha256" : "2a0366d19ea4dc2b388b1e9b7a815d8bed380aa3f11e60c5890ee820f8c7aef4",
+      "width" : 1290
+    },
+    {
+      "height" : 2796,
+      "path" : "screenshots/iphone-6.7/04-Contacts.png",
+      "sha256" : "8493b3d6ad65e7b25a4bb1690ac876013250551f8c2ff4039e2b83b7f1a27bbe",
+      "width" : 1290
+    },
+    {
+      "height" : 2796,
+      "path" : "screenshots/iphone-6.7/05-Settings.png",
+      "sha256" : "8f200366cf78e1b5e6fd047849f3328dddd328c312b1d9eacb14d39bcff7c477",
+      "width" : 1290
     }
-  ]
+  ],
+  "screenshots" : "Native simulator UI; no private library or fabricated scan results"
 }
