@@ -62,9 +62,9 @@ struct SettingsPanel: View {
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], alignment: .leading, spacing: 14) {
                 ForEach(groups, id: \.0) { group, title, keys in
                     VStack(alignment: .leading, spacing: 10) {
-                        Text(title).font(.headline)
+                        Text(YetiL10n.text(title)).font(.headline)
                         ForEach(keys, id: \.self) { key in
-                            Toggle(names[key] ?? key.capitalized, isOn: Binding(get: { store.values[group]?[key] as? Bool ?? false }, set: { store.set(group, key, $0) }))
+                            Toggle(YetiL10n.text(names[key] ?? key.capitalized), isOn: Binding(get: { store.values[group]?[key] as? Bool ?? false }, set: { store.set(group, key, $0) }))
                         }
                         if group == "macos" { age("Журналы старше", group: group, key: "logs_min_age_days") }
                         if group == "development" {
@@ -81,19 +81,19 @@ struct SettingsPanel: View {
             ForEach(store.presets.indices, id: \.self) { index in
                 if let path = store.presets[index]["path"] as? String {
                     HStack {
-                        Toggle(isOn: Binding(get: { !model.exclude.contains { path == $0 || path.hasPrefix($0 + "/") } }, set: { enabled in
+                        Toggle(YetiL10n.text(isOn: Binding(get: { !model.exclude.contains { path == $0 || path.hasPrefix($0 + "/") } }, set: { enabled in
                             guard model.reloadRules() else { return }
                             if enabled {
                                 if model.exclude.contains(where: { path.hasPrefix($0 + "/") }) { model.error = "Путь находится внутри исключённой папки. Сначала измените это исключение ниже."; return }
                                 model.saveRules(model.include, model.exclude.filter { $0 != path })
                             } else { model.saveRules(model.include, Array(Set(model.exclude + [path])).sorted()) }
-                        })) { Text(path.replacingOccurrences(of: FileManager.default.homeDirectoryForCurrentUser.path, with: "~")).font(.system(.callout, design: .monospaced)).textSelection(.enabled) }
+                        }))) { Text(path.replacingOccurrences(of: FileManager.default.homeDirectoryForCurrentUser.path, with: "~")).font(.system(.callout, design: .monospaced)).textSelection(.enabled) }
                         Button("Заменить…") { model.choose { model.replacePreset(path, with: $0) } }
                     }.padding(8).background(Color.white.opacity(0.035)).clipShape(RoundedRectangle(cornerRadius: 8))
                 }
             }
             Button("Восстановить исходный пресет…") {
-                let alert = NSAlert(); alert.messageText = "Восстановить исходный набор?"; alert.informativeText = "Категории и сроки вернутся к исходным значениям. Добавленные папки и исключения будут убраны из настроек. Файлы не удаляются."; alert.addButton(withTitle: "Отмена"); alert.addButton(withTitle: "Восстановить")
+                let alert = NSAlert(); alert.messageText = YetiL10n.text("Восстановить исходный набор?"); alert.informativeText = YetiL10n.text("Категории и сроки вернутся к исходным значениям. Добавленные папки и исключения будут убраны из настроек. Файлы не удаляются."); alert.addButton(withTitle: YetiL10n.text("Отмена")); alert.addButton(withTitle: YetiL10n.text("Восстановить"))
                 if alert.runModal() == .alertSecondButtonReturn, store.reset() { model.saveRules([], []) }
             }.disabled(store.values.isEmpty)
         }
@@ -102,7 +102,7 @@ struct SettingsPanel: View {
     }
     private func age(_ title: String, group: String, key: String) -> some View {
         HStack {
-            Text(title); Spacer()
+            Text(YetiL10n.text(title)); Spacer()
             TextField("Дни", value: Binding(get: { store.values[group]?[key] as? Int ?? 0 }, set: { store.set(group, key, max(0, min($0, 36500))) }), format: .number.grouping(.never))
                 .textFieldStyle(.roundedBorder).foregroundStyle(.primary).font(.system(size: 15, weight: .semibold, design: .monospaced)).frame(width: 88).environment(\.colorScheme, .dark)
             Text("дней")

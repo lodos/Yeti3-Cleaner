@@ -1,0 +1,5408 @@
+{
+  "sourceLanguage": "ru",
+  "version": "1.0",
+  "strings": {
+    "\nПравило применяется при следующем запуске очистки. Используйте предпросмотр.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\nПравило применяется при следующем запуске очистки. Используйте предпросмотр."
+          }
+        }
+      }
+    },
+    " · обновляем…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " · обновляем…"
+          }
+        }
+      }
+    },
+    " · сохранённый результат": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " · сохранённый результат"
+          }
+        }
+      }
+    },
+    "%@. Анализируются только доступные локальные ресурсы.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Анализируются только доступные локальные ресурсы."
+          }
+        }
+      }
+    },
+    "%lld × %lld": {
+      "localizations": {}
+    },
+    "%lld × %lld · %@": {
+      "localizations": {}
+    },
+    "%lld объектов без локальных оригиналов или с ошибкой чтения. Они не участвуют в точном сравнении и удалении.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld объектов без локальных оригиналов или с ошибкой чтения. Они не участвуют в точном сравнении и удалении."
+          }
+        }
+      }
+    },
+    ") · обновляем…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": ") · обновляем…"
+          }
+        }
+      }
+    },
+    "+{} свободно": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+{} свободно"
+          }
+        }
+      }
+    },
+    "1 мин 5 сек": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 мин 5 сек"
+          }
+        }
+      }
+    },
+    "1.0 КБ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1.0 КБ"
+          }
+        }
+      }
+    },
+    "2048 px": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2048 px"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2048 px"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2048 px"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2048 px"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2048 px"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2048 px"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2048 px"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2048 px"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2048 px"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2048 px"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2048 px"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2048 px"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2048 px"
+          }
+        }
+      }
+    },
+    "2560 px": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2560 px"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2560 px"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2560 px"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2560 px"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2560 px"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2560 px"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2560 px"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2560 px"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2560 px"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2560 px"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2560 px"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2560 px"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2560 px"
+          }
+        }
+      }
+    },
+    "30 дней": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 дней"
+          }
+        }
+      }
+    },
+    "4096 px": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4096 px"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4096 px"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4096 px"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4096 px"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4096 px"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4096 px"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4096 px"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4096 px"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4096 px"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4096 px"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4096 px"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4096 px"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4096 px"
+          }
+        }
+      }
+    },
+    "7 дней": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 дней"
+          }
+        }
+      }
+    },
+    "90 дней": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "90 дней"
+          }
+        }
+      }
+    },
+    "Apple пока не подтвердила покупку.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple пока не подтвердила покупку."
+          }
+        }
+      }
+    },
+    "Cleaner не объединяет и не удаляет контакты автоматически. Откройте запись для просмотра и редактирования в системном интерфейсе.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cleaner не объединяет и не удаляет контакты автоматически. Откройте запись для просмотра и редактирования в системном интерфейсе."
+          }
+        }
+      }
+    },
+    "Dry run · Файлы": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dry run · Файлы"
+          }
+        }
+      }
+    },
+    "Dry run · Фото": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dry run · Фото"
+          }
+        }
+      }
+    },
+    "Dry run устарел или выбор небезопасен. Повторите анализ и просмотр.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dry run устарел или выбор небезопасен. Повторите анализ и просмотр."
+          }
+        }
+      }
+    },
+    "Email аккаунта сети": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Email аккаунта сети"
+          }
+        }
+      }
+    },
+    "JPEG недоступен": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "JPEG недоступен"
+          }
+        }
+      }
+    },
+    "LineCloud · рендер Blender в облаке": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LineCloud · рендер Blender в облаке"
+          }
+        }
+      }
+    },
+    "Live Photo: фото и движение учитываются вместе.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live Photo: фото и движение учитываются вместе."
+          }
+        }
+      }
+    },
+    "RAW, отредактированные фото и составные ресурсы не преобразуются.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RAW, отредактированные фото и составные ресурсы не преобразуются."
+          }
+        }
+      }
+    },
+    "SQLite недоступен": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SQLite недоступен"
+          }
+        }
+      }
+    },
+    "Safari: очищается только кэш. Cleaner не удаляет историю, cookies, пароли и базы сессий. Состояние вкладок и проигрывателя зависит также от браузера и сайта.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Safari: очищается только кэш. Cleaner не удаляет историю, cookies, пароли и базы сессий. Состояние вкладок и проигрывателя зависит также от браузера и сайта."
+          }
+        }
+      }
+    },
+    "Volumes — защищены всегда": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Volumes — защищены всегда"
+          }
+        }
+      }
+    },
+    "YETI³ Cleaner": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YETI³ Cleaner"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YETI³ Cleaner"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YETI³ Cleaner"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YETI³ Cleaner"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YETI³ Cleaner"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YETI³ Cleaner"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YETI³ Cleaner"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YETI³ Cleaner"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YETI³ Cleaner"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YETI³ Cleaner"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YETI³ Cleaner"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YETI³ Cleaner"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YETI³ Cleaner"
+          }
+        }
+      }
+    },
+    "YETI³ Cleaner · Статистика": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YETI³ Cleaner · Статистика"
+          }
+        }
+      }
+    },
+    "YETI³ · Карта диска": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YETI³ · Карта диска"
+          }
+        }
+      }
+    },
+    "YETI³ · Карта диска · Предрелиз": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YETI³ · Карта диска · Предрелиз"
+          }
+        }
+      }
+    },
+    "iPhone и iPad": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone и iPad"
+          }
+        }
+      }
+    },
+    "{:.1} КБ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "{:.1} КБ"
+          }
+        }
+      }
+    },
+    "{:.1} МБ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "{:.1} МБ"
+          }
+        }
+      }
+    },
+    "{:.2} ГБ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "{:.2} ГБ"
+          }
+        }
+      }
+    },
+    "{:.2} ТБ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "{:.2} ТБ"
+          }
+        }
+      }
+    },
+    "{LC0} объектов без локальных оригиналов или с ошибкой чтения. Они не участвуют в точном сравнении и удалении.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "{LC0} объектов без локальных оригиналов или с ошибкой чтения. Они не участвуют в точном сравнении и удалении."
+          }
+        }
+      }
+    },
+    "{LC0}. Анализируются только доступные локальные ресурсы.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "{LC0}. Анализируются только доступные локальные ресурсы."
+          }
+        }
+      }
+    },
+    "{seconds} сек": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "{seconds} сек"
+          }
+        }
+      }
+    },
+    "{title} · позже": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "{title} · позже"
+          }
+        }
+      }
+    },
+    "{value:.0} Б": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "{value:.0} Б"
+          }
+        }
+      }
+    },
+    "{} мин {} сек": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "{} мин {} сек"
+          }
+        }
+      }
+    },
+    "{} объектов": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "{} объектов"
+          }
+        }
+      }
+    },
+    "{}. {}\n{}\nПричина: {}\n": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "{}. {}\n{}\nПричина: {}\n"
+          }
+        }
+      }
+    },
+    "Автоматический dry run": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Автоматический dry run"
+          }
+        }
+      }
+    },
+    "Аккаунт сети подключён.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Аккаунт сети подключён."
+          }
+        }
+      }
+    },
+    "Анализ завершён. Ничего не удалено.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Анализ завершён. Ничего не удалено."
+          }
+        }
+      }
+    },
+    "Анализ запускается только по вашей команде": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Анализ запускается только по вашей команде"
+          }
+        }
+      }
+    },
+    "Анализ контактов…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Анализ контактов…"
+          }
+        }
+      }
+    },
+    "Анализ не завершён": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Анализ не завершён"
+          }
+        }
+      }
+    },
+    "Анализ остановлен. Результаты могут быть неполными.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Анализ остановлен. Результаты могут быть неполными."
+          }
+        }
+      }
+    },
+    "Анализировать при открытии приложения": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Анализировать при открытии приложения"
+          }
+        }
+      }
+    },
+    "Анализируются только разрешённые контакты. Совпадение телефона или email — повод проверить записи, а не доказательство дубликата.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Анализируются только разрешённые контакты. Совпадение телефона или email — повод проверить записи, а не доказательство дубликата."
+          }
+        }
+      }
+    },
+    "Архивы": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Архивы"
+          }
+        }
+      }
+    },
+    "БОЛЬШЕ ВСЕГО ОЧИЩЕНО": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "БОЛЬШЕ ВСЕГО ОЧИЩЕНО"
+          }
+        }
+      }
+    },
+    "БЫЛО": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "БЫЛО"
+          }
+        }
+      }
+    },
+    "Без даты": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без даты"
+          }
+        }
+      }
+    },
+    "Без запросов новых разрешений и удаления. При энергосбережении и перегреве анализ откладывается. iOS не гарантирует запуск по расписанию в закрытом приложении. Фото и файлы выбираете вы; контакты изменяются только вручную.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без запросов новых разрешений и удаления. При энергосбережении и перегреве анализ откладывается. iOS не гарантирует запуск по расписанию в закрытом приложении. Фото и файлы выбираете вы; контакты изменяются только вручную."
+          }
+        }
+      }
+    },
+    "Без имени": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без имени"
+          }
+        }
+      }
+    },
+    "Без рекламы": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без рекламы"
+          }
+        }
+      }
+    },
+    "Безопасная": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Безопасная"
+          }
+        }
+      }
+    },
+    "Больше места.\nВсё под контролем.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Больше места.\nВсё под контролем."
+          }
+        }
+      }
+    },
+    "Браузеры": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Браузеры"
+          }
+        }
+      }
+    },
+    "Будет создан JPEG с уменьшением разрешения и качества. Геопозиция и EXIF не копируются. Оригинал сохраняется.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Будет создан JPEG с уменьшением разрешения и качества. Геопозиция и EXIF не копируются. Оригинал сохраняется."
+          }
+        }
+      }
+    },
+    "Будет удалено: %lld": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Будет удалено: %lld"
+          }
+        }
+      }
+    },
+    "Будет удалено: {LC0}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Будет удалено: {LC0}"
+          }
+        }
+      }
+    },
+    "Будут удалены только перечисленные объекты. Изменение синхронизируется через iCloud Фото с другими устройствами. Восстановление обычно доступно в «Недавно удалённых» в течение 30 дней. Размеры логические, освобождение места не гарантируется сразу.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Будут удалены только перечисленные объекты. Изменение синхронизируется через iCloud Фото с другими устройствами. Восстановление обычно доступно в «Недавно удалённых» в течение 30 дней. Размеры логические, освобождение места не гарантируется сразу."
+          }
+        }
+      }
+    },
+    "В Finder": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В Finder"
+          }
+        }
+      }
+    },
+    "В iOS: Настройки → Основные → Хранилище iPhone / iPad. Там доступны рекомендации Apple и сгрузка приложений.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В iOS: Настройки → Основные → Хранилище iPhone / iPad. Там доступны рекомендации Apple и сгрузка приложений."
+          }
+        }
+      }
+    },
+    "В очистку…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В очистку…"
+          }
+        }
+      }
+    },
+    "В письме укажите версию приложения, устройство и действия до ошибки. Не прикладывайте личные фото и контакты без необходимости.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В письме укажите версию приложения, устройство и действия до ошибки. Не прикладывайте личные фото и контакты без необходимости."
+          }
+        }
+      }
+    },
+    "ВРЕМЯ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ВРЕМЯ"
+          }
+        }
+      }
+    },
+    "ВСЕГО ОЧИЩЕНО": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ВСЕГО ОЧИЩЕНО"
+          }
+        }
+      }
+    },
+    "Ваш набор каталогов": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ваш набор каталогов"
+          }
+        }
+      }
+    },
+    "Версия 1.0.0 (2) · iOS 17+": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Версия 1.0.0 (2) · iOS 17+"
+          }
+        }
+      }
+    },
+    "Вести журнал": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вести журнал"
+          }
+        }
+      }
+    },
+    "Весь Mac": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Весь Mac"
+          }
+        }
+      }
+    },
+    "Видео · %lld сек": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Видео · %lld сек"
+          }
+        }
+      }
+    },
+    "Видео · {LC0} сек": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Видео · {LC0} сек"
+          }
+        }
+      }
+    },
+    "Визуальное сходство — предположение. Сравните снимки: они могут быть разными и важными.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Визуальное сходство — предположение. Сравните снимки: они могут быть разными и важными."
+          }
+        }
+      }
+    },
+    "Включите анализ контактов в настройках и запустите сканирование.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Включите анализ контактов в настройках и запустите сканирование."
+          }
+        }
+      }
+    },
+    "Включить": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Включить"
+          }
+        }
+      }
+    },
+    "Включить Docker": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Включить Docker"
+          }
+        }
+      }
+    },
+    "Включить Homebrew": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Включить Homebrew"
+          }
+        }
+      }
+    },
+    "Включить Podman": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Включить Podman"
+          }
+        }
+      }
+    },
+    "Возможные повторы · %lld": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Возможные повторы · %lld"
+          }
+        }
+      }
+    },
+    "Возможные повторы · {LC0}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Возможные повторы · {LC0}"
+          }
+        }
+      }
+    },
+    "Возможные повторы контактов": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Возможные повторы контактов"
+          }
+        }
+      }
+    },
+    "Войти": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Войти"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign in"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iniciar sesión"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "साइन इन करें"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تسجيل الدخول"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entrar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se connecter"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anmelden"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ログイン"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "로그인"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accedi"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Giriş yap"
+          }
+        }
+      }
+    },
+    "Восстановить": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Восстановить"
+          }
+        }
+      }
+    },
+    "Восстановить исходный набор?": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Восстановить исходный набор?"
+          }
+        }
+      }
+    },
+    "Восстановить исходный пресет…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Восстановить исходный пресет…"
+          }
+        }
+      }
+    },
+    "Восстановить настройки этой стратегии": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Восстановить настройки этой стратегии"
+          }
+        }
+      }
+    },
+    "Восстановить покупки": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Восстановить покупки"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore purchases"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复购买"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restaurar compras"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "खरीदारी पुनर्स्थापित करें"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "استعادة المشتريات"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restaurar compras"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restaurer les achats"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Käufe wiederherstellen"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "購入を復元"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "구매 복원"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ripristina acquisti"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Satın alımları geri yükle"
+          }
+        }
+      }
+    },
+    "Восстановление не завершено. Проверьте аккаунт сети и соединение.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Восстановление не завершено. Проверьте аккаунт сети и соединение."
+          }
+        }
+      }
+    },
+    "Временные сборки": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Временные сборки"
+          }
+        }
+      }
+    },
+    "Временные файлы": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Временные файлы"
+          }
+        }
+      }
+    },
+    "Временные файлы, Podman и остальные кэши моделей ещё не подключены к движку. Docker volumes и пользовательские документы защищены.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Временные файлы, Podman и остальные кэши моделей ещё не подключены к движку. Docker volumes и пользовательские документы защищены."
+          }
+        }
+      }
+    },
+    "Временный просмотр сброшен. Личные данные не изменены.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Временный просмотр сброшен. Личные данные не изменены."
+          }
+        }
+      }
+    },
+    "Все": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Все"
+          }
+        }
+      }
+    },
+    "Все содержимое {LC0} будет включено в следующие запуски очистки. Сама папка останется. Проверьте предпросмотр перед запуском.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Все содержимое {LC0} будет включено в следующие запуски очистки. Сама папка останется. Проверьте предпросмотр перед запуском."
+          }
+        }
+      }
+    },
+    "Всегда защищено": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Всегда защищено"
+          }
+        }
+      }
+    },
+    "Всё время": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Всё время"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gesamt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All time"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Todo el tiempo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Depuis toujours"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Totale"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全期間"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Todo o período"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tüm zamanlar"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部时间"
+          }
+        }
+      }
+    },
+    "Вход не выполнен. Проверьте данные и соединение.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вход не выполнен. Проверьте данные и соединение."
+          }
+        }
+      }
+    },
+    "Выберите диск или папку. Сканирование ничего не удаляет.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выберите диск или папку. Сканирование ничего не удаляет."
+          }
+        }
+      }
+    },
+    "Выберите файлы": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выберите файлы"
+          }
+        }
+      }
+    },
+    "Выбранная папка пересекается с исключением или прежним каталогом. Выберите отдельную папку: исключённые данные не включаются в очистку.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбранная папка пересекается с исключением или прежним каталогом. Выберите отдельную папку: исключённые данные не включаются в очистку."
+          }
+        }
+      }
+    },
+    "Выбранные объекты перемещены в «Недавно удалённые» в Фото. iCloud может синхронизировать удаление. Место может освободиться позже.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбранные объекты перемещены в «Недавно удалённые» в Фото. iCloud может синхронизировать удаление. Место может освободиться позже."
+          }
+        }
+      }
+    },
+    "Выбранные файлы": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбранные файлы"
+          }
+        }
+      }
+    },
+    "Выбранные файлы доступны через системный выбор документов. Облачный провайдер может использовать сеть самостоятельно. Cleaner не запрашивает загрузку оригиналов из iCloud Фото.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбранные файлы доступны через системный выбор документов. Облачный провайдер может использовать сеть самостоятельно. Cleaner не запрашивает загрузку оригиналов из iCloud Фото."
+          }
+        }
+      }
+    },
+    "Выбранные файлы удалены. Повторите анализ.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбранные файлы удалены. Повторите анализ."
+          }
+        }
+      }
+    },
+    "Выбрано во всех фильтрах: %lld": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбрано во всех фильтрах: %lld"
+          }
+        }
+      }
+    },
+    "Выбрано во всех фильтрах: {LC0}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбрано во всех фильтрах: {LC0}"
+          }
+        }
+      }
+    },
+    "Выбрать %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбрать %@"
+          }
+        }
+      }
+    },
+    "Выбрать {LC0}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбрать {LC0}"
+          }
+        }
+      }
+    },
+    "Выбрать папку": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбрать папку"
+          }
+        }
+      }
+    },
+    "Выбрать папку / диск…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбрать папку / диск…"
+          }
+        }
+      }
+    },
+    "Выбрать файлы или папку…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбрать файлы или папку…"
+          }
+        }
+      }
+    },
+    "Выбрать фото %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбрать фото %@"
+          }
+        }
+      }
+    },
+    "Выключите путь или замените его своей папкой. Переключатели категорий выше также учитываются; отключённая категория не очищается. Возраст файлов для заменённой папки: без ограничения.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выключите путь или замените его своей папкой. Переключатели категорий выше также учитываются; отключённая категория не очищается. Возраст файлов для заменённой папки: без ограничения."
+          }
+        }
+      }
+    },
+    "Выход": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выход"
+          }
+        }
+      }
+    },
+    "Готово": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Готово"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fertig"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terminé"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fatto"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完了"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Concluído"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tamam"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完成"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हो गया"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "완료"
+          }
+        }
+      }
+    },
+    "Группы точных дубликатов": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Группы точных дубликатов"
+          }
+        }
+      }
+    },
+    "Данные приложения": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Данные приложения"
+          }
+        }
+      }
+    },
+    "Данные хранятся локально · SQLite · YETI³ Cleaner": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Данные хранятся локально · SQLite · YETI³ Cleaner"
+          }
+        }
+      }
+    },
+    "Длинная сторона": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Длинная сторона"
+          }
+        }
+      }
+    },
+    "Для iCloud Фото: Настройки → Фото → Оптимизация хранилища. Сначала убедитесь, что оригиналы синхронизированы.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для iCloud Фото: Настройки → Фото → Оптимизация хранилища. Сначала убедитесь, что оригиналы синхронизированы."
+          }
+        }
+      }
+    },
+    "Для оптимизации выберите локальное фото размером до 100 МБ.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для оптимизации выберите локальное фото размером до 100 МБ."
+          }
+        }
+      }
+    },
+    "Дни": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дни"
+          }
+        }
+      }
+    },
+    "Добавить": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавить"
+          }
+        }
+      }
+    },
+    "Добавить исключение…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавить исключение…"
+          }
+        }
+      }
+    },
+    "Добавить папку в очистку?": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавить папку в очистку?"
+          }
+        }
+      }
+    },
+    "Добавить папку…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Добавить папку…"
+          }
+        }
+      }
+    },
+    "Документы, проекты, фото, системные папки и профили браузеров защищены. Добавление папки ничего не удаляет.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Документы, проекты, фото, системные папки и профили браузеров защищены. Добавление папки ничего не удаляет."
+          }
+        }
+      }
+    },
+    "Домашняя папка": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Домашняя папка"
+          }
+        }
+      }
+    },
+    "Дополнительно очищать": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дополнительно очищать"
+          }
+        }
+      }
+    },
+    "Дополнительно: похожие фото и старые скриншоты. Рекомендации требуют просмотра.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дополнительно: похожие фото и старые скриншоты. Рекомендации требуют просмотра."
+          }
+        }
+      }
+    },
+    "Дополнительных исключений нет": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дополнительных исключений нет"
+          }
+        }
+      }
+    },
+    "Доступ действует в этой сессии. Облачные файлы, не загруженные на устройство, пропускаются, если провайдер сообщает этот статус.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Доступ действует в этой сессии. Облачные файлы, не загруженные на устройство, пропускаются, если провайдер сообщает этот статус."
+          }
+        }
+      }
+    },
+    "Доступ запрещён": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Доступ запрещён"
+          }
+        }
+      }
+    },
+    "Доступ к Фото и Контактам запрашивается только при включении соответствующего анализа. Можно предоставить ограниченный доступ и отозвать его в Настройках iOS.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Доступ к Фото и Контактам запрашивается только при включении соответствующего анализа. Можно предоставить ограниченный доступ и отозвать его в Настройках iOS."
+          }
+        }
+      }
+    },
+    "Доступ к выбранным фото": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Доступ к выбранным фото"
+          }
+        }
+      }
+    },
+    "Доступ к медиатеке…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Доступ к медиатеке…"
+          }
+        }
+      }
+    },
+    "Доступ ограничен системой": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Доступ ограничен системой"
+          }
+        }
+      }
+    },
+    "Доступ ограничен. Изменить список разрешённых контактов можно в Настройках iOS.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Доступ ограничен. Изменить список разрешённых контактов можно в Настройках iOS."
+          }
+        }
+      }
+    },
+    "Доступные файлы": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Доступные файлы"
+          }
+        }
+      }
+    },
+    "Дубликаты": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дубликаты"
+          }
+        }
+      }
+    },
+    "Дубликаты · группа %lld": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дубликаты · группа %lld"
+          }
+        }
+      }
+    },
+    "Дубликаты · группа {LC0}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дубликаты · группа {LC0}"
+          }
+        }
+      }
+    },
+    "Журналы": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Журналы"
+          }
+        }
+      }
+    },
+    "Журналы старше": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Журналы старше"
+          }
+        }
+      }
+    },
+    "ЗАВЕРШЕНО С ЗАМЕЧАНИЯМИ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ЗАВЕРШЕНО С ЗАМЕЧАНИЯМИ"
+          }
+        }
+      }
+    },
+    "ЗАПУСКОВ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ЗАПУСКОВ"
+          }
+        }
+      }
+    },
+    "Загружаем настройки…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Загружаем настройки…"
+          }
+        }
+      }
+    },
+    "Загружаем обновление и проверяем SHA-256…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Загружаем обновление и проверяем SHA-256…"
+          }
+        }
+      }
+    },
+    "Закрыть": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Закрыть"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schließen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cerrar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fermer"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chiudi"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "閉じる"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fechar"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kapat"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭"
+          }
+        }
+      }
+    },
+    "Заменить": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Заменить"
+          }
+        }
+      }
+    },
+    "Заменить каталог пресета?": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Заменить каталог пресета?"
+          }
+        }
+      }
+    },
+    "Заменить…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Заменить…"
+          }
+        }
+      }
+    },
+    "Запустите анализ и проверьте включённые категории в настройках.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запустите анализ и проверьте включённые категории в настройках."
+          }
+        }
+      }
+    },
+    "Заряд не ниже %lld%%": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Заряд не ниже %lld%%"
+          }
+        }
+      }
+    },
+    "Заряд не ниже {LC0}%": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Заряд не ниже {LC0}%"
+          }
+        }
+      }
+    },
+    "Затем запустите анализ на вкладке «Обзор». Удаление архивов и больших файлов не считается автоматически безопасным.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Затем запустите анализ на вкладке «Обзор». Удаление архивов и больших файлов не считается автоматически безопасным."
+          }
+        }
+      }
+    },
+    "Защита": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Защита"
+          }
+        }
+      }
+    },
+    "Избранное защищено": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Избранное защищено"
+          }
+        }
+      }
+    },
+    "Избранное защищено. Оставьте хотя бы один объект в каждой группе дубликатов.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Избранное защищено. Оставьте хотя бы один объект в каждой группе дубликатов."
+          }
+        }
+      }
+    },
+    "Изменения сохраняются сразу. Текущий набор — исходный пресет; переключатели, возраст файлов и каталоги можно изменить.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изменения сохраняются сразу. Текущий набор — исходный пресет; переключатели, возраст файлов и каталоги можно изменить."
+          }
+        }
+      }
+    },
+    "Изменить выбранные фото": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изменить выбранные фото"
+          }
+        }
+      }
+    },
+    "Интерфейс": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Интерфейс"
+          }
+        }
+      }
+    },
+    "Исключить": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Исключить"
+          }
+        }
+      }
+    },
+    "Исключить: {LC0}\nОчищать содержимое: {LC1}\nНовое правило применяется при следующей очистке, без ограничения возраста файлов.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Исключить: {LC0}\nОчищать содержимое: {LC1}\nНовое правило применяется при следующей очистке, без ограничения возраста файлов."
+          }
+        }
+      }
+    },
+    "Используются только пресеты": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Используются только пресеты"
+          }
+        }
+      }
+    },
+    "Источник — публичный репозиторий lodos/Yeti3-Cleaner. Перед открытием образа проверяется SHA-256. Замена приложения выполняется вами через Finder. Настройки и история хранятся отдельно от приложения.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Источник — публичный репозиторий lodos/Yeti3-Cleaner. Перед открытием образа проверяется SHA-256. Замена приложения выполняется вами через Finder. Настройки и история хранятся отдельно от приложения."
+          }
+        }
+      }
+    },
+    "КАТАЛОГИ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "КАТАЛОГИ"
+          }
+        }
+      }
+    },
+    "КАТАЛОГОВ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "КАТАЛОГОВ"
+          }
+        }
+      }
+    },
+    "Каждые 6 часов": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Каждые 6 часов"
+          }
+        }
+      }
+    },
+    "Как освободить место": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Как освободить место"
+          }
+        }
+      }
+    },
+    "Карта диска и каталоги…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Карта диска и каталоги…"
+          }
+        }
+      }
+    },
+    "Карта диска: {error}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Карта диска: {error}"
+          }
+        }
+      }
+    },
+    "Каталоги исходного пресета": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Каталоги исходного пресета"
+          }
+        }
+      }
+    },
+    "Категории и пороги меняются в настройках.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Категории и пороги меняются в настройках."
+          }
+        }
+      }
+    },
+    "Категории и сроки вернутся к исходным значениям. Добавленные папки и исключения будут убраны из настроек. Файлы не удаляются.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Категории и сроки вернутся к исходным значениям. Добавленные папки и исключения будут убраны из настроек. Файлы не удаляются."
+          }
+        }
+      }
+    },
+    "Качество JPEG": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Качество JPEG"
+          }
+        }
+      }
+    },
+    "Качество JPEG: %lld%%": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Качество JPEG: %lld%%"
+          }
+        }
+      }
+    },
+    "Качество JPEG: {LC0}%": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Качество JPEG: {LC0}%"
+          }
+        }
+      }
+    },
+    "Контакт недоступен. Закройте окно и повторите анализ.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Контакт недоступен. Закройте окно и повторите анализ."
+          }
+        }
+      }
+    },
+    "Контакты": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Контакты"
+          }
+        }
+      }
+    },
+    "Контакты: {LC0}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Контакты: {LC0}"
+          }
+        }
+      }
+    },
+    "Контейнеры": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Контейнеры"
+          }
+        }
+      }
+    },
+    "Контрольная сумма не совпала. Установка отменена.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Контрольная сумма не совпала. Установка отменена."
+          }
+        }
+      }
+    },
+    "Конфиденциальность": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Конфиденциальность"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy"
+          }
+        }
+      }
+    },
+    "Копии iPhone/iPad": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Копии iPhone/iPad"
+          }
+        }
+      }
+    },
+    "Копия сохранена. Оригинал остался в медиатеке. Сейчас копия занимает дополнительное место. Проверьте её в «Фото», прежде чем отдельно решать, нужен ли оригинал.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Копия сохранена. Оригинал остался в медиатеке. Сейчас копия занимает дополнительное место. Проверьте её в «Фото», прежде чем отдельно решать, нужен ли оригинал."
+          }
+        }
+      }
+    },
+    "Копия фотографии": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Копия фотографии"
+          }
+        }
+      }
+    },
+    "Корзина": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Корзина"
+          }
+        }
+      }
+    },
+    "Крупные": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Крупные"
+          }
+        }
+      }
+    },
+    "Крупные видео": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Крупные видео"
+          }
+        }
+      }
+    },
+    "Крупные объекты от %lld МБ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Крупные объекты от %lld МБ"
+          }
+        }
+      }
+    },
+    "Крупные объекты от {LC0} МБ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Крупные объекты от {LC0} МБ"
+          }
+        }
+      }
+    },
+    "Кэш": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кэш"
+          }
+        }
+      }
+    },
+    "Кэш CoreML": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кэш CoreML"
+          }
+        }
+      }
+    },
+    "Кэш Gradle старше": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кэш Gradle старше"
+          }
+        }
+      }
+    },
+    "Кэш недоступен: {LC0}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кэш недоступен: {LC0}"
+          }
+        }
+      }
+    },
+    "Кэш сборок": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кэш сборок"
+          }
+        }
+      }
+    },
+    "Кэши браузеров": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кэши браузеров"
+          }
+        }
+      }
+    },
+    "Кэши приложений": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кэши приложений"
+          }
+        }
+      }
+    },
+    "Кэши разработки": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кэши разработки"
+          }
+        }
+      }
+    },
+    "Логи": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Логи"
+          }
+        }
+      }
+    },
+    "Логический размер": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Логический размер"
+          }
+        }
+      }
+    },
+    "Локальное сканирование": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Локальное сканирование"
+          }
+        }
+      }
+    },
+    "Локальный анализ · Без аккаунта · Без отправки данных": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Локальный анализ · Без аккаунта · Без отправки данных"
+          }
+        }
+      }
+    },
+    "Локальный поиск дубликатов, крупных видео и скриншотов. Удаление выбранных фото возможно только после вашего подтверждения.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Локальный поиск дубликатов, крупных видео и скриншотов. Удаление выбранных фото возможно только после вашего подтверждения."
+          }
+        }
+      }
+    },
+    "Локальный поиск повторяющихся и неполных контактов. Контакты не отправляются на сервер.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Локальный поиск повторяющихся и неполных контактов. Контакты не отправляются на сервер."
+          }
+        }
+      }
+    },
+    "Модели": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Модели"
+          }
+        }
+      }
+    },
+    "На диаграмме 180 крупнейших объектов. Полный список справа.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На диаграмме 180 крупнейших объектов. Полный список справа."
+          }
+        }
+      }
+    },
+    "Найдено: {total}. Копии iPhone/iPad: {backups} (0 Б может означать отсутствие доступа).\nПроверь пути ниже и отметь категории. Изменившиеся после скана каталоги будут пропущены.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Найдено: {total}. Копии iPhone/iPad: {backups} (0 Б может означать отсутствие доступа).\nПроверь пути ниже и отметь категории. Изменившиеся после скана каталоги будут пропущены."
+          }
+        }
+      }
+    },
+    "Найти в этой папке": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Найти в этой папке"
+          }
+        }
+      }
+    },
+    "Написать разработчику": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Написать разработчику"
+          }
+        }
+      }
+    },
+    "Настройки": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Настройки"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einstellungen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configuración"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réglages"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impostazioni"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configurações"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayarlar"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सेटिंग्स"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الإعدادات"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "설정"
+          }
+        }
+      }
+    },
+    "Настройки YETI³ Cleaner": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Настройки YETI³ Cleaner"
+          }
+        }
+      }
+    },
+    "Настройки не сохранены: {LC0}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Настройки не сохранены: {LC0}"
+          }
+        }
+      }
+    },
+    "Настройки очистки": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Настройки очистки"
+          }
+        }
+      }
+    },
+    "Настройки сохраняются отдельно для каждой стратегии. Личные данные удаляются только после dry run и подтверждения.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Настройки сохраняются отдельно для каждой стратегии. Личные данные удаляются только после dry run и подтверждения."
+          }
+        }
+      }
+    },
+    "Настройки…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Настройки…"
+          }
+        }
+      }
+    },
+    "Настройте категории и выбирайте каждый объект самостоятельно.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Настройте категории и выбирайте каждый объект самостоятельно."
+          }
+        }
+      }
+    },
+    "Начать анализ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Начать анализ"
+          }
+        }
+      }
+    },
+    "Не всё удалось удалить — детали сохранены в статистике": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не всё удалось удалить — детали сохранены в статистике"
+          }
+        }
+      }
+    },
+    "Не удалось загрузить ошибки: {error}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось загрузить ошибки: {error}"
+          }
+        }
+      }
+    },
+    "Не удалось загрузить цены App Store. Проверьте соединение.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось загрузить цены App Store. Проверьте соединение."
+          }
+        }
+      }
+    },
+    "Не удалось проверить обновление: {LC0}. Можно повторить позже.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось проверить обновление: {LC0}. Можно повторить позже."
+          }
+        }
+      }
+    },
+    "Не удалось прочитать правила: {LC0}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось прочитать правила: {LC0}"
+          }
+        }
+      }
+    },
+    "Не удалось прочитать фото": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось прочитать фото"
+          }
+        }
+      }
+    },
+    "Не чаще": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не чаще"
+          }
+        }
+      }
+    },
+    "Недоступные Simulator": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Недоступные Simulator"
+          }
+        }
+      }
+    },
+    "Недоступные симуляторы": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Недоступные симуляторы"
+          }
+        }
+      }
+    },
+    "Неиспользуемые VM": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неиспользуемые VM"
+          }
+        }
+      }
+    },
+    "Неиспользуемые images": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неиспользуемые images"
+          }
+        }
+      }
+    },
+    "Неиспользуемые networks": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неиспользуемые networks"
+          }
+        }
+      }
+    },
+    "Неиспользуемые зависимости": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неиспользуемые зависимости"
+          }
+        }
+      }
+    },
+    "Неиспользуемые образы": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неиспользуемые образы"
+          }
+        }
+      }
+    },
+    "Неиспользуемые сети": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неиспользуемые сети"
+          }
+        }
+      }
+    },
+    "Неполные записи": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неполные записи"
+          }
+        }
+      }
+    },
+    "Неполный": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неполный"
+          }
+        }
+      }
+    },
+    "Неполный результат: пропущено {LC0} недоступных объектов. Проверьте доступ к диску в настройках macOS.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неполный результат: пропущено {LC0} недоступных объектов. Проверьте доступ к диску в настройках macOS."
+          }
+        }
+      }
+    },
+    "Нет доступа к контактам": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нет доступа к контактам"
+          }
+        }
+      }
+    },
+    "Нет доступа к фото": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нет доступа к фото"
+          }
+        }
+      }
+    },
+    "Нет локальных ресурсов": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нет локальных ресурсов"
+          }
+        }
+      }
+    },
+    "Нет очищенных категорий": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нет очищенных категорий"
+          }
+        }
+      }
+    },
+    "Нет результатов": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нет результатов"
+          }
+        }
+      }
+    },
+    "Никогда не трогать": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Никогда не трогать"
+          }
+        }
+      }
+    },
+    "Новая версия требует macOS {LC0} или новее.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Новая версия требует macOS {LC0} или новее."
+          }
+        }
+      }
+    },
+    "О программе": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "О программе"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Über"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Acerca de"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "À propos"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Informazioni"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このアプリについて"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sobre"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hakkında"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关于"
+          }
+        }
+      }
+    },
+    "ОСВОБОЖДЕНО": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ОСВОБОЖДЕНО"
+          }
+        }
+      }
+    },
+    "ОЧИСТКА ЗАВЕРШЕНА": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ОЧИСТКА ЗАВЕРШЕНА"
+          }
+        }
+      }
+    },
+    "ОШИБКИ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ОШИБКИ"
+          }
+        }
+      }
+    },
+    "ОШИБОК": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ОШИБОК"
+          }
+        }
+      }
+    },
+    "Обзор": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обзор"
+          }
+        }
+      }
+    },
+    "Обновить цены": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновить цены"
+          }
+        }
+      }
+    },
+    "Обновление": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновление"
+          }
+        }
+      }
+    },
+    "Обновление YETI³ Cleaner": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновление YETI³ Cleaner"
+          }
+        }
+      }
+    },
+    "Обновление не установлено: {LC0}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обновление не установлено: {LC0}"
+          }
+        }
+      }
+    },
+    "Обработка на устройстве": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Обработка на устройстве"
+          }
+        }
+      }
+    },
+    "Образ проверен и открыт. Завершите Cleaner, затем перенесите новую версию в «Программы» с заменой. Настройки сохранятся.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Образ проверен и открыт. Завершите Cleaner, затем перенесите новую версию в «Программы» с заменой. Настройки сохранятся."
+          }
+        }
+      }
+    },
+    "Общие": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Общие"
+          }
+        }
+      }
+    },
+    "Объект изменён или недоступен локально. Выполните новое сканирование.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Объект изменён или недоступен локально. Выполните новое сканирование."
+          }
+        }
+      }
+    },
+    "Один доступ для всех продуктов YETI³ на вашем аккаунте. Выберите срок; продление вручную.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Один доступ для всех продуктов YETI³ на вашем аккаунте. Выберите срок; продление вручную."
+          }
+        }
+      }
+    },
+    "Оптимизация": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оптимизация"
+          }
+        }
+      }
+    },
+    "Оптимизация доступна для обычных неподвижных фото. Live Photo, HDR и панорамы сохраняются без изменений.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оптимизация доступна для обычных неподвижных фото. Live Photo, HDR и панорамы сохраняются без изменений."
+          }
+        }
+      }
+    },
+    "Оптимизация создаёт JPEG-копию с потерей части качества и метаданных, сохраняя оригинал. Сохранение копии само по себе не освобождает место.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оптимизация создаёт JPEG-копию с потерей части качества и метаданных, сохраняя оригинал. Сохранение копии само по себе не освобождает место."
+          }
+        }
+      }
+    },
+    "Оригинал недоступен": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оригинал недоступен"
+          }
+        }
+      }
+    },
+    "Оригинал недоступен локально": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оригинал недоступен локально"
+          }
+        }
+      }
+    },
+    "Оригинал сохраняется. Копия не содержит геопозиции и EXIF. RAW, HDR, Live Photo, панорамы и отредактированные снимки исключены.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оригинал сохраняется. Копия не содержит геопозиции и EXIF. RAW, HDR, Live Photo, панорамы и отредактированные снимки исключены."
+          }
+        }
+      }
+    },
+    "Оригинал: %@\nКопия: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оригинал: %@\nКопия: %@"
+          }
+        }
+      }
+    },
+    "Оставьте один файл в каждой группе дубликатов.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оставьте один файл в каждой группе дубликатов."
+          }
+        }
+      }
+    },
+    "Остановить": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Остановить"
+          }
+        }
+      }
+    },
+    "Остановить анализ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Остановить анализ"
+          }
+        }
+      }
+    },
+    "Остановка после текущего локального ресурса…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Остановка после текущего локального ресурса…"
+          }
+        }
+      }
+    },
+    "Остановленные containers": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Остановленные containers"
+          }
+        }
+      }
+    },
+    "Остановленные контейнеры": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Остановленные контейнеры"
+          }
+        }
+      }
+    },
+    "Остановлено · показана только прочитанная часть диска. Размеры неполные.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Остановлено · показана только прочитанная часть диска. Размеры неполные."
+          }
+        }
+      }
+    },
+    "Открыть каталог": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Открыть каталог"
+          }
+        }
+      }
+    },
+    "Открыть настройки доступа": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Открыть настройки доступа"
+          }
+        }
+      }
+    },
+    "Отмена": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отмена"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abbrechen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annuler"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annulla"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "キャンセル"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelar"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İptal"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "रद्द करें"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إلغاء"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "취소"
+          }
+        }
+      }
+    },
+    "Отчёты о сбоях": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отчёты о сбоях"
+          }
+        }
+      }
+    },
+    "Очистить": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очистить"
+          }
+        }
+      }
+    },
+    "Очистка": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очистка"
+          }
+        }
+      }
+    },
+    "Очистка завершена успешно": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очистка завершена успешно"
+          }
+        }
+      }
+    },
+    "Очищать содержимое этой папки?": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очищать содержимое этой папки?"
+          }
+        }
+      }
+    },
+    "Ошибки последней очистки": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ошибки последней очистки"
+          }
+        }
+      }
+    },
+    "Ошибки последней очистки…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ошибки последней очистки…"
+          }
+        }
+      }
+    },
+    "Ошибок в последней очистке нет.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ошибок в последней очистке нет."
+          }
+        }
+      }
+    },
+    "ПО КАТЕГОРИЯМ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ПО КАТЕГОРИЯМ"
+          }
+        }
+      }
+    },
+    "ПОСЛЕДНИЕ ОЧИСТКИ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ПОСЛЕДНИЕ ОЧИСТКИ"
+          }
+        }
+      }
+    },
+    "ПРОПУЩЕНО": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ПРОПУЩЕНО"
+          }
+        }
+      }
+    },
+    "Пакеты Xcode": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пакеты Xcode"
+          }
+        }
+      }
+    },
+    "Пакеты Xcode старше": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пакеты Xcode старше"
+          }
+        }
+      }
+    },
+    "Папка недоступна · сохранённый снимок может быть устаревшим": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Папка недоступна · сохранённый снимок может быть устаревшим"
+          }
+        }
+      }
+    },
+    "Пароль": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пароль"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passwort"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Password"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contraseña"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mot de passe"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Password"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "パスワード"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senha"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parola"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "密码"
+          }
+        }
+      }
+    },
+    "Пауза": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пауза"
+          }
+        }
+      }
+    },
+    "План действует 15 минут. Перед выполнением содержимое проверяется повторно.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "План действует 15 минут. Перед выполнением содержимое проверяется повторно."
+          }
+        }
+      }
+    },
+    "По умолчанию": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "По умолчанию"
+          }
+        }
+      }
+    },
+    "Повторно проверить диск": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Повторно проверить диск"
+          }
+        }
+      }
+    },
+    "Подготавливаем список…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подготавливаем список…"
+          }
+        }
+      }
+    },
+    "Поддержка и инструкции": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поддержка и инструкции"
+          }
+        }
+      }
+    },
+    "Подробнее": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подробнее"
+          }
+        }
+      }
+    },
+    "Подтверждаем…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Подтверждаем…"
+          }
+        }
+      }
+    },
+    "Показать": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показать"
+          }
+        }
+      }
+    },
+    "Показать план очистки…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показать план очистки…"
+          }
+        }
+      }
+    },
+    "Показываем текущее сканирование · размеры неполные": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показываем текущее сканирование · размеры неполные"
+          }
+        }
+      }
+    },
+    "Показывать освобождённое место": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показывать освобождённое место"
+          }
+        }
+      }
+    },
+    "Покупка не подтверждена сервером. Нажмите «Восстановить покупки».": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Покупка не подтверждена сервером. Нажмите «Восстановить покупки»."
+          }
+        }
+      }
+    },
+    "Покупка ожидает подтверждения Apple.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Покупка ожидает подтверждения Apple."
+          }
+        }
+      }
+    },
+    "Покупка ожидает подтверждения сервера. Повторите восстановление.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Покупка ожидает подтверждения сервера. Повторите восстановление."
+          }
+        }
+      }
+    },
+    "Покупка отменена.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Покупка отменена."
+          }
+        }
+      }
+    },
+    "Покупка проверена. Срок доступа истёк или выполнен возврат.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Покупка проверена. Срок доступа истёк или выполнен возврат."
+          }
+        }
+      }
+    },
+    "Покупки временно недоступны. Восстановление остаётся доступным.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Покупки временно недоступны. Восстановление остаётся доступным."
+          }
+        }
+      }
+    },
+    "Покупки временно недоступны. Попробуйте позже.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Покупки временно недоступны. Попробуйте позже."
+          }
+        }
+      }
+    },
+    "Покупки пока недоступны в App Store. Попробуйте позже.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Покупки пока недоступны в App Store. Попробуйте позже."
+          }
+        }
+      }
+    },
+    "Покупок этого аккаунта Apple не найдено.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Покупок этого аккаунта Apple не найдено."
+          }
+        }
+      }
+    },
+    "Полный доступ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Полный доступ"
+          }
+        }
+      }
+    },
+    "Получать предварительные версии": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Получать предварительные версии"
+          }
+        }
+      }
+    },
+    "Помощь": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Помощь"
+          }
+        }
+      }
+    },
+    "Понятно": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Понятно"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Got it"
+          }
+        }
+      }
+    },
+    "После очистки": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "После очистки"
+          }
+        }
+      }
+    },
+    "Последний анализ: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Последний анализ: %@"
+          }
+        }
+      }
+    },
+    "Последний анализ: {LC0}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Последний анализ: {LC0}"
+          }
+        }
+      }
+    },
+    "Посмотрите, что занимает место. Решайте, что очищать.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Посмотрите, что занимает место. Решайте, что очищать."
+          }
+        }
+      }
+    },
+    "Потенциальная разница: %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Потенциальная разница: %@"
+          }
+        }
+      }
+    },
+    "Похожие": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Похожие"
+          }
+        }
+      }
+    },
+    "Похожие фото": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Похожие фото"
+          }
+        }
+      }
+    },
+    "Предварительный план · ничего не удалено": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Предварительный план · ничего не удалено"
+          }
+        }
+      }
+    },
+    "Предпросмотр оптимизации": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Предпросмотр оптимизации"
+          }
+        }
+      }
+    },
+    "Предпросмотр очистки": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Предпросмотр очистки"
+          }
+        }
+      }
+    },
+    "Предрелиз {LC0} · Intel + Apple Silicon · macOS {LC1}+": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Предрелиз {LC0} · Intel + Apple Silicon · macOS {LC1}+"
+          }
+        }
+      }
+    },
+    "Предрелиз доступен только при включённом канале предварительных версий.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Предрелиз доступен только при включённом канале предварительных версий."
+          }
+        }
+      }
+    },
+    "Проверить обновление": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проверить обновление"
+          }
+        }
+      }
+    },
+    "Проверить обновление…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проверить обновление…"
+          }
+        }
+      }
+    },
+    "Проверка только по запросу. Данные о файлах не отправляются.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проверка только по запросу. Данные о файлах не отправляются."
+          }
+        }
+      }
+    },
+    "Проверьте выбранные объекты перед удалением. Системные кэши и данные других приложений недоступны Cleaner.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проверьте выбранные объекты перед удалением. Системные кэши и данные других приложений недоступны Cleaner."
+          }
+        }
+      }
+    },
+    "Проверяем последнюю версию…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проверяем последнюю версию…"
+          }
+        }
+      }
+    },
+    "Продолжить": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Продолжить"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue"
+          }
+        }
+      }
+    },
+    "Пропущено: %lld. Нет доступа, облачный ресурс или ссылка.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пропущено: %lld. Нет доступа, облачный ресурс или ссылка."
+          }
+        }
+      }
+    },
+    "Пропущено: {LC0}. Нет доступа, облачный ресурс или ссылка.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пропущено: {LC0}. Нет доступа, облачный ресурс или ссылка."
+          }
+        }
+      }
+    },
+    "Пропущено: {} · Ошибок: {}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пропущено: {} · Ошибок: {}"
+          }
+        }
+      }
+    },
+    "Просмотр": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Просмотр"
+          }
+        }
+      }
+    },
+    "Просмотрено объектов: {LC0} · размеры ещё уточняются": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Просмотрено объектов: {LC0} · размеры ещё уточняются"
+          }
+        }
+      }
+    },
+    "Просмотреть %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Просмотреть %@"
+          }
+        }
+      }
+    },
+    "Просмотреть {LC0}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Просмотреть {LC0}"
+          }
+        }
+      }
+    },
+    "Просмотреть удаление: %lld…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Просмотреть удаление: %lld…"
+          }
+        }
+      }
+    },
+    "Просмотреть удаление: {LC0}…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Просмотреть удаление: {LC0}…"
+          }
+        }
+      }
+    },
+    "Просмотреть удаление…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Просмотреть удаление…"
+          }
+        }
+      }
+    },
+    "Путь изменился": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Путь изменился"
+          }
+        }
+      }
+    },
+    "Путь находится внутри исключённой папки. Сначала измените это исключение ниже.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Путь находится внутри исключённой папки. Сначала измените это исключение ниже."
+          }
+        }
+      }
+    },
+    "РЕКЛАМА · YETI³": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "РЕКЛАМА · YETI³"
+          }
+        }
+      }
+    },
+    "Раз в день": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Раз в день"
+          }
+        }
+      }
+    },
+    "Раз в неделю": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Раз в неделю"
+          }
+        }
+      }
+    },
+    "Раздел": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Раздел"
+          }
+        }
+      }
+    },
+    "Размер включает доступные ресурсы видео. Воспроизведение и редактирование доступны в приложении «Фото».": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Размер включает доступные ресурсы видео. Воспроизведение и редактирование доступны в приложении «Фото»."
+          }
+        }
+      }
+    },
+    "Размеры файлов, а не физически освобождаемое место. Снимки APFS, клоны и закрытые каталоги могут давать расхождение. Ссылки и вложенные тома пропускаются; другой диск выберите отдельно.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Размеры файлов, а не физически освобождаемое место. Снимки APFS, клоны и закрытые каталоги могут давать расхождение. Ссылки и вложенные тома пропускаются; другой диск выберите отдельно."
+          }
+        }
+      }
+    },
+    "Разработка": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разработка"
+          }
+        }
+      }
+    },
+    "Разрешение ещё не запрошено": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разрешение ещё не запрошено"
+          }
+        }
+      }
+    },
+    "Режим": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Режим"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modus"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mode"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mode"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modalità"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "モード"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modo"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mod"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "模式"
+          }
+        }
+      }
+    },
+    "Результаты": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Результаты"
+          }
+        }
+      }
+    },
+    "Результаты анализа и разрешённые пути хранятся только в памяти текущей сессии. Настройки стратегий сохраняются на устройстве. Удаление приложения удаляет его собственные данные.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Результаты анализа и разрешённые пути хранятся только в памяти текущей сессии. Настройки стратегий сохраняются на устройстве. Удаление приложения удаляет его собственные данные."
+          }
+        }
+      }
+    },
+    "Реклама отключена": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Реклама отключена"
+          }
+        }
+      }
+    },
+    "Реклама отключена для аккаунта сети.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Реклама отключена для аккаунта сети."
+          }
+        }
+      }
+    },
+    "Ручная": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ручная"
+          }
+        }
+      }
+    },
+    "СВОБОДНОЕ МЕСТО": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "СВОБОДНОЕ МЕСТО"
+          }
+        }
+      }
+    },
+    "СТАЛО": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "СТАЛО"
+          }
+        }
+      }
+    },
+    "СТАТИСТИКА · 30 ДНЕЙ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "СТАТИСТИКА · 30 ДНЕЙ"
+          }
+        }
+      }
+    },
+    "Сбросить": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сбросить"
+          }
+        }
+      }
+    },
+    "Сбросить временный просмотр…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сбросить временный просмотр…"
+          }
+        }
+      }
+    },
+    "Сбросить только временные данные Cleaner?": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сбросить только временные данные Cleaner?"
+          }
+        }
+      }
+    },
+    "Свободно %@ из %@": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Свободно %@ из %@"
+          }
+        }
+      }
+    },
+    "Свободно {LC0} из {LC1}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Свободно {LC0} из {LC1}"
+          }
+        }
+      }
+    },
+    "Свои каталоги": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Свои каталоги"
+          }
+        }
+      }
+    },
+    "Сеть без рекламы": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сеть без рекламы"
+          }
+        }
+      }
+    },
+    "Симуляторы Xcode": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Симуляторы Xcode"
+          }
+        }
+      }
+    },
+    "Сканирование завершено · {LC0} объектов": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сканирование завершено · {LC0} объектов"
+          }
+        }
+      }
+    },
+    "Сканирование завершено. Очистить найденное?": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сканирование завершено. Очистить найденное?"
+          }
+        }
+      }
+    },
+    "Сканирование…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сканирование…"
+          }
+        }
+      }
+    },
+    "Сканировать": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сканировать"
+          }
+        }
+      }
+    },
+    "Скачать и открыть установщик": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скачать и открыть установщик"
+          }
+        }
+      }
+    },
+    "Скриншоты": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скриншоты"
+          }
+        }
+      }
+    },
+    "Скриншоты старше %lld дней": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скриншоты старше %lld дней"
+          }
+        }
+      }
+    },
+    "Скриншоты старше {LC0} дней": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скриншоты старше {LC0} дней"
+          }
+        }
+      }
+    },
+    "Сначала войдите в аккаунт сети.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сначала войдите в аккаунт сети."
+          }
+        }
+      }
+    },
+    "Снимок не сохранён: {LC0}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Снимок не сохранён: {LC0}"
+          }
+        }
+      }
+    },
+    "Снимок от": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Снимок от"
+          }
+        }
+      }
+    },
+    "Снимок сохранён · {LC0}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Снимок сохранён · {LC0}"
+          }
+        }
+      }
+    },
+    "Снять выбор": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Снять выбор"
+          }
+        }
+      }
+    },
+    "Сохранение копии сначала увеличит занятое место. Оригинал не удаляется. Проверьте детали, цвет и качество в «Фото»; удаление оригинала — отдельное решение.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сохранение копии сначала увеличит занятое место. Оригинал не удаляется. Проверьте детали, цвет и качество в «Фото»; удаление оригинала — отдельное решение."
+          }
+        }
+      }
+    },
+    "Сохранение уменьшенной копии фотографии. Оригинал остаётся в медиатеке.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сохранение уменьшенной копии фотографии. Оригинал остаётся в медиатеке."
+          }
+        }
+      }
+    },
+    "Сохранить копию в Фото": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сохранить копию в Фото"
+          }
+        }
+      }
+    },
+    "Сохраняемый дубликат изменён или недоступен. Повторите анализ.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сохраняемый дубликат изменён или недоступен. Повторите анализ."
+          }
+        }
+      }
+    },
+    "Сохраняемый оригинал недоступен или изменён. Повторите анализ.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сохраняемый оригинал недоступен или изменён. Повторите анализ."
+          }
+        }
+      }
+    },
+    "Средняя": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Средняя"
+          }
+        }
+      }
+    },
+    "Старт очистки": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Старт очистки"
+          }
+        }
+      }
+    },
+    "Старые версии": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Старые версии"
+          }
+        }
+      }
+    },
+    "Старые скриншоты": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Старые скриншоты"
+          }
+        }
+      }
+    },
+    "Статистика…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Статистика…"
+          }
+        }
+      }
+    },
+    "Статус доступа временно недоступен. Повторяем проверку.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Статус доступа временно недоступен. Повторяем проверку."
+          }
+        }
+      }
+    },
+    "Стоп": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Стоп"
+          }
+        }
+      }
+    },
+    "Стратегия": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Стратегия"
+          }
+        }
+      }
+    },
+    "Стратегия очистки": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Стратегия очистки"
+          }
+        }
+      }
+    },
+    "Текущие пресеты сохранены. Дополните их своими папками или исключите то, что нельзя трогать. Исключение имеет приоритет; если оно внутри папки, эта папка целиком пропускается при очистке.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Текущие пресеты сохранены. Дополните их своими папками или исключите то, что нельзя трогать. Исключение имеет приоритет; если оно внутри папки, эта папка целиком пропускается при очистке."
+          }
+        }
+      }
+    },
+    "Только на зарядке": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Только на зарядке"
+          }
+        }
+      }
+    },
+    "Точные дубликаты и крупные объекты. Всё выбираете вы.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Точные дубликаты и крупные объекты. Всё выбираете вы."
+          }
+        }
+      }
+    },
+    "Точный дубликат": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Точный дубликат"
+          }
+        }
+      }
+    },
+    "Убрать выбранные пути": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Убрать выбранные пути"
+          }
+        }
+      }
+    },
+    "Убрать правило; файлы останутся": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Убрать правило; файлы останутся"
+          }
+        }
+      }
+    },
+    "Удаление заблокировано: оставьте минимум один экземпляр каждого дубликата и повторите анализ.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удаление заблокировано: оставьте минимум один экземпляр каждого дубликата и повторите анализ."
+          }
+        }
+      }
+    },
+    "Удаление может быть необратимым: наличие корзины зависит от провайдера. Изменения в облачной папке могут синхронизироваться на другие устройства. Сделайте резервную копию. Изменённые после анализа файлы будут пропущены.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удаление может быть необратимым: наличие корзины зависит от провайдера. Изменения в облачной папке могут синхронизироваться на другие устройства. Сделайте резервную копию. Изменённые после анализа файлы будут пропущены."
+          }
+        }
+      }
+    },
+    "Удаление фото и файлов требует отдельного подтверждения. Оно может синхронизироваться через iCloud или другого провайдера. Избранные фото защищены. Контакты редактируются только через системный интерфейс.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удаление фото и файлов требует отдельного подтверждения. Оно может синхронизироваться через iCloud или другого провайдера. Избранные фото защищены. Контакты редактируются только через системный интерфейс."
+          }
+        }
+      }
+    },
+    "Удалить выбранное": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удалить выбранное"
+          }
+        }
+      }
+    },
+    "Удалять все локальные резервные копии": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удалять все локальные резервные копии"
+          }
+        }
+      }
+    },
+    "Удалять локальные резервные копии iPhone/iPad": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удалять локальные резервные копии iPhone/iPad"
+          }
+        }
+      }
+    },
+    "Условия": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Условия"
+          }
+        }
+      }
+    },
+    "Установлена последняя версия: {LC0}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Установлена последняя версия: {LC0}"
+          }
+        }
+      }
+    },
+    "ФАЙЛОВ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ФАЙЛОВ"
+          }
+        }
+      }
+    },
+    "ФАЙЛЫ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ФАЙЛЫ"
+          }
+        }
+      }
+    },
+    "Файл изменён; повторите сканирование": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Файл изменён; повторите сканирование"
+          }
+        }
+      }
+    },
+    "Файл недоступен": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Файл недоступен"
+          }
+        }
+      }
+    },
+    "Файлы": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Файлы"
+          }
+        }
+      }
+    },
+    "Файлы: {LC0}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Файлы: {LC0}"
+          }
+        }
+      }
+    },
+    "Фото": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фото"
+          }
+        }
+      }
+    },
+    "Фото и видео": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фото и видео"
+          }
+        }
+      }
+    },
+    "Фото и видео: {LC0} / {LC1}": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фото и видео: {LC0} / {LC1}"
+          }
+        }
+      }
+    },
+    "Фото, видео, файлы и контакты анализируются локально. Фото, файлы и контакты не отправляются на сервер. Приложение показывает контекстную рекламу сервисов сети без анализа ваших данных. Отключение рекламы приобретается через App Store и связывается с аккаунтом сети на сервере лицензирования. Для проверки покупки передаются подписанная транзакция Apple и идентификатор аккаунта.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фото, видео, файлы и контакты анализируются локально. Фото, файлы и контакты не отправляются на сервер. Приложение показывает контекстную рекламу сервисов сети без анализа ваших данных. Отключение рекламы приобретается через App Store и связывается с аккаунтом сети на сервере лицензирования. Для проверки покупки передаются подписанная транзакция Apple и идентификатор аккаунта."
+          }
+        }
+      }
+    },
+    "Часть файлов не удалена:\n": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Часть файлов не удалена:\n"
+          }
+        }
+      }
+    },
+    "Чем больше размер — тем длиннее луч.\nНажмите каталог, чтобы увидеть его содержимое.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чем больше размер — тем длиннее луч.\nНажмите каталог, чтобы увидеть его содержимое."
+          }
+        }
+      }
+    },
+    "Читаем диск…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Читаем диск…"
+          }
+        }
+      }
+    },
+    "Читаем сохранённый снимок…": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Читаем сохранённый снимок…"
+          }
+        }
+      }
+    },
+    "ЭФФЕКТИВНОСТЬ": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ЭФФЕКТИВНОСТЬ"
+          }
+        }
+      }
+    },
+    "Экономия меньше 10%. Лучше сохранить исходное фото.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Экономия меньше 10%. Лучше сохранить исходное фото."
+          }
+        }
+      }
+    },
+    "Эта сборка не подходит для процессора этого Mac.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Эта сборка не подходит для процессора этого Mac."
+          }
+        }
+      }
+    },
+    "Это только список действий. Файлы не удаляются.": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Это только список действий. Файлы не удаляются."
+          }
+        }
+      }
+    },
+    "Я проверил список и подтверждаю удаление": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Я проверил список и подтверждаю удаление"
+          }
+        }
+      }
+    },
+    "дней": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "дней"
+          }
+        }
+      }
+    },
+    "найдено": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "найдено"
+          }
+        }
+      }
+    },
+    "не сохранён": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "не сохранён"
+          }
+        }
+      }
+    },
+    "недоступен": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "недоступен"
+          }
+        }
+      }
+    },
+    "неизвестно": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "неизвестно"
+          }
+        }
+      }
+    },
+    "с замечаниями": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "с замечаниями"
+          }
+        }
+      }
+    },
+    "старше": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "старше"
+          }
+        }
+      }
+    }
+  }
+}

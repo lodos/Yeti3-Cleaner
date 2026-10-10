@@ -69,13 +69,13 @@ private func human(_ bytes: Int64) -> String { ByteCountFormatter.string(fromByt
             let pipe = Pipe(); process.standardError = pipe; try process.run()
             let message = pipe.fileHandleForReading.readDataToEndOfFile(); process.waitUntilExit()
             guard process.terminationStatus == 0 else { self.error = String(decoding: message, as: UTF8.self); return }
-            let alert = NSAlert(); alert.messageText = "Заменить каталог пресета?"; alert.informativeText = "Исключить: " + old + "\nОчищать содержимое: " + path + "\nНовое правило применяется при следующей очистке, без ограничения возраста файлов."; alert.addButton(withTitle: "Отмена"); alert.addButton(withTitle: "Заменить")
+            let alert = NSAlert(); alert.messageText = YetiL10n.text("Заменить каталог пресета?"); alert.informativeText = YetiL10n.text("Исключить: \(old)\nОчищать содержимое: \(path)\nНовое правило применяется при следующей очистке, без ограничения возраста файлов."); alert.addButton(withTitle: YetiL10n.text("Отмена")); alert.addButton(withTitle: YetiL10n.text("Заменить"))
             if alert.runModal() == .alertSecondButtonReturn { saveRules(Array(Set(include + [path])).sorted(), Array(Set(exclude + [old])).sorted()) }
         } catch { self.error = error.localizedDescription }
     }
     func choose(_ action: (URL) -> Void) {
         let panel = NSOpenPanel(); panel.canChooseFiles = false; panel.canChooseDirectories = true
-        panel.allowsMultipleSelection = false; panel.prompt = "Выбрать папку"
+        panel.allowsMultipleSelection = false; panel.prompt = YetiL10n.text("Выбрать папку")
         if panel.runModal() == .OK, let url = panel.url { action(url) }
     }
     func start(_ url: URL) {
@@ -241,7 +241,7 @@ struct DiskView: View {
         .padding(24).frame(minWidth: 1000, minHeight: 720)
         .background(LinearGradient(colors: [Color(red: 0.025, green: 0.075, blue: 0.12), Color(red: 0.015, green: 0.025, blue: 0.055)], startPoint: .topLeading, endPoint: .bottomTrailing))
         .preferredColorScheme(.dark).tint(cyan)
-        .alert("YETI³ Cleaner", isPresented: Binding(get: { model.error != nil }, set: { if !$0 { model.error = nil } })) { Button("Понятно", role: .cancel) {} } message: { Text(model.error ?? "") }
+        .alert("YETI³ Cleaner", isPresented: Binding(get: { model.error != nil }, set: { if !$0 { model.error = nil } })) { Button("Понятно", role: .cancel) {} } message: { Text(YetiL10n.text(model.error ?? "")) }
         .sheet(isPresented: $showPreview) {
             VStack(alignment: .leading) {
                 Text("Предпросмотр очистки").font(.title2.bold())
@@ -272,7 +272,7 @@ struct DiskView: View {
                 if model.busy { ProgressView().controlSize(.small); Button("Остановить") { model.cancel() } }
                 else { Button { model.start(model.root) } label: { Label("Сканировать", systemImage: "arrow.clockwise") } }
             }
-            if !model.cacheStatus.isEmpty { Text(model.cacheStatus).font(.caption).foregroundStyle(.secondary) }
+            if !model.cacheStatus.isEmpty { Text(YetiL10n.text(model.cacheStatus)).font(.caption).foregroundStyle(.secondary) }
             Text(model.root.path).font(.system(.callout, design: .monospaced)).textSelection(.enabled).lineLimit(1).truncationMode(.middle)
             HStack(alignment: .top, spacing: 20) {
                 VStack(spacing: 12) {
@@ -317,14 +317,14 @@ struct DiskView: View {
                             Button("В Finder") { NSWorkspace.shared.activateFileViewerSelecting([entry.url]) }
                             Button("Исключить") { model.add(entry.url, excluded: true) }
                             if entry.directory { Button("В очистку…") {
-                                let alert = NSAlert(); alert.messageText = "Добавить папку в очистку?"; alert.informativeText = "Все содержимое \(entry.url.path) будет включено в следующие запуски очистки. Сама папка останется. Проверьте предпросмотр перед запуском."; alert.addButton(withTitle: "Отмена"); alert.addButton(withTitle: "Добавить")
+                                let alert = NSAlert(); alert.messageText = YetiL10n.text("Добавить папку в очистку?"); alert.informativeText = YetiL10n.text("Все содержимое \(entry.url.path) будет включено в следующие запуски очистки. Сама папка останется. Проверьте предпросмотр перед запуском."); alert.addButton(withTitle: YetiL10n.text("Отмена")); alert.addButton(withTitle: YetiL10n.text("Добавить"))
                                 if alert.runModal() == .alertSecondButtonReturn { model.add(entry.url, excluded: false) }
                             } }
                         }
                     }
                 }.frame(maxWidth: .infinity)
             }
-            Text(model.status).font(.callout).foregroundStyle(model.status.contains("Неполный") ? .orange : .secondary)
+            Text(YetiL10n.text(model.status)).font(.callout).foregroundStyle(model.status.contains("Неполный") ? .orange : .secondary)
             Text("Размеры файлов, а не физически освобождаемое место. Снимки APFS, клоны и закрытые каталоги могут давать расхождение. Ссылки и вложенные тома пропускаются; другой диск выберите отдельно.").font(.caption).foregroundStyle(.secondary)
         }
     }
@@ -344,7 +344,7 @@ struct DiskView: View {
     }
     private func ruleList(_ title: String, paths: [String], excluded: Bool) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text(title).font(.headline)
+            Text(YetiL10n.text(title)).font(.headline)
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
                     if paths.isEmpty { Text(excluded ? "Дополнительных исключений нет" : "Используются только пресеты").foregroundStyle(.secondary) }
@@ -353,9 +353,9 @@ struct DiskView: View {
                     }
                 }
             }.frame(height: 240)
-            Button(excluded ? "Добавить исключение…" : "Добавить папку…") { model.choose { url in
+            Button(YetiL10n.text(excluded ? "Добавить исключение…" : "Добавить папку…")) { model.choose { url in
                 if excluded { model.add(url, excluded: true) } else {
-                    let alert = NSAlert(); alert.messageText = "Очищать содержимое этой папки?"; alert.informativeText = url.path + "\nПравило применяется при следующем запуске очистки. Используйте предпросмотр."; alert.addButton(withTitle: "Отмена"); alert.addButton(withTitle: "Добавить")
+                    let alert = NSAlert(); alert.messageText = YetiL10n.text("Очищать содержимое этой папки?"); alert.informativeText = url.path + "\nПравило применяется при следующем запуске очистки. Используйте предпросмотр."; alert.addButton(withTitle: YetiL10n.text("Отмена")); alert.addButton(withTitle: YetiL10n.text("Добавить"))
                     if alert.runModal() == .alertSecondButtonReturn { model.add(url, excluded: false) }
                 }
             } }
@@ -366,7 +366,7 @@ struct DiskView: View {
             Label("Обновление YETI³ Cleaner", systemImage: "arrow.down.circle").font(.title.bold())
             Text("Предрелиз \(releaseVersion) · Intel + Apple Silicon · macOS \(minimumMacOS)+").foregroundStyle(.secondary)
             Toggle("Получать предварительные версии", isOn: $model.includePrerelease).onChange(of: model.includePrerelease) { _ in model.pendingUpdate = nil }
-            Text(model.updateStatus).textSelection(.enabled)
+            Text(YetiL10n.text(model.updateStatus)).textSelection(.enabled)
             HStack {
                 Button("Проверить обновление") { model.checkUpdate() }.disabled(model.updateBusy)
                 if model.pendingUpdate != nil { Button("Скачать и открыть установщик") { model.downloadUpdate() }.disabled(model.updateBusy) }

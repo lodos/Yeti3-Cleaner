@@ -1,5 +1,6 @@
 name: Yeti3Cleaner
 options:
+  developmentLanguage: ru
   bundleIdPrefix: ru.yeti3
   deploymentTarget:
     iOS: "17.0"
@@ -17,7 +18,7 @@ targets:
   Yeti3Cleaner:
     type: application
     platform: iOS
-    sources: [App, Core, Services, Views, Resources]
+    sources: [App, Core, Services, Views, Resources, ../Shared/Localization.swift, ../Localization/Localizable.xcstrings, ../Localization/LocalizationTemplates.json, ../Localization/InfoPlist.xcstrings]
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: ru.yeti3.cleaner.ios

@@ -8,8 +8,8 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 Section("Стратегия очистки") {
-                    Picker("Режим", selection: $settings.strategy) { ForEach(Strategy.allCases) { Text($0.title).tag($0) } }.accessibilityIdentifier("strategyPicker")
-                    Text(settings.strategy.detail).font(.footnote)
+                    Picker("Режим", selection: $settings.strategy) { ForEach(Strategy.allCases) { Text(YetiL10n.text($0.title)).tag($0) } }.accessibilityIdentifier("strategyPicker")
+                    Text(YetiL10n.text(settings.strategy.detail)).font(.footnote)
                     Text("Настройки сохраняются отдельно для каждой стратегии. Личные данные удаляются только после dry run и подтверждения.").font(.caption)
                 }
                 Section("Автоматический dry run") {

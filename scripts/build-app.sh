@@ -46,7 +46,7 @@ for CPU in "${BUILD_ARCHES[@]}"; do
     --bin yeti3-cleaner --bin yeti3-cleaner-tray
   mkdir -p "target/$CPU$SWIFT_TARGET_SUFFIX"
   xcrun swiftc -O -parse-as-library -target "$CPU-apple-macosx$MIN_MACOS" \
-    native/DiskScanner.swift native/LiveScan.swift native/DiskCache.swift native/SettingsPanel.swift native/UpdatePolicy.swift native/DiskMap.swift \
+    Shared/Localization.swift native/DiskScanner.swift native/LiveScan.swift native/DiskCache.swift native/SettingsPanel.swift native/UpdatePolicy.swift native/DiskMap.swift \
     -o "target/$CPU$SWIFT_TARGET_SUFFIX/yeti3-disk-map"
 done
 
@@ -162,6 +162,10 @@ codesign --force --sign - "$HELPER"
 
 printf '\n===== VERIFY =====\n'
 
+xcrun xcstringstool compile "$ROOT/Localization/Localizable.xcstrings" --output-directory "$RESOURCES"
+xcrun xcstringstool compile "$ROOT/Localization/InfoPlist.xcstrings" --output-directory "$RESOURCES"
+xcrun xcstringstool compile "$ROOT/Localization/Localizable.xcstrings" --output-directory "$HELPER/Contents/Resources"
+cp "$ROOT/Localization/LocalizationTemplates.json" "$HELPER/Contents/Resources/"
 plutil -lint "$CONTENTS/Info.plist"
 
 test -s "$RESOURCES/Yeti3.icns"

@@ -19,7 +19,7 @@ struct ContentView: View {
         }
         .task { model.automaticScan(settings: settings) }
         .tint(Color(red: 0.1, green: 0.72, blue: 1))
-        .alert("YETI³ Cleaner", isPresented: Binding(get: { model.message != nil }, set: { if !$0 { model.message = nil } })) { Button("Понятно", role: .cancel) {} } message: { Text(model.message ?? "") }
+        .alert("YETI³ Cleaner", isPresented: Binding(get: { model.message != nil }, set: { if !$0 { model.message = nil } })) { Button("Понятно", role: .cancel) {} } message: { Text(YetiL10n.text(model.message ?? "")) }
         .sheet(item: $model.preview) { preview in OptimizationView(preview: preview) }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active { model.refreshAccess(); model.automaticScan(settings: settings) }
@@ -46,13 +46,13 @@ struct DashboardView: View {
                 }
                 Section("Стратегия") {
                     Text(settings.strategy.title).font(.headline)
-                    Text(settings.strategy.detail).foregroundStyle(.secondary)
+                    Text(YetiL10n.text(settings.strategy.detail)).foregroundStyle(.secondary)
                     Text("Категории и пороги меняются в настройках.").font(.caption)
                 }
                 Section {
                     if model.busy { ProgressView(model.status); Button("Остановить анализ", role: .cancel) { model.cancel() } }
                     else { Button { model.scan(settings.options) } label: { Label("Начать анализ", systemImage: "magnifyingglass").font(.headline) }.accessibilityIdentifier("startScan") }
-                    if !model.busy { Text(model.status).font(.footnote).foregroundStyle(.secondary) }
+                    if !model.busy { Text(YetiL10n.text(model.status)).font(.footnote).foregroundStyle(.secondary) }
                     if let date = model.lastScan { Text("Последний анализ: \(date.formatted(date: .abbreviated, time: .shortened))").font(.caption) }
                 }
                 Section("Результаты") {

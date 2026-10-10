@@ -1,0 +1,36 @@
+{
+  "sourceLanguage": "ru",
+  "version": "1.0",
+  "strings": {
+    "NSContactsUsageDescription": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Локальный поиск повторяющихся и неполных контактов. Контакты не отправляются на сервер."
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryAddUsageDescription": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сохранение уменьшенной копии фотографии. Оригинал остаётся в медиатеке."
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryUsageDescription": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Локальный поиск дубликатов, крупных видео и скриншотов. Удаление выбранных фото возможно только после вашего подтверждения."
+          }
+        }
+      }
+    }
+  }
+}

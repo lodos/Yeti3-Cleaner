@@ -41,7 +41,7 @@ use objc2_app_kit::{
 };
 
 use objc2_foundation::{
-    MainThreadMarker, NSObject, NSObjectProtocol, NSPoint, NSRect, NSSize, NSString,
+    MainThreadMarker, NSBundle, NSObject, NSObjectProtocol, NSPoint, NSRect, NSSize, NSString,
 };
 
 thread_local! {
@@ -727,7 +727,8 @@ impl Controller {
 }
 
 fn ns(value: &str) -> Retained<NSString> {
-    NSString::from_str(value)
+    let key = NSString::from_str(value);
+    NSBundle::mainBundle().localizedStringForKey_value_table(&key, Some(&key), None)
 }
 
 fn menu_item(

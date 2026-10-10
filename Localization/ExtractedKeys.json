@@ -1,0 +1,876 @@
+{
+  "keys": {
+    "Настройки": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 50
+      },
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 18
+      }
+    ],
+    "Сбросить только временные данные Cleaner?": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 51
+      }
+    ],
+    "Стратегия очистки": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 10
+      }
+    ],
+    "Автоматический dry run": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 15
+      }
+    ],
+    "Локальное сканирование": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 24
+      }
+    ],
+    "Копия фотографии": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 33
+      }
+    ],
+    "Помощь": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 39
+      }
+    ],
+    "Данные приложения": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 44
+      }
+    ],
+    "Настройки сохраняются отдельно для каждой стратегии. Личные данные удаляются только после dry run и подтверждения.": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 13
+      }
+    ],
+    "Режим": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 11
+      }
+    ],
+    "Без запросов новых разрешений и удаления. При энергосбережении и перегреве анализ откладывается. iOS не гарантирует запуск по расписанию в закрытом приложении. Фото и файлы выбираете вы; контакты изменяются только вручную.": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 22
+      }
+    ],
+    "Анализировать при открытии приложения": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 16
+      }
+    ],
+    "Не чаще": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 17
+      }
+    ],
+    "Только на зарядке": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 20
+      }
+    ],
+    "Заряд не ниже %lld%%": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 21
+      }
+    ],
+    "Каждые 6 часов": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 18
+      }
+    ],
+    "Раз в день": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 18
+      }
+    ],
+    "Раз в неделю": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 18
+      }
+    ],
+    "Фото и видео": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 25
+      },
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 60
+      },
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 131
+      }
+    ],
+    "Похожие фото": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 26
+      }
+    ],
+    "Старые скриншоты": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 27
+      }
+    ],
+    "Выбранные файлы": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 28
+      }
+    ],
+    "Контакты": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 29
+      },
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 17
+      },
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 285
+      }
+    ],
+    "Скриншоты старше %lld дней": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 30
+      }
+    ],
+    "Крупные объекты от %lld МБ": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 31
+      }
+    ],
+    "Качество JPEG: %lld%%": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 35
+      }
+    ],
+    "Оригинал сохраняется. Копия не содержит геопозиции и EXIF. RAW, HDR, Live Photo, панорамы и отредактированные снимки исключены.": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 37
+      }
+    ],
+    "Длинная сторона": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 36
+      }
+    ],
+    "Качество JPEG": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 34
+      }
+    ],
+    "2048 px": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 36
+      }
+    ],
+    "2560 px": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 36
+      }
+    ],
+    "4096 px": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 36
+      }
+    ],
+    "В письме укажите версию приложения, устройство и действия до ошибки. Не прикладывайте личные фото и контакты без необходимости.": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 42
+      }
+    ],
+    "Поддержка и инструкции": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 40
+      }
+    ],
+    "Написать разработчику": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 41
+      }
+    ],
+    "Версия 1.0.0 (2) · iOS 17+": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 48
+      }
+    ],
+    "Сбросить временный просмотр…": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 45
+      }
+    ],
+    "Восстановить настройки этой стратегии": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 46
+      }
+    ],
+    "Конфиденциальность": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 47
+      },
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 68
+      },
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 179
+      }
+    ],
+    "Сбросить": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 51
+      }
+    ],
+    "Отмена": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 51
+      },
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 262
+      }
+    ],
+    "Обработка на устройстве": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 61
+      }
+    ],
+    "Фото, видео, файлы и контакты анализируются локально. Фото, файлы и контакты не отправляются на сервер. Приложение показывает контекстную рекламу сервисов сети без анализа ваших данных. Отключение рекламы приобретается через App Store и связывается с аккаунтом сети на сервере лицензирования. Для проверки покупки передаются подписанная транзакция Apple и идентификатор аккаунта.": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 62
+      }
+    ],
+    "Доступ к Фото и Контактам запрашивается только при включении соответствующего анализа. Можно предоставить ограниченный доступ и отозвать его в Настройках iOS.": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 63
+      }
+    ],
+    "Выбранные файлы доступны через системный выбор документов. Облачный провайдер может использовать сеть самостоятельно. Cleaner не запрашивает загрузку оригиналов из iCloud Фото.": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 64
+      }
+    ],
+    "Результаты анализа и разрешённые пути хранятся только в памяти текущей сессии. Настройки стратегий сохраняются на устройстве. Удаление приложения удаляет его собственные данные.": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 65
+      }
+    ],
+    "Удаление фото и файлов требует отдельного подтверждения. Оно может синхронизироваться через iCloud или другого провайдера. Избранные фото защищены. Контакты редактируются только через системный интерфейс.": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 66
+      }
+    ],
+    "Оптимизация создаёт JPEG-копию с потерей части качества и метаданных, сохраняя оригинал. Сохранение копии само по себе не освобождает место.": [
+      {
+        "file": "ios/Views/SettingsView.swift",
+        "line": 67
+      }
+    ],
+    "YETI³ Cleaner": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 23
+      },
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 70
+      },
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 40
+      }
+    ],
+    "Обзор": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 14
+      }
+    ],
+    "Фото": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 15
+      }
+    ],
+    "Файлы": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 16
+      }
+    ],
+    "Понятно": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 23
+      }
+    ],
+    "Стратегия": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 48
+      }
+    ],
+    "Результаты": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 59
+      }
+    ],
+    "Как освободить место": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 65
+      }
+    ],
+    "Больше места.\nВсё под контролем.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 39
+      }
+    ],
+    "Свободно %@ из %@": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 43
+      }
+    ],
+    "Локальный анализ · Без аккаунта · Без отправки данных": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 45
+      }
+    ],
+    "Категории и пороги меняются в настройках.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 51
+      }
+    ],
+    "Последний анализ: %@": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 57
+      }
+    ],
+    "Остановить анализ": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 54
+      }
+    ],
+    "Начать анализ": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 55
+      }
+    ],
+    "Группы точных дубликатов": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 61
+      }
+    ],
+    "Доступные файлы": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 62
+      },
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 227
+      }
+    ],
+    "Возможные повторы контактов": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 63
+      }
+    ],
+    "Проверьте выбранные объекты перед удалением. Системные кэши и данные других приложений недоступны Cleaner.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 66
+      }
+    ],
+    "В iOS: Настройки → Основные → Хранилище iPhone / iPad. Там доступны рекомендации Apple и сгрузка приложений.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 67
+      }
+    ],
+    "Для iCloud Фото: Настройки → Фото → Оптимизация хранилища. Сначала убедитесь, что оригиналы синхронизированы.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 68
+      }
+    ],
+    "Запустите анализ и проверьте включённые категории в настройках.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 103
+      }
+    ],
+    "Нет результатов": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 103
+      },
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 284
+      }
+    ],
+    "%@. Анализируются только доступные локальные ресурсы.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 96
+      }
+    ],
+    "%lld объектов без локальных оригиналов или с ошибкой чтения. Они не участвуют в точном сравнении и удалении.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 100
+      }
+    ],
+    "Визуальное сходство — предположение. Сравните снимки: они могут быть разными и важными.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 101
+      }
+    ],
+    "Изменить выбранные фото": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 97
+      }
+    ],
+    "Показать": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 99
+      },
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 205
+      }
+    ],
+    "Открыть настройки доступа": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 312
+      }
+    ],
+    "Выбрать фото %@": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 109
+      }
+    ],
+    "Дубликаты · группа %lld": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 119
+      }
+    ],
+    "Видео · %lld сек": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 115
+      }
+    ],
+    "%lld × %lld": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 115
+      }
+    ],
+    "Избранное защищено": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 118
+      }
+    ],
+    "Выбрано во всех фильтрах: %lld": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 126
+      }
+    ],
+    "Просмотреть удаление…": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 127
+      }
+    ],
+    "Снять выбор": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 128
+      },
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 225
+      }
+    ],
+    "Просмотр": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 163
+      }
+    ],
+    "%lld × %lld · %@": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 154
+      }
+    ],
+    "Live Photo: фото и движение учитываются вместе.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 155
+      }
+    ],
+    "Размер включает доступные ресурсы видео. Воспроизведение и редактирование доступны в приложении «Фото».": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 156
+      }
+    ],
+    "Будет создан JPEG с уменьшением разрешения и качества. Геопозиция и EXIF не копируются. Оригинал сохраняется.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 159
+      }
+    ],
+    "Предпросмотр оптимизации": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 158
+      }
+    ],
+    "Оптимизация": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 181
+      }
+    ],
+    "Оригинал: %@\nКопия: %@": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 175
+      }
+    ],
+    "Потенциальная разница: %@": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 176
+      }
+    ],
+    "Сохранение копии сначала увеличит занятое место. Оригинал не удаляется. Проверьте детали, цвет и качество в «Фото»; удаление оригинала — отдельное решение.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 177
+      }
+    ],
+    "Сохранить копию в Фото": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 178
+      }
+    ],
+    "Закрыть": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 181
+      }
+    ],
+    "Затем запустите анализ на вкладке «Обзор». Удаление архивов и больших файлов не считается автоматически безопасным.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 208
+      }
+    ],
+    "Выберите файлы": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 208
+      }
+    ],
+    "Просмотреть удаление: %lld…": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 224
+      }
+    ],
+    "Доступ действует в этой сессии. Облачные файлы, не загруженные на устройство, пропускаются, если провайдер сообщает этот статус.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 202
+      }
+    ],
+    "Пропущено: %lld. Нет доступа, облачный ресурс или ссылка.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 206
+      }
+    ],
+    "Выбрать файлы или папку…": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 201
+      }
+    ],
+    "Убрать выбранные пути": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 204
+      }
+    ],
+    "Выбрать %@": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 213
+      }
+    ],
+    "Просмотреть %@": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 220
+      }
+    ],
+    "Точный дубликат": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 217
+      }
+    ],
+    "Предварительный план · ничего не удалено": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 251
+      }
+    ],
+    "Будет удалено: %lld": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 257
+      }
+    ],
+    "План действует 15 минут. Перед выполнением содержимое проверяется повторно.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 254
+      }
+    ],
+    "Удаление заблокировано: оставьте минимум один экземпляр каждого дубликата и повторите анализ.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 255
+      }
+    ],
+    "Логический размер": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 253
+      }
+    ],
+    "Я проверил список и подтверждаю удаление": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 259
+      }
+    ],
+    "Удалить выбранное": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 260
+      }
+    ],
+    "Включите анализ контактов в настройках и запустите сканирование.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 284
+      }
+    ],
+    "Неполные записи": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 283
+      }
+    ],
+    "Анализируются только разрешённые контакты. Совпадение телефона или email — повод проверить записи, а не доказательство дубликата.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 273
+      }
+    ],
+    "Cleaner не объединяет и не удаляет контакты автоматически. Откройте запись для просмотра и редактирования в системном интерфейсе.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 274
+      }
+    ],
+    "Доступ ограничен. Изменить список разрешённых контактов можно в Настройках iOS.": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 276
+      }
+    ],
+    "Возможные повторы · %lld": [
+      {
+        "file": "ios/Views/ContentView.swift",
+        "line": 279
+      }
+    ],
+    "Сеть без рекламы": [
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 159
+      }
+    ],
+    "Один доступ для всех продуктов YETI³ на вашем аккаунте. Выберите срок; продление вручную.": [
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 160
+      }
+    ],
+    "Покупки временно недоступны. Восстановление остаётся доступным.": [
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 174
+      }
+    ],
+    "Email аккаунта сети": [
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 162
+      }
+    ],
+    "Пароль": [
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 163
+      }
+    ],
+    "Войти": [
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 164
+      }
+    ],
+    "Реклама отключена": [
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 166
+      }
+    ],
+    "Подтверждаем…": [
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 175
+      }
+    ],
+    "Восстановить покупки": [
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 177
+      }
+    ],
+    "Обновить цены": [
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 178
+      }
+    ],
+    "Условия": [
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 179
+      }
+    ],
+    "Подробнее": [
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 198
+      }
+    ],
+    "Без рекламы": [
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 199
+      }
+    ],
+    "РЕКЛАМА · YETI³": [
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 194
+      }
+    ],
+    "LineCloud · рендер Blender в облаке": [
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 195
+      }
+    ],
+    "Готово": [
+      {
+        "file": "Shared/NetworkPurchase.swift",
+        "line": 201
+      }
+    ]
+  }
+}

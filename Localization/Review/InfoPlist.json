@@ -1,0 +1,72 @@
+{
+  "sourceLanguage": "ru",
+  "version": "1.0",
+  "strings": {
+    "NSContactsUsageDescription": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Локальный поиск повторяющихся и неполных контактов. Контакты не отправляются на сервер."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Local search for repeated and incomplete contacts. contacts are not sent to the server."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "地面搜索重复和不完整的联系人. 联系人不会发送到服务器。"
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryAddUsageDescription": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сохранение уменьшенной копии фотографии. Оригинал остаётся в медиатеке."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Save a reduced copy of the photo. the original remains in the media."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "保留照片的缩小副本. 原始留在媒体上。"
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryUsageDescription": {
+      "localizations": {
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Локальный поиск дубликатов, крупных видео и скриншотов. Удаление выбранных фото возможно только после вашего подтверждения."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "Local search for duplicates, large videos and screenshots. Removing the selected photos is possible only after your confirmation."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "needs_review",
+            "value": "當地搜尋重複、大視頻和屏幕截圖 您所選擇的照片只能在您的確認後刪除。"
+          }
+        }
+      }
+    }
+  }
+}
