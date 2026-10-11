@@ -98,6 +98,7 @@ actor PhotoService {
         for index in 0..<assets.count {
             try await budget.yield()
             let asset = assets.object(at: index)
+            if !options.includesPhoto(date: asset.creationDate) { continue }
             if !options.includeVideos && asset.mediaType == .video { continue }
             let digest = try? await Self.digest(asset, budget: budget)
             try budget.check()
@@ -105,7 +106,7 @@ actor PhotoService {
             if digest == nil { report.unavailable += 1 }
             var hash: UInt64?
             if options.similar && asset.mediaType == .image, let image = await Self.image(asset.localIdentifier, size: CGSize(width: 160, height: 160)) { hash = Self.perceptualHash(image) }
-            report.items.append(.init(id: asset.localIdentifier, date: asset.creationDate, modified: asset.modificationDate, width: asset.pixelWidth, height: asset.pixelHeight, video: asset.mediaType == .video, favorite: asset.isFavorite, live: asset.mediaSubtypes.contains(.photoLive), screenshot: asset.mediaSubtypes.contains(.photoScreenshot), digest: digest, similarity: hash, duration: asset.duration, protected: options.protects(date: asset.creationDate)))
+            report.items.append(.init(id: asset.localIdentifier, date: asset.creationDate, modified: asset.modificationDate, width: asset.pixelWidth, height: asset.pixelHeight, video: asset.mediaType == .video, favorite: asset.isFavorite, live: asset.mediaSubtypes.contains(.photoLive), screenshot: asset.mediaSubtypes.contains(.photoScreenshot), digest: digest, similarity: hash, duration: asset.duration, protected: options.protects(date: asset.creationDate) || (options.protectBursts && asset.representsBurst)))
             if let digest { exact[digest.hash, default: []].append(asset.localIdentifier) }
             await progress(index+1, assets.count)
         }
@@ -159,6 +160,9 @@ actor PhotoService {
               asset.modificationDate == item.modified,
               !asset.mediaSubtypes.contains(.photoHDR), !asset.mediaSubtypes.contains(.photoPanorama) else {
             throw CleanerError.message("Оптимизация доступна для обычных неподвижных фото. Live Photo, HDR и панорамы сохраняются без изменений.")
+        }
+        if #available(iOS 18, *), asset.mediaSubtypes.contains(.spatialMedia) {
+            throw CleanerError.message("Пространственные фото сохраняются в исходном формате. Преобразование в JPEG отключено.")
         }
         let resources = PHAssetResource.assetResources(for: asset)
         guard resources.count == 1, let resource = resources.first,

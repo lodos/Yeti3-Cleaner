@@ -21,13 +21,15 @@ targets:
     sources: [App, Core, Services, Views, Resources, ../Shared/NetworkPurchase.swift, ../Shared/AdAccessPolicy.swift, ../Shared/Localization.swift, ../Localization/Localizable.xcstrings, ../Localization/LocalizationTemplates.json, ../Localization/InfoPlist.xcstrings]
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: ru.yeti3.cleaner.ios
+        PRODUCT_BUNDLE_IDENTIFIER: $(CLEANER_BUNDLE_ID)
+        CLEANER_BUNDLE_ID: ru.yeti3.cleaner.ios
+        CLEANER_DISPLAY_NAME: YETI³ Cleaner
         INFOPLIST_FILE: Config/Info.plist
         CODE_SIGN_ENTITLEMENTS: Config/Yeti3Cleaner.entitlements
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         "CODE_SIGN_ENTITLEMENTS[sdk=macosx*]": Config/Yeti3Cleaner-Mac.entitlements
         SUPPORTS_MACCATALYST: YES
-        "PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]": maccatalyst.ru.yeti3.cleaner.ios
+        "PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]": maccatalyst.$(CLEANER_BUNDLE_ID)
         SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD: NO
   Yeti3CleanerTests:
     type: bundle.unit-test

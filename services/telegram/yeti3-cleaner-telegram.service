@@ -1,0 +1,18 @@
+[Unit]
+Description=Cleaner bridge to existing verified Telegram TLS relay
+Requires=yeti3-cleaner-telegram.socket
+After=gochain-telegram-egress.service
+
+[Service]
+User=gochain-egress
+Group=gochain-egress
+ExecStart=/lib/systemd/systemd-socket-proxyd /run/gochain-telegram-egress/api.sock
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+RestrictAddressFamilies=AF_UNIX
+CapabilityBoundingSet=
+MemoryMax=32M
+TasksMax=16

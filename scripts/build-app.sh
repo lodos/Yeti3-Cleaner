@@ -12,14 +12,14 @@ MIN_MACOS="${2:-14.0}"
 case "$MIN_MACOS" in 12.0|14.0) ;; *) echo "Expected minimum macOS 12.0 or 14.0" >&2; exit 2;; esac
 BUNDLE_VERSION="${VERSION%%-*}"
 DIST_ARCH="$ARCH"
-RUST_TARGET_DIR="$ROOT/target"
+RUST_TARGET_DIR="${CLEANER_BUILD_TARGET_DIR:-$ROOT/target}"
 SWIFT_TARGET_SUFFIX=""
 if [ "$MIN_MACOS" = 12.0 ]; then
   DIST_ARCH="$ARCH-macos12"
   RUST_TARGET_DIR="$ROOT/target/macos12"
   SWIFT_TARGET_SUFFIX="-macos12"
 fi
-APP="$ROOT/dist/$DIST_ARCH/Yeti3-Cleaner.app"
+APP="${CLEANER_DIST_ROOT:-$ROOT/dist}/$DIST_ARCH/Yeti3-Cleaner.app"
 CONTENTS="$APP/Contents"
 MACOS="$CONTENTS/MacOS"
 RESOURCES="$CONTENTS/Resources"
@@ -46,7 +46,7 @@ for CPU in "${BUILD_ARCHES[@]}"; do
     --bin yeti3-cleaner --bin yeti3-cleaner-tray
   mkdir -p "target/$CPU$SWIFT_TARGET_SUFFIX"
   xcrun swiftc -O -parse-as-library -target "$CPU-apple-macosx$MIN_MACOS" \
-    Shared/Localization.swift Shared/AdAccessPolicy.swift Shared/NetworkPurchase.swift native/DiskScanner.swift native/LiveScan.swift native/DiskCache.swift native/SettingsPanel.swift native/UpdatePolicy.swift native/DiskMap.swift \
+    Shared/Localization.swift Shared/AdAccessPolicy.swift Shared/NetworkPurchase.swift native/DiskScanner.swift native/LiveScan.swift native/DiskCache.swift native/SettingsPanel.swift native/BackgroundOverview.swift native/UpdatePolicy.swift native/DiskMap.swift \
     -o "target/$CPU$SWIFT_TARGET_SUFFIX/yeti3-disk-map"
 done
 
@@ -69,6 +69,9 @@ else
 fi
 
 printf '\n===== PREMIUM RESOURCES =====\n'
+cp -f ios/Resources/PrivacyInfo.xcprivacy "$RESOURCES/PrivacyInfo.xcprivacy"
+cp -f ios/Resources/Assets.xcassets/Mascot.imageset/mascot.png "$RESOURCES/NodeMascot.png"
+cp -f ios/Resources/Assets.xcassets/IceAtelierBackground.imageset/IceAtelierBackground.png "$RESOURCES/IceAtelierBackground.png"
 
 cp -f \
   "$ICON" \
@@ -142,6 +145,9 @@ else
   cp "target/$ARCH$SWIFT_TARGET_SUFFIX/yeti3-disk-map" "$HELPER/Contents/MacOS/yeti3-disk-map"
 fi
 cp "$ICON" "$HELPER/Contents/Resources/Yeti3.icns"
+cp "$RESOURCES/PrivacyInfo.xcprivacy" "$HELPER/Contents/Resources/PrivacyInfo.xcprivacy"
+cp "$RESOURCES/NodeMascot.png" "$HELPER/Contents/Resources/NodeMascot.png"
+cp "$RESOURCES/IceAtelierBackground.png" "$HELPER/Contents/Resources/IceAtelierBackground.png"
 cat > "$HELPER/Contents/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">

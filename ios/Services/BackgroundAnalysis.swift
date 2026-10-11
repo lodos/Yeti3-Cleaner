@@ -13,7 +13,7 @@ final class CleanerAppDelegate: NSObject, UIApplicationDelegate {
 }
 
 enum BackgroundAnalysis {
-    static let identifier = "ru.yeti3.cleaner.ios.overview"
+    static let identifier = (Bundle.main.bundleIdentifier ?? "ru.yeti3.cleaner.ios") + ".overview"
     static func policy() -> AutomationPolicy {
         UserDefaults.standard.data(forKey: "automation").flatMap { try? JSONDecoder().decode(AutomationPolicy.self, from: $0) } ?? AutomationPolicy()
     }
@@ -24,8 +24,13 @@ enum BackgroundAnalysis {
         request.requiresExternalPower = policy().requireCharging
         request.requiresNetworkConnectivity = false
         request.earliestBeginDate = Date().addingTimeInterval(Double(max(1, policy().intervalHours)) * 3600)
-        do { try BGTaskScheduler.shared.submit(request) }
-        catch { UserDefaults.standard.set("iOS пока не приняла фоновую задачу. Повторим при уходе в фон.", forKey: "backgroundSchedulingMessage") }
+        Task.detached(priority: .utility) {
+            do {
+                if #available(iOS 27, *) { try await BGTaskScheduler.shared.submitTaskRequest(request) }
+                else { try BGTaskScheduler.shared.submit(request) }
+                UserDefaults.standard.removeObject(forKey: "backgroundSchedulingMessage")
+            } catch { UserDefaults.standard.set("Система пока не приняла фоновую задачу. Повторим при уходе в фон.", forKey: "backgroundSchedulingMessage") }
+        }
     }
     static func run(_ task: BGProcessingTask) {
         // Expiration cancels the same structured worker, even during metadata enumeration.

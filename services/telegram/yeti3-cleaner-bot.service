@@ -1,0 +1,36 @@
+[Unit]
+Description=YETI3 Cleaner payment webhook
+After=network-online.target
+Wants=network-online.target
+Requires=yeti3-cleaner-telegram.socket
+After=yeti3-cleaner-telegram.socket
+
+[Service]
+Type=simple
+User=yeti3-cleaner-bot
+Group=yeti3-cleaner-bot
+WorkingDirectory=/opt/yeti3-cleaner-bot
+ExecStart=/usr/bin/python3 /opt/yeti3-cleaner-bot/bot.py
+Environment=PYTHONDONTWRITEBYTECODE=1
+EnvironmentFile=/etc/yeti3-cleaner-bot/runtime.env
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+CapabilityBoundingSet=
+MemoryMax=128M
+CPUQuota=25%
+TasksMax=32
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

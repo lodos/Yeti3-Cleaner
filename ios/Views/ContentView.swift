@@ -22,25 +22,40 @@ struct ContentView: View {
         }
         .task { model.automaticScan(settings: settings) }
         .preferredColorScheme(.dark)
-        .tint(Color(red: 0.1, green: 0.72, blue: 1))
+        .tint(.cyan)
+        .background(CleanerIceBackground())
         .alert("YETI³ Cleaner", isPresented: Binding(get: { model.message != nil }, set: { if !$0 { model.message = nil } })) { Button("Понятно", role: .cancel) {} } message: { Text(YetiL10n.text(model.message ?? "")) }
         .sheet(item: $model.preview) { preview in OptimizationView(preview: preview) }
+        .onChange(of: settings.options) { _, _ in model.invalidateAnalysis() }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active { model.refreshAccess(); model.automaticScan(settings: settings); Task { await NetworkPurchase.shared.refresh() } }
-            if phase == .background { model.cancel(); BackgroundAnalysis.schedule() }
+            if phase == .background { model.backgrounded(); BackgroundAnalysis.schedule() }
         }
     }
 }
 struct DashboardView: View {
+    @ScaledMetric(relativeTo: .largeTitle) private var titleSize = 56
     @EnvironmentObject var model: CleanerModel
     @EnvironmentObject var settings: SettingsStore
     var body: some View {
         NavigationStack {
-            List {
-                Section {
+            ScrollView {
+              VStack(alignment: .leading, spacing: 22) {
+                CleanerSection {
                     VStack(alignment: .leading, spacing: 14) {
-                        Text("Больше места.\nВсё под контролем.").font(.largeTitle.bold())
-                        Text("YETI³ Cleaner").foregroundStyle(.cyan).font(.headline)
+                        Text("YETI³ / CLEANER").font(.caption.monospaced()).tracking(3).foregroundStyle(.cyan)
+                        ViewThatFits(in: .horizontal) {
+                            HStack(spacing: 16) {
+                                Text("Cleaner.").font(.system(size: titleSize, weight: .bold, design: .rounded)).fixedSize()
+                                Spacer(minLength: 0)
+                                Image("Mascot").resizable().scaledToFit().frame(width: 88).clipShape(RoundedRectangle(cornerRadius: 24)).accessibilityHidden(true)
+                            }
+                            VStack(alignment: .leading, spacing: 12) {
+                                Text("Cleaner.").font(.system(size: titleSize, weight: .bold, design: .rounded)).lineLimit(1).minimumScaleFactor(0.5)
+                                Image("Mascot").resizable().scaledToFit().frame(width: 72).clipShape(RoundedRectangle(cornerRadius: 22)).accessibilityHidden(true)
+                            }
+                        }
+                        Text("Больше места. Всё под контролем.").font(.subheadline).foregroundStyle(.secondary)
                         if model.totalBytes > 0 {
                             ProgressView(value: Double(model.totalBytes-model.freeBytes), total: Double(model.totalBytes)).tint(.cyan)
                             Text("Свободно \(bytesLabel(model.freeBytes)) из \(bytesLabel(model.totalBytes))").font(.subheadline)
@@ -48,29 +63,34 @@ struct DashboardView: View {
                         Text("Локальный анализ · Очистка без аккаунта").font(.caption).foregroundStyle(.secondary)
                     }.padding(.vertical, 14)
                 }
-                Section("Стратегия") {
+                CleanerSection("Стратегия") {
                     Text(settings.strategy.title).font(.headline)
                     Text(YetiL10n.text(settings.strategy.detail)).foregroundStyle(.secondary)
                     Text("Категории и пороги меняются в настройках.").font(.caption)
                 }
-                Section {
+                CleanerSection {
                     if model.busy { ProgressView(model.status); Button("Остановить анализ", role: .cancel) { model.cancel() } }
-                    else { Button { model.scan(settings.options) } label: { Label("Начать анализ", systemImage: "magnifyingglass").font(.headline) }.accessibilityIdentifier("startScan") }
+                    else { Button { model.scan(settings.options) } label: { Label("Начать анализ", systemImage: "magnifyingglass").font(.headline) }.buttonStyle(.borderedProminent).controlSize(.large).accessibilityIdentifier("startScan") }
                     if !model.busy { Text(YetiL10n.text(model.status)).font(.footnote).foregroundStyle(.secondary) }
                     if let date = model.lastScan { Text("Последний анализ: \(date.formatted(date: .abbreviated, time: .shortened))").font(.caption) }
                 }
-                Section("Результаты") {
+                CleanerSection("Результаты") {
                     LabeledContent("Фото и видео", value: "\(model.photos.items.count)")
                     LabeledContent("Группы точных дубликатов", value: "\(model.photos.duplicates.count + model.files.duplicates.count)")
                     LabeledContent("Доступные файлы", value: "\(model.files.items.count)")
                     LabeledContent("Возможные повторы контактов", value: "\(model.contacts.groups.count)")
                 }
-                Section("Как освободить место") {
+                CleanerSection("Как освободить место") {
                     Text("Проверьте выбранные объекты перед удалением. Системные кэши и данные других приложений недоступны Cleaner.")
+                    #if targetEnvironment(macCatalyst)
+                    Text("В macOS: Системные настройки → Основные → Хранилище. Полная Mac-версия Cleaner также анализирует локальные кэши и инструменты разработки.")
+                    #else
                     Text("В iOS: Настройки → Основные → Хранилище iPhone / iPad. Там доступны рекомендации Apple и сгрузка приложений.")
+                    #endif
                     Text("Для iCloud Фото: Настройки → Фото → Оптимизация хранилища. Сначала убедитесь, что оригиналы синхронизированы.")
                 }.font(.footnote)
-            }.navigationTitle("YETI³ Cleaner")
+              }.padding(24).frame(maxWidth: 880)
+            }.cleanerScreen().navigationTitle("YETI³ Cleaner").navigationBarTitleDisplayMode(.inline)
         }
     }
 }
@@ -118,7 +138,7 @@ struct PhotosView: View {
                                 Text(item.video ? "Видео · \(Int(item.duration)) сек" : "\(item.width) × \(item.height)")
                                 Text(item.date?.formatted(date: .abbreviated, time: .shortened) ?? "Без даты").font(.caption)
                                 Text(item.digest == nil ? "Оригинал недоступен" : bytesLabel(item.bytes)).font(.caption).foregroundStyle(.secondary)
-                                if item.protected { Label("Свежий снимок защищён", systemImage: "lock.shield").font(.caption).foregroundStyle(.cyan) }
+                                if item.protected { Label("Объект защищён", systemImage: "lock.shield").font(.caption).foregroundStyle(.cyan) }
                                 if item.favorite { Label("Избранное защищено", systemImage: "heart.fill").font(.caption).foregroundStyle(.pink) }
                                 if let index = model.photos.duplicates.firstIndex(where: { $0.contains(item.id) }) { Text("Дубликаты · группа \(index + 1)").font(.caption).foregroundStyle(.cyan) }
                             }
@@ -132,7 +152,7 @@ struct PhotosView: View {
                         Button("Снять выбор") { model.selectedPhotos = [] }.disabled(model.busy)
                     }
                 }
-            }.navigationTitle("Фото и видео")
+            }.cleanerScreen().navigationTitle("Фото и видео")
             .sheet(isPresented: $confirm) {
                 DeletionReview(plan: model.photoDryRun(), title: "Dry run · Фото", explanation: "Будут удалены только перечисленные объекты. Изменение синхронизируется через iCloud Фото с другими устройствами. Восстановление обычно доступно в «Недавно удалённых» в течение 30 дней. Размеры логические, освобождение места не гарантируется сразу.", names: model.photos.items.filter { model.selectedPhotos.contains($0.id) }.map { "\($0.date?.formatted() ?? "Без даты") · \(bytesLabel($0.bytes))" }) { plan in model.deletePhotos(plan: plan) }
             }
@@ -164,7 +184,7 @@ struct PhotoDetail: View {
                 }
                 if model.busy { ProgressView() }
             }.padding()
-        }.navigationTitle("Просмотр")
+        }.cleanerScreen().navigationTitle("Просмотр")
     }
 }
 struct OptimizationView: View {
@@ -182,7 +202,7 @@ struct OptimizationView: View {
                     Button("Сохранить копию в Фото") { model.savePreview(preview) }.buttonStyle(.borderedProminent).disabled(model.busy)
                     if model.busy { ProgressView() }
                 }.padding()
-            }.navigationTitle("Оптимизация").toolbar { Button("Закрыть") { dismiss() }.disabled(model.busy) }
+            }.cleanerScreen().navigationTitle("Оптимизация").toolbar { Button("Закрыть") { dismiss() }.disabled(model.busy) }
         }.interactiveDismissDisabled(model.busy)
     }
 }
@@ -228,7 +248,7 @@ struct FilesView: View {
                     Button("Просмотреть удаление: \(model.selectedFiles.count)…", role: .destructive) { confirm = true }.disabled(model.busy)
                     Button("Снять выбор") { model.selectedFiles = [] }.disabled(model.busy)
                 }
-            }.navigationTitle("Доступные файлы")
+            }.cleanerScreen().navigationTitle("Доступные файлы")
             .fileImporter(isPresented: $importer, allowedContentTypes: [.folder, .item], allowsMultipleSelection: true) { result in
                 do { model.roots = Array(Set(model.roots + (try result.get()))); model.files = FileReport(); model.selectedFiles = [] }
                 catch { model.message = error.localizedDescription }
@@ -287,7 +307,7 @@ struct ContactsView: View {
                 }
                 if settings.options.showIncompleteContacts { Section("Неполные записи") { ForEach(model.contacts.items.filter(\.incomplete)) { item in contactRow(item) } } }
                 if model.contacts.items.isEmpty { ContentUnavailableView("Нет результатов", systemImage: "person.crop.circle", description: Text("Включите анализ контактов в настройках и запустите сканирование.")) }
-            }.navigationTitle("Контакты")
+            }.cleanerScreen().navigationTitle("Контакты")
             .sheet(item: $selected, onDismiss: { model.contacts = ContactReport() }) { item in ContactEditor(identifier: item.id) }
         }
     }

@@ -1,0 +1,57 @@
+{
+  "name": "YETI³ · Ice Atelier",
+  "version": 1,
+  "color": {
+    "midnight": "#07121F",
+    "deepIce": "#173144",
+    "glacier": "#A1DDFF",
+    "platinum": "#D2DEEF",
+    "mint": "#79E8CE",
+    "rose": "#FF9CAC",
+    "amethyst": "#C6BBEF",
+    "frost": "#EFF5F9"
+  },
+  "radius": {
+    "panel": 24,
+    "icon": 18,
+    "control": 12
+  },
+  "motion": {
+    "enterMs": 320,
+    "pressMs": 140,
+    "connectionMs": 1800,
+    "breatheMs": 4800,
+    "easing": "cubic-bezier(.22,1,.36,1)"
+  },
+  "accessibility": {
+    "reduceMotion": "disable loops, use static state",
+    "reduceTransparency": "opaque surface",
+    "state": "always label status; never communicate by color alone"
+  },
+  "icons": [
+    "connected",
+    "disconnected",
+    "connecting",
+    "knocking",
+    "error",
+    "notification",
+    "battery",
+    "network",
+    "shield",
+    "lock",
+    "globe",
+    "direct",
+    "route",
+    "server",
+    "settings",
+    "key",
+    "import",
+    "export",
+    "analytics",
+    "history",
+    "speed",
+    "search",
+    "info",
+    "check"
+  ]
+}

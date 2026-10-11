@@ -47,5 +47,6 @@
     "path": "output/apple-assets-20261010/YETI3-Cleaner-Apple-AssetPack.zip",
     "files": 85,
     "sha256": "5a10d75bcb7689db287f86e9e9efec06609b005ba66ad93c340031915621578d"
-  }
+  },
+  "historical_snapshot_warning": "This file records the earlier build 3 submission. Build 4 owner-review work did not refresh or modify that Apple submission; see REVIEW-2026-10-11.md for current local/deployed evidence."
 }

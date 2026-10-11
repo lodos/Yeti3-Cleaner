@@ -38,15 +38,37 @@ struct ScanOptions: Codable, Equatable {
     var matchContactEmails = true
     var showIncompleteContacts = true
     var minimumPhoneDigits = 7
+    var includedExtensions = ""
+    var excludedFolderNames = "node_modules,.git,Pods"
+    var maximumFileMegabytes = 0
+    var minimumFileAgeDays = 0
+    var directoryDepth = 0
+    var photoLookbackDays = 0
+    var protectBursts = true
+    var allowFairThermalState = true
+    var economicalPauseMilliseconds = 20
+    var continueInBackground = false
+    func includesPhoto(date: Date?, now: Date = Date()) -> Bool {
+        photoLookbackDays <= 0 || date.map { $0 >= now.addingTimeInterval(-Double(photoLookbackDays) * 86400) } == true
+    }
+    func includesFileDate(_ date: Date?, now: Date = Date()) -> Bool {
+        minimumFileAgeDays <= 0 || date.map { $0 <= now.addingTimeInterval(-Double(minimumFileAgeDays) * 86400) } == true
+    }
+    func excludesFolder(_ name: String) -> Bool {
+        Set(excludedFolderNames.lowercased().split(separator: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }).contains(name.lowercased())
+    }
     func protects(date: Date?, now: Date = Date()) -> Bool {
         recentProtectionDays > 0 && (date == nil || date! > now.addingTimeInterval(-Double(recentProtectionDays) * 86400))
     }
     func includesFile(_ url: URL, bytes: Int64) -> Bool {
         let excluded = Set(excludedExtensions.lowercased().split(separator: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: ".", with: "") })
         let ext = url.pathExtension.lowercased()
-        return !excluded.contains(ext) && bytes >= Int64(minimumFileKilobytes) * 1024 && (!archivesOnly || ["zip", "rar", "7z", "tar", "gz", "dmg"].contains(ext))
+        let included = Set(includedExtensions.lowercased().split(separator: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: ".", with: "") })
+        return !excluded.contains(ext) && (included.isEmpty || included.contains(ext))
+            && (maximumFileMegabytes <= 0 || bytes <= Int64(maximumFileMegabytes) * 1024 * 1024)
+            && bytes >= Int64(minimumFileKilobytes) * 1024 && (!archivesOnly || ["zip", "rar", "7z", "tar", "gz", "dmg"].contains(ext))
     }
-    enum CodingKeys: String, CodingKey { case photos, contacts, files, similar, screenshots, screenshotDays, largeMegabytes, jpegQuality, maxPixel, recentProtectionDays, includeVideos, largeVideoMegabytes, minimumVideoSeconds, similarityDistance, similarityWindowSeconds, photoLimit, analysisSeconds, economical, minimumFileKilobytes, fileLimit, excludedExtensions, archivesOnly, minimumOptimizationPercent, matchContactPhones, matchContactEmails, showIncompleteContacts, minimumPhoneDigits }
+    enum CodingKeys: String, CodingKey { case photos, contacts, files, similar, screenshots, screenshotDays, largeMegabytes, jpegQuality, maxPixel, recentProtectionDays, includeVideos, largeVideoMegabytes, minimumVideoSeconds, similarityDistance, similarityWindowSeconds, photoLimit, analysisSeconds, economical, minimumFileKilobytes, fileLimit, excludedExtensions, archivesOnly, minimumOptimizationPercent, matchContactPhones, matchContactEmails, showIncompleteContacts, minimumPhoneDigits, includedExtensions, excludedFolderNames, maximumFileMegabytes, minimumFileAgeDays, directoryDepth, photoLookbackDays, protectBursts, allowFairThermalState, economicalPauseMilliseconds, continueInBackground }
     init() {}
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
@@ -77,6 +99,16 @@ struct ScanOptions: Codable, Equatable {
         matchContactEmails = try c.decodeIfPresent(Bool.self, forKey: .matchContactEmails) ?? true
         showIncompleteContacts = try c.decodeIfPresent(Bool.self, forKey: .showIncompleteContacts) ?? true
         minimumPhoneDigits = try c.decodeIfPresent(Int.self, forKey: .minimumPhoneDigits) ?? 7
+        includedExtensions = try c.decodeIfPresent(String.self, forKey: .includedExtensions) ?? ""
+        excludedFolderNames = try c.decodeIfPresent(String.self, forKey: .excludedFolderNames) ?? "node_modules,.git,Pods"
+        maximumFileMegabytes = try c.decodeIfPresent(Int.self, forKey: .maximumFileMegabytes) ?? 0
+        minimumFileAgeDays = try c.decodeIfPresent(Int.self, forKey: .minimumFileAgeDays) ?? 0
+        directoryDepth = try c.decodeIfPresent(Int.self, forKey: .directoryDepth) ?? 0
+        photoLookbackDays = try c.decodeIfPresent(Int.self, forKey: .photoLookbackDays) ?? 0
+        protectBursts = try c.decodeIfPresent(Bool.self, forKey: .protectBursts) ?? true
+        allowFairThermalState = try c.decodeIfPresent(Bool.self, forKey: .allowFairThermalState) ?? true
+        economicalPauseMilliseconds = try c.decodeIfPresent(Int.self, forKey: .economicalPauseMilliseconds) ?? 20
+        continueInBackground = try c.decodeIfPresent(Bool.self, forKey: .continueInBackground) ?? false
     }
     static func preset(_ strategy: Strategy) -> Self {
         var result = Self()

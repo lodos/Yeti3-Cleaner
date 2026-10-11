@@ -55,4 +55,17 @@ class BotTests(unittest.TestCase):
         self.bot.handle(event)
         self.assertEqual(self.calls,[])
 
+    def test_menu_offers_all_seven_terms_without_issuing_invoice(self):
+        self.bot.handle(self.message(text='/plans'))
+        buttons = self.calls[-1][1]['reply_markup']['inline_keyboard']
+        self.assertEqual([b['callback_data'] for row in buttons for b in row],
+                         ['choose:'+str(n) for n in (1,2,3,6,12,24,36)])
+        self.assertFalse(any('/internal/' in c[0] for c in self.calls))
+    def test_choose_shows_terms_and_does_not_create_order(self):
+        self.bot.handle({'callback_query':{'id':'fixture','from':{'id':42},'data':'choose:36',
+                         'message':{'chat':{'id':42,'type':'private'}}}})
+        buttons = self.calls[-1][1]['reply_markup']['inline_keyboard']
+        self.assertEqual(buttons[-1][0]['callback_data'], 'agree:36')
+        self.assertFalse(any('/internal/' in c[0] for c in self.calls))
+
 if __name__ == '__main__': unittest.main()

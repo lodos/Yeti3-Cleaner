@@ -6,6 +6,10 @@
 [Отдельный экспериментальный прототип Classic PowerPC](legacy/classic/README.md) собран, но не проверен запуском.
 [Протокол проверок и оставшаяся совместимость](docs/verification-0.4.1-rc.4.md).
 
+## iPhone, iPad и новые версии Mac
+
+[Версия для проверки владельцем 11 октября 2026](ios/Release/REVIEW-2026-10-11.md): 38 параметров в трёх профилях, нативный iOS/iPadOS, sandboxed Mac Catalyst, полный Mac с картой диска и безопасным фоновым обзором. Дизайн основан на исходных ресурсах Node/Connector. [Проверки](ios/Release/verification-2026-10-11.txt) и [аудит Apple API](docs/apple-compatibility-2026-10-11.md). Новая сборка ждёт проверки владельцем и не отправлена в App Store. Ссылки ниже относятся к прежнему нативному предрелизу.
+
 ## Скачать
 
 - [Установщик DMG](downloads/Yeti3-Cleaner-0.4.1-rc.4-universal.dmg)

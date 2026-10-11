@@ -71,10 +71,13 @@ struct SettingsPanel: View {
                             age("Пакеты Xcode старше", group: group, key: "xcode_source_packages_min_age_days")
                             age("Кэш Gradle старше", group: group, key: "gradle_min_age_days")
                         }
-                    }.padding(16).frame(maxWidth: .infinity, alignment: .leading).background(Color.white.opacity(0.055)).clipShape(RoundedRectangle(cornerRadius: 12))
+                    }.padding(20).frame(maxWidth: .infinity, alignment: .leading)
+                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 22))
+                    .overlay(RoundedRectangle(cornerRadius: 22).strokeBorder(LinearGradient(colors: [.white.opacity(0.16), .cyan.opacity(0.08)], startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: 0.8))
                 }
             }.disabled(store.values.isEmpty)
             Text("Временные файлы, Podman и остальные кэши моделей ещё не подключены к движку. Docker volumes и пользовательские документы защищены.").font(.caption).foregroundStyle(.secondary)
+            NativeBackgroundSettings(overview: model.backgroundOverview, choose: model.choose)
             Divider()
             Text("Каталоги исходного пресета").font(.title2.bold())
             Text("Выключите путь или замените его своей папкой. Переключатели категорий выше также учитываются; отключённая категория не очищается. Возраст файлов для заменённой папки: без ограничения.").font(.callout).foregroundStyle(.secondary)
@@ -107,5 +110,28 @@ struct SettingsPanel: View {
                 .textFieldStyle(.roundedBorder).foregroundStyle(.primary).font(.system(size: 15, weight: .semibold, design: .monospaced)).frame(width: 88).environment(\.colorScheme, .dark)
             Text("дней")
         }
+    }
+}
+
+struct NativeBackgroundSettings: View {
+    @ObservedObject var overview: NativeBackgroundOverview
+    let choose: (@escaping (URL) -> Void) -> Void
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Фоновый обзор").font(.title2.bold())
+            Text("До 250 объектов верхнего уровня выбранной локальной папки, до 10 секунд. Без чтения содержимого, загрузки облачных оригиналов и удаления. Работает, пока Cleaner открыт; macOS может отложить таймер во сне.").font(.callout).foregroundStyle(.secondary)
+            if let root = overview.root { Text(root.path).font(.system(.caption, design: .monospaced)).textSelection(.enabled) }
+            Button("Выбрать папку для обзора…") { choose { overview.choose($0) } }
+            Toggle("Разрешить обзор в фоне", isOn: $overview.enabled).disabled(overview.root == nil)
+            HStack {
+                Picker("Не чаще", selection: $overview.intervalHours) { Text("Раз в 6 часов").tag(6); Text("Раз в день").tag(24); Text("Раз в неделю").tag(168) }
+                Toggle("Только от сети", isOn: $overview.requirePower)
+                Stepper("Заряд от \(overview.minimumBattery)%", value: $overview.minimumBattery, in: 20...90, step: 10)
+            }
+            if let next = overview.nextRun { Text("Следующий запрос не раньше: \(next.formatted())").font(.caption) }
+            Text(overview.status).font(.caption).textSelection(.enabled)
+            HStack { Button("Обзор сейчас") { overview.run() }.disabled(overview.root == nil || overview.busy); if overview.busy { Button("Остановить") { overview.stop() } } }
+        }.padding(20).frame(maxWidth: .infinity, alignment: .leading)
+            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 22))
     }
 }

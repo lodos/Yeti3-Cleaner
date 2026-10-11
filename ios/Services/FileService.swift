@@ -33,8 +33,10 @@ actor FileService {
             defer { if scoped { root.stopAccessingSecurityScopedResource() } }
             let values = try root.resourceValues(forKeys: keys)
             let urls: AnySequence<URL>
+            var directoryEnumerator: FileManager.DirectoryEnumerator?
             if values.isDirectory == true {
                 guard let enumerator = FileManager.default.enumerator(at: root, includingPropertiesForKeys: Array(keys), options: [.skipsHiddenFiles, .skipsPackageDescendants], errorHandler: { _, _ in report.skipped += 1; return true }) else { report.skipped += 1; continue }
+                directoryEnumerator = enumerator
                 urls = AnySequence { AnyIterator { enumerator.nextObject() as? URL } }
             } else { urls = AnySequence([root]) }
             for url in urls {
@@ -43,11 +45,16 @@ actor FileService {
                 guard seen.insert(url.path).inserted else { continue }
                 do {
                     let value = try url.resourceValues(forKeys: keys)
-                    if value.isDirectory == true { continue }
+                    if value.isDirectory == true {
+                        if options.excludesFolder(url.lastPathComponent) || (options.directoryDepth > 0 && (directoryEnumerator?.level ?? 0) >= options.directoryDepth) {
+                            directoryEnumerator?.skipDescendants(); report.skipped += 1
+                        }
+                        continue
+                    }
                     guard value.isRegularFile == true, value.isSymbolicLink != true,
                           url.resolvingSymlinksInPath().standardizedFileURL.path == url.standardizedFileURL.path,
                           value.isUbiquitousItem != true || value.ubiquitousItemDownloadingStatus == .current else { report.skipped += 1; continue }
-                    guard options.includesFile(url, bytes: Int64(value.fileSize ?? 0)) else { report.skipped += 1; continue }
+                    guard options.includesFile(url, bytes: Int64(value.fileSize ?? 0)), options.includesFileDate(value.contentModificationDate) else { report.skipped += 1; continue }
                     var coordinationError: NSError?; var outcome: Result<ContentDigest, Error>?
                     NSFileCoordinator().coordinate(readingItemAt: url, options: .withoutChanges, error: &coordinationError) { coordinated in
                         outcome = Result { try Self.fingerprint(coordinated, budget: budget) }
@@ -78,7 +85,10 @@ actor FileService {
             for survivor in report.items where group.contains(survivor.id) && !selected.contains(survivor.id) {
                 let scoped = survivor.root.startAccessingSecurityScopedResource()
                 defer { if scoped { survivor.root.stopAccessingSecurityScopedResource() } }
-                if survivor.url.resolvingSymlinksInPath().path == survivor.url.path,
+                // iOS may present its sandbox through the /var -> /private/var
+                // system alias. Compare the same normalized paths used by scan
+                // and deletion while still rejecting a replaced file symlink.
+                if survivor.url.resolvingSymlinksInPath().standardizedFileURL.path == survivor.url.standardizedFileURL.path,
                    let current = try? Self.fingerprint(survivor.url), current == survivor.digest { survivorExists = true; break }
             }
             guard survivorExists else { throw CleanerError.message("Сохраняемый дубликат изменён или недоступен. Повторите анализ.") }

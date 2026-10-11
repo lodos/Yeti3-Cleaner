@@ -5,10 +5,11 @@ import CryptoKit
 private let support = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("Library/Application Support/Yeti3-Cleaner")
 private let releaseVersion = Bundle.main.object(forInfoDictionaryKey: "YetiReleaseVersion") as? String ?? "0.4.1-rc.4"
 private let minimumMacOS = Bundle.main.object(forInfoDictionaryKey: "LSMinimumSystemVersion") as? String ?? "14.0"
-private let cyan = Color(red: 0.2, green: 0.85, blue: 0.95)
+private let cyan = Color(red: 161/255, green: 221/255, blue: 1)
 private func human(_ bytes: Int64) -> String { ByteCountFormatter.string(fromByteCount: bytes, countStyle: .file) }
 
 @MainActor final class DiskModel: ObservableObject {
+    let backgroundOverview = NativeBackgroundOverview.shared
     @Published var root = FileManager.default.homeDirectoryForCurrentUser
     @Published var entries: [Entry] = []
     @Published var selected: Entry?
@@ -229,8 +230,10 @@ struct DiskView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             HStack {
-                Image(systemName: "sun.max.fill").font(.system(size: 31)).foregroundStyle(cyan)
-                VStack(alignment: .leading) { Text("YETI³ · Карта диска · Предрелиз").font(.title2.bold()); Text("Посмотрите, что занимает место. Решайте, что очищать.").foregroundStyle(.secondary) }
+                if let url = Bundle.main.url(forResource: "NodeMascot", withExtension: "png"), let image = NSImage(contentsOf: url) {
+                    Image(nsImage: image).resizable().scaledToFit().frame(width: 64, height: 72).accessibilityHidden(true)
+                }
+                VStack(alignment: .leading, spacing: 3) { Text("YETI³ / CLEANER").font(.system(size: 11, weight: .semibold, design: .monospaced)).tracking(3).foregroundStyle(cyan); Text("Cleaner.").font(.system(size: 38, weight: .bold, design: .rounded)); Text("Посмотрите, что занимает место. Решайте, что очищать.").foregroundStyle(.secondary) }
                 Spacer()
                 Picker("Раздел", selection: $tab) { Text("Обзор").tag(0); Text("Настройки").tag(1); Text("Обновление").tag(2) }.pickerStyle(.segmented).frame(width: 320)
             }
@@ -240,7 +243,14 @@ struct DiskView: View {
             NetworkAdBanner()
         }
         .padding(24).frame(minWidth: 1000, minHeight: 720)
-        .background(LinearGradient(colors: [Color(red: 0.025, green: 0.075, blue: 0.12), Color(red: 0.015, green: 0.025, blue: 0.055)], startPoint: .topLeading, endPoint: .bottomTrailing))
+        .background {
+            ZStack {
+                LinearGradient(colors: [Color(red: 7/255, green: 18/255, blue: 31/255), Color(red: 23/255, green: 49/255, blue: 68/255)], startPoint: .topLeading, endPoint: .bottomTrailing)
+                if let url = Bundle.main.url(forResource: "IceAtelierBackground", withExtension: "png"), let image = NSImage(contentsOf: url) {
+                    Image(nsImage: image).resizable().scaledToFill().opacity(0.3)
+                }
+            }.clipped()
+        }
         .preferredColorScheme(.dark).tint(cyan)
         .alert("YETI³ Cleaner", isPresented: Binding(get: { model.error != nil }, set: { if !$0 { model.error = nil } })) { Button("Понятно", role: .cancel) {} } message: { Text(YetiL10n.text(model.error ?? "")) }
         .sheet(isPresented: $showPreview) {
@@ -360,7 +370,7 @@ struct DiskView: View {
                     if alert.runModal() == .alertSecondButtonReturn { model.add(url, excluded: false) }
                 }
             } }
-        }.padding(18).frame(maxWidth: .infinity).background(Color.white.opacity(0.045)).clipShape(RoundedRectangle(cornerRadius: 16))
+        }.padding(18).frame(maxWidth: .infinity).background(Color.white.opacity(0.045)).clipShape(RoundedRectangle(cornerRadius: 22))
     }
     private var updateView: some View {
         VStack(alignment: .leading, spacing: 20) {

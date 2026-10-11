@@ -1,0 +1,43 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64e",
+        "deviceId": "redacted-owner-device",
+        "deviceName": "Owner test device",
+        "modelName": "iPad Pro (12.9-inch) (5th generation)",
+        "osBuildNumber": "23E261",
+        "osVersion": "26.4.2",
+        "platform": "iOS"
+      },
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "passedTests": 26,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "Yeti3Cleaner · Built with macOS 27.0",
+  "expectedFailures": 0,
+  "failedTests": 0,
+  "finishTime": 1791733812.437,
+  "passedTests": 26,
+  "result": "Passed",
+  "runtimeWarnings": [],
+  "skippedTests": 0,
+  "startTime": 1791733801.803,
+  "statistics": [],
+  "testFailures": [],
+  "title": "Test - Yeti3Cleaner",
+  "topInsights": [
+    {
+      "category": "Longest Test Runs",
+      "impact": "77% of duration",
+      "text": "1 longest test run with outlier durations exceeding 1.88s (three standard deviations)"
+    }
+  ],
+  "totalTestCount": 26
+}

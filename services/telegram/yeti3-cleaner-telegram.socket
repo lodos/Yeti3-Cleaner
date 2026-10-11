@@ -1,0 +1,12 @@
+[Unit]
+Description=Private Telegram TLS relay socket for Cleaner
+
+[Socket]
+ListenStream=/run/yeti3-cleaner-telegram.sock
+SocketUser=yeti3-cleaner-bot
+SocketGroup=yeti3-cleaner-bot
+SocketMode=0600
+RemoveOnStop=yes
+
+[Install]
+WantedBy=sockets.target

@@ -1,0 +1,37 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64e",
+        "deviceId": "redacted-owner-device",
+        "deviceName": "Owner test device",
+        "modelName": "iPhone 14 Pro Max",
+        "osBuildNumber": "23G71",
+        "osVersion": "26.6",
+        "platform": "iOS"
+      },
+      "expectedFailures": 0,
+      "failedTests": 0,
+      "passedTests": 5,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "Yeti3Cleaner · Built with macOS 27.0",
+  "expectedFailures": 0,
+  "failedTests": 0,
+  "finishTime": 1791734387.134,
+  "passedTests": 5,
+  "result": "Passed",
+  "runtimeWarnings": [],
+  "skippedTests": 0,
+  "startTime": 1791734293.255,
+  "statistics": [],
+  "testFailures": [],
+  "title": "Test - Yeti3Cleaner",
+  "topInsights": [],
+  "totalTestCount": 5
+}

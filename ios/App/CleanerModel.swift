@@ -38,26 +38,48 @@ import UIKit
         busy = true; selectedPhotos = []; selectedFiles = []; photos = PhotoReport(); files = FileReport(); contacts = ContactReport(); lastScan = nil
         let chosenRoots = roots
         task = Task(priority: .utility) {
-            defer { busy = false; task = nil; refreshAccess() }
+            var completed = false
+            defer {
+                #if !targetEnvironment(macCatalyst)
+                if #available(iOS 26, *) { ContinuedAnalysis.shared.finish(success: completed) }
+                #endif
+                busy = false; task = nil; refreshAccess()
+            }
             do {
                 var notes: [String] = []
+                // Permission sheets must finish before the foreground job is submitted.
+                if options.photos { photoAccess = await PHPhotoLibrary.requestAuthorization(for: .readWrite) }
+                if options.contacts && contactAccess == .notDetermined {
+                    _ = try? await CNContactStore().requestAccess(for: .contacts)
+                    contactAccess = CNContactStore.authorizationStatus(for: .contacts)
+                }
+                try Task.checkCancellation()
+                #if !targetEnvironment(macCatalyst)
+                if #available(iOS 26, *), options.continueInBackground {
+                    status = "Запуск анализа с системным прогрессом…"
+                    let continued = await ContinuedAnalysis.shared.begin { self.cancel() }
+                    try Task.checkCancellation()
+                    guard continued || UIApplication.shared.applicationState == .active else {
+                        throw CleanerError.message("Вернитесь в приложение и повторите запуск анализа.")
+                    }
+                }
+                #endif
                 if options.photos {
                     status = "Доступ к медиатеке…"
-                    photoAccess = await PHPhotoLibrary.requestAuthorization(for: .readWrite)
                     if photoAccess == .authorized || photoAccess == .limited {
                         photos = try await photoService.scan(options: options) { done, total in
-                            await MainActor.run { self.status = "Фото и видео: \(done) / \(total)" }
+                            await MainActor.run { self.status = "Фото и видео: \(done) / \(total)"; self.analysisProgress(Double(done) / Double(max(1, total)) * 0.65) }
                         }
                     } else { notes.append("Нет доступа к фото") }
                 }
                 try Task.checkCancellation()
                 if options.files && !chosenRoots.isEmpty {
                     files = try await fileService.scan(roots: chosenRoots, options: options) { count in
-                        await MainActor.run { self.status = "Файлы: \(count)" }
+                        await MainActor.run { self.status = "Файлы: \(count)"; self.analysisProgress(0.65 + Double(count) / Double(max(100, options.fileLimit)) * 0.3) }
                     }
                 }
                 if options.contacts {
-                    status = "Анализ контактов…"
+                    status = "Анализ контактов…"; analysisProgress(0.95)
                     do {
                         if contactAccess == .notDetermined { _ = try await CNContactStore().requestAccess(for: .contacts) }
                         contactAccess = CNContactStore.authorizationStatus(for: .contacts)
@@ -66,6 +88,7 @@ import UIKit
                     } catch { notes.append("Контакты: \(error.localizedDescription)") }
                 }
                 try Task.checkCancellation()
+                completed = true
                 lastScan = Date(); status = notes.isEmpty ? "Анализ завершён. Ничего не удалено." : notes.joined(separator: ". ")
             } catch is CancellationError { status = "Анализ остановлен. Результаты могут быть неполными." }
             catch { status = "Анализ не завершён"; message = error.localizedDescription }
@@ -84,6 +107,7 @@ import UIKit
             charging: charging, lowPower: ProcessInfo.processInfo.isLowPowerModeEnabled,
             thermalSafe: thermal == .nominal || thermal == .fair) else { return }
         var options = settings.options
+        options.continueInBackground = false // continued processing requires an explicit user action
         options.photos = options.photos && (photoAccess == .authorized || photoAccess == .limited)
         options.contacts = options.contacts && contactsReadable(contactAccess)
         options.files = options.files && !roots.isEmpty
@@ -91,11 +115,27 @@ import UIKit
         UserDefaults.standard.set(Date(), forKey: "automaticScanAttempt")
         scan(options)
     }
+    private func analysisProgress(_ fraction: Double) {
+        #if !targetEnvironment(macCatalyst)
+        if #available(iOS 26, *) { ContinuedAnalysis.shared.update(fraction, subtitle: status) }
+        #endif
+    }
     func photoDryRun() -> CleanupDryRun {
         .make(selected: selectedPhotos, sizes: Dictionary(uniqueKeysWithValues: photos.items.filter { !$0.favorite && !$0.protected && $0.digest != nil }.map { ($0.id, $0.bytes) }), groups: photos.duplicates, scanDate: lastScan)
     }
     func fileDryRun() -> CleanupDryRun {
         .make(selected: selectedFiles, sizes: Dictionary(uniqueKeysWithValues: files.items.map { ($0.id, $0.digest.bytes) }), groups: files.duplicates, scanDate: lastScan)
+    }
+    func invalidateAnalysis() {
+        cancel(); lastScan = nil; selectedPhotos = []; selectedFiles = []
+        photos = PhotoReport(); files = FileReport(); contacts = ContactReport()
+        status = "Настройки изменились. Повторите анализ."
+    }
+    func backgrounded() {
+        #if !targetEnvironment(macCatalyst)
+        if #available(iOS 26, *), ContinuedAnalysis.shared.isActive { return }
+        #endif
+        cancel()
     }
     func cancel() { guard task != nil else { return }; task?.cancel(); status = "Остановка после текущего локального ресурса…" }
     func optimize(_ item: PhotoItem, options: ScanOptions) {

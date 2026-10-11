@@ -15,6 +15,9 @@ import Security
     @Published public private(set) var message = ""
     @Published public private(set) var accountID: UUID?
     private var token: String?
+    private var storefrontUpdates: Task<Void, Never>?
+    private var requestedProducts = false
+    private var productGeneration = UUID()
     private var updates: Task<Void, Never>?
     private var expiryTask: Task<Void, Never>?
     private var lastRefresh: Date?
@@ -37,6 +40,15 @@ import Security
                 for await result in StoreKit.Transaction.updates {
                     guard let self else { return }
                     do { try await self.deliver(result) } catch { self.message = "Покупка ожидает подтверждения сервера. Повторите восстановление." }
+                }
+            }
+        }
+        if storefrontUpdates == nil {
+            storefrontUpdates = Task { [weak self] in
+                for await _ in Storefront.updates {
+                    guard let self else { return }
+                    self.products = []; self.checkoutReady = false
+                    if self.requestedProducts { await self.loadProducts() }
                 }
             }
         }
@@ -100,11 +112,20 @@ import Security
         } catch { token = nil; accountID = nil; message = "Вход не выполнен. Проверьте данные и соединение." }
     }
     public func loadProducts() async {
+        requestedProducts = true
+        let generation = UUID(); productGeneration = generation
+        products = []; checkoutReady = false
         do {
             let availability = try await call("api/network/v1/ads/catalog")
+            let loaded = try await Product.products(for: Self.productIDs).sorted { months($0.id) < months($1.id) }
+            guard productGeneration == generation else { return }
             checkoutReady = availability["apple_checkout_ready"] as? Bool ?? false
-            products = try await Product.products(for: Self.productIDs).sorted { months($0.id) < months($1.id) }; if products.isEmpty { message = "Покупки пока недоступны в App Store. Попробуйте позже." } }
-        catch { checkoutReady = false; message = "Не удалось загрузить цены App Store. Проверьте соединение." }
+            products = loaded
+            if products.isEmpty { message = "Покупки пока недоступны в App Store. Попробуйте позже." }
+        } catch {
+            guard productGeneration == generation else { return }
+            checkoutReady = false; message = "Не удалось загрузить цены App Store. Проверьте соединение."
+        }
     }
     private func months(_ id: String) -> Int { Int(id.split(separator: ".").last?.dropLast() ?? "") ?? 0 }
     private func applyAccess(_ result: [String: Any]) {
@@ -193,11 +214,13 @@ public struct NetworkPurchaseView: View {
     @ObservedObject private var store = NetworkPurchase.shared
     @State private var email = ""
     @State private var password = ""
+    @Environment(\.accessibilityReduceTransparency) private var opaque
     public init() {}
     public var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                Text("Сеть без рекламы").font(.largeTitle.bold())
+                Text("YETI³ / NETWORK").font(.caption.monospaced()).tracking(3).foregroundStyle(.cyan)
+                Text("Сеть без рекламы").font(.system(.largeTitle, design: .rounded, weight: .bold))
                 Text("Один доступ для всех продуктов YETI³ на вашем аккаунте. Выберите срок; продление вручную.").foregroundStyle(.secondary)
                 if store.accountID == nil {
                     TextField("Email аккаунта сети", text: $email).textContentType(.username)
@@ -216,7 +239,7 @@ public struct NetworkPurchaseView: View {
                         VStack(alignment: .leading) { Text(product.displayName).font(.headline); Text(product.description).font(.caption).foregroundStyle(.secondary) }
                         Spacer()
                         Button(product.displayPrice) { Task { await store.purchase(product) } }.buttonStyle(.borderedProminent).disabled(store.busy || !store.checkoutReady || store.accountID == nil)
-                    }.padding().background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16))
+                    }.padding(20).background(opaque ? AnyShapeStyle(Color(red: 23/255, green: 49/255, blue: 68/255)) : AnyShapeStyle(.ultraThinMaterial), in: RoundedRectangle(cornerRadius: 22))
                 }
                 if !store.checkoutReady { Text("Покупки временно недоступны. Восстановление остаётся доступным.").font(.callout).foregroundStyle(.secondary) }
                 if store.busy { ProgressView("Подтверждаем…") }
@@ -224,8 +247,9 @@ public struct NetworkPurchaseView: View {
                 Button("Восстановить покупки") { Task { await store.restore() } }.disabled(store.busy || store.accountID == nil)
                 Button("Обновить цены") { Task { await store.loadProducts() } }.disabled(store.busy)
                 HStack { Link("Условия", destination: URL(string: "https://license.gochain.space/legal/terms")!); Link("Конфиденциальность", destination: URL(string: "https://license.gochain.space/legal/privacy")!) }.font(.caption)
-            }.padding(24)
-        }.frame(minWidth: 300).tint(.cyan).task { await store.start(); await store.loadProducts() }
+            }.padding(20).background(opaque ? AnyShapeStyle(Color(red: 23/255, green: 49/255, blue: 68/255)) : AnyShapeStyle(.ultraThinMaterial), in: RoundedRectangle(cornerRadius: 22)).padding(24)
+        }.background(LinearGradient(colors: [Color(red: 7/255, green: 18/255, blue: 31/255), Color(red: 0.015, green: 0.025, blue: 0.045)], startPoint: .topLeading, endPoint: .bottomTrailing))
+            .frame(minWidth: 300).tint(.cyan).preferredColorScheme(.dark).task { await store.start(); await store.loadProducts() }
     }
 }
 
@@ -239,13 +263,15 @@ public struct NetworkAdBanner: View {
             VStack(alignment: .leading, spacing: 8) {
                 VStack(alignment: .leading, spacing: 3) {
                     Text("РЕКЛАМА · YETI³").font(.caption2.monospaced()).foregroundStyle(.secondary)
-                    Text("LineCloud · рендер Blender в облаке").font(.callout.weight(.medium))
+                    Text("LineCloud · рендер Blender в облаке").font(.callout.weight(.medium)).lineLimit(2)
                 }
                 HStack {
                 Link("Подробнее", destination: URL(string: "https://linecloud.ru/")!).font(.caption)
                 Button("Без рекламы") { showPurchase = true }.font(.caption).buttonStyle(.bordered)
                 }
-            }.padding(12).frame(maxWidth: .infinity, alignment: .leading).background(.regularMaterial)
+            }.dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+                .padding(12).frame(maxWidth: .infinity, alignment: .leading).background(.regularMaterial)
+                .accessibilityIdentifier("network.ad.banner")
                 .sheet(isPresented: $showPurchase) { VStack { HStack { Spacer(); Button("Готово") { showPurchase = false } }.padding(); NetworkPurchaseView() }.frame(idealWidth: 560, idealHeight: 680) }
                 .task { await store.start() }
         }
