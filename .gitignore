@@ -16,3 +16,9 @@ xcuserdata/
 /ios/build/
 *.xcarchive/
 *.xcresult/
+
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example

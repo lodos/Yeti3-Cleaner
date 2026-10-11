@@ -6,11 +6,11 @@
   "secondaryCategory": "Photo & Video",
   "bundleID": "ru.yeti3.cleaner.ios",
   "version": "1.0.0",
-  "build": "3",
+  "build": "4",
   "skuSuggestion": "YETI3-CLEANER-IOS",
-  "description": "Локальный помощник для освобождения места на iPhone и iPad. Находите точные дубликаты и похожие фотографии, крупные видео, старые скриншоты и повторяющиеся файлы. Создавайте уменьшенные JPEG-копии с предварительным просмотром, сохраняя оригиналы. Проверяйте повторяющиеся и неполные контакты. Три настраиваемые стратегии, доступ только к разрешённым данным, просмотр и подтверждение перед удалением. Приложение не очищает системные кэши или данные других приложений. Облачные оригиналы Фото при сканировании не скачиваются. Сохранение копии сначала занимает дополнительное место. Данные не передаются разработчику. Автоматический dry run при открытии приложения: выберите интервал и условия питания. Удаление личных данных всегда требует просмотра плана и вашего подтверждения.",
+  "description": "Локальный помощник для освобождения места на iPhone и iPad. Находите точные дубликаты и похожие фотографии, крупные видео, старые скриншоты и повторяющиеся файлы. Создавайте уменьшенные JPEG-копии с предварительным просмотром, сохраняя оригиналы. Проверяйте повторяющиеся и неполные контакты. Три настраиваемые стратегии, доступ только к разрешённым данным, просмотр и подтверждение перед удалением. Приложение не очищает системные кэши или данные других приложений. Облачные оригиналы Фото при сканировании не скачиваются. Сохранение копии сначала занимает дополнительное место. Личные фото, файлы и контакты не передаются разработчику. Контекстная реклама включена по умолчанию; отключение через App Store или административный доступ. Автоматический dry run при открытии приложения: выберите интервал и условия питания. Удаление личных данных всегда требует просмотра плана и вашего подтверждения. Расширенные настройки защиты свежих фото, порогов видео и файлов, сходства, исключений, лимитов и экономного анализа. Короткий фоновый обзор метаданных включается отдельно; время запуска определяет iOS.",
   "keywords": "очистка,фото,дубликаты,хранилище,файлы,контакты,скриншоты",
-  "privacy": "Data Not Collected",
+  "privacy": "Optional account: email, account/device identifiers and purchase history linked to user; no tracking; personal media not collected",
   "tracking": false,
   "supportURL": "https://cleaner.yeti3.ru/static/cleaner/apple/app-support.html",
   "privacyPolicyURL": "https://cleaner.yeti3.ru/static/cleaner/apple/privacy-policy.html",
@@ -21,11 +21,11 @@
     "email": null,
     "phone": null
   },
-  "reviewNotes": "No sign-in required. Manual scanning starts after tapping Начать анализ; optional automatic analysis is explicitly enabled in Settings and runs on foreground activation only. Enable Contacts in Settings to request contact access. Files must be selected through the system picker. All processing is local; Photos originals are not downloaded from iCloud. No system or third-party app caches are accessed. Photo optimization saves a new JPEG and never deletes the source. Destructive actions require a separate review and confirmation. Contacts are edited only through the system Contacts UI. Optional automatic scan runs on foreground activation only with existing permissions and user-selected power conditions. Dry-run deletion plans expire after 15 minutes and are invalidated by changed selections or rescans. Every delete rechecks content.",
+  "reviewNotes": "Cleaning is free and requires no account. Personal media, files and contacts are processed locally; PhotoKit cloud originals are not downloaded. Destructive actions require a separate review, explicit confirmation and content revalidation. Favorites, recent photos and the last known duplicate are protected. Photo optimization creates a separate JPEG and preserves the original. Contacts are edited only in the system UI. Optional foreground analysis uses existing permissions and selected power conditions. Separately opt-in BGProcessing reads metadata for up to 250 recent assets, with a cooperative 10-second budget, without network access or deletion; the OS controls launch timing. Optional network account enables StoreKit ad removal and server-authorized account/device grants. There is no external purchase UI in the Apple app. The separate Telegram bot uses Telegram Stars; both payment channels are recorded by the licensing server. Configure IAP and provide review credentials before submission. Update privacy disclosures for optional email, identifiers and purchase history; earlier Data Not Collected answers are obsolete.",
   "testFlight": {
     "betaDescription": "Локальный анализ фото, видео, доступных файлов и контактов. Три стратегии и подтверждение удаления.",
     "whatToTest": "Разрешения: отказ, ограниченный и полный доступ. Точные и похожие фото. Live Photo и облачные ресурсы. Создание JPEG-копии с сохранением оригинала. Поиск файлов-дубликатов. Защита изменённых файлов и последнего дубликата. Крупный текст, VoiceOver, iPad и поворот экрана. Используйте тестовые данные и резервные копии."
   },
-  "ageRatingGuidance": "Нет пользовательских публикаций, рекламы, чата, насилия, азартных игр или медицинских функций. Заполнить актуальную анкету App Store Connect; итоговый рейтинг назначает Apple.",
+  "ageRatingGuidance": "Contains contextual advertising for YETI3 services; complete current advertising and age-rating questions in App Store Connect.",
   "publicSupportEmail": "ursolov@gmail.com"
 }

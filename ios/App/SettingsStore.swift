@@ -1,6 +1,7 @@
 import SwiftUI
 
 @MainActor final class SettingsStore: ObservableObject {
+    @Published var backgroundAnalysis = UserDefaults.standard.bool(forKey: "backgroundAnalysis") { didSet { UserDefaults.standard.set(backgroundAnalysis, forKey: "backgroundAnalysis"); BackgroundAnalysis.schedule() } }
     @Published var automation: AutomationPolicy { didSet { save() } }
     @Published var strategy: Strategy { didSet { save() } }
     @Published var profiles: [String: ScanOptions] { didSet { save() } }
@@ -15,6 +16,8 @@ import SwiftUI
     }
     func reset() { profiles[strategy.rawValue] = .preset(strategy) }
     private func save() {
+        // A changed policy invalidates the pending system request.
+        defer { BackgroundAnalysis.schedule() }
         if let data = try? JSONEncoder().encode(automation) { UserDefaults.standard.set(data, forKey: "automation") }
         UserDefaults.standard.set(strategy.rawValue, forKey: "strategy")
         if let data = try? JSONEncoder().encode(profiles) { UserDefaults.standard.set(data, forKey: "profiles") }

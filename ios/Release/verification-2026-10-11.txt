@@ -1,0 +1,22 @@
+YETI3 Cleaner 1.0.0 (4) — local verification, 2026-10-11
+Base revision: 2760a9a78fe622d2d4b4a58d3cffe82dc4f49c0b
+
+PASS: Rust cargo test --locked: 29 tests.
+PASS: Python Telegram bot: 8 tests, fake transport, no network/payment.
+PASS: final iOS unit tests: 21 tests, zero failures (FinalReviewTests.xcresult).
+PASS: generic iOS Simulator build.
+PASS: generic iOS physical-device build, CODE_SIGNING_ALLOWED=NO; not an installable IPA.
+PASS: final universal Mac Catalyst build: arm64 and x86_64 main binary/debug library.
+PASS: native macOS SwiftUI compilation for arm64 and x86_64, minimum macOS 14.
+PASS: local Catalyst launch and accessibility navigation through dashboard/settings/files/contact/performance options.
+PASS: local universal Catalyst review copy ad-hoc codesign --verify --deep --strict.
+PASS: JSON/plist parsing, git diff --check, standalone git fsck.
+
+UI AUTOMATION INCOMPLETE: initial run found banner overlapping tabs; corrected root layout to separate banner and TabView. Final unit tests passed, but UI runner stalled in simulator startup (xpcproxy_sim); retry stopped after no progress. iPad attempt timed out booting simulator. No final iPhone/iPad UI pass claimed. Existing user simulators/data were not reset or erased. Old screenshots are not release screenshots.
+
+Live read-only catalog: HTTP 200; apple_checkout_ready=false.
+Payments: StoreKit client + Telegram Stars webhook implemented. No real purchase, refund, bot deployment, webhook replacement, production backend configuration or payment key storage occurred.
+Publication: no App Store upload, Validate App, notarization, or modification of prior submission.
+Device validation pending: real iPhone/iPad PhotoKit permissions/delete/cancel/iCloud/File Provider; real Intel Mac runtime; energy/CPU/thermal profiling; real BGProcessing scheduling/expiration; VoiceOver/Dynamic Type; real StoreKit/Telegram/admin entitlement end-to-end.
+
+Review ZIP: universal sandboxed Catalyst app, locally ad-hoc signed, not notarized and not App Store distribution. Does not promise zero heat/battery use. Original unrestricted native Mac release remains a separate distribution.

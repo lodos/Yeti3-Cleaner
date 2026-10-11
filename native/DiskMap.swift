@@ -237,6 +237,7 @@ struct DiskView: View {
             Divider()
             if tab == 0 { mapView } else if tab == 1 { ScrollView { VStack(alignment: .leading, spacing: 24) { SettingsPanel(model: model); rulesView } } } else { updateView }
             Spacer(minLength: 0)
+            NetworkAdBanner()
         }
         .padding(24).frame(minWidth: 1000, minHeight: 720)
         .background(LinearGradient(colors: [Color(red: 0.025, green: 0.075, blue: 0.12), Color(red: 0.015, green: 0.025, blue: 0.055)], startPoint: .topLeading, endPoint: .bottomTrailing))

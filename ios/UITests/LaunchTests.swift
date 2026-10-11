@@ -1,6 +1,21 @@
 import XCTest
 
 final class LaunchTests: XCTestCase {
+    @MainActor func testAdPurchaseAndBackgroundSettingsAreReachable() {
+        let app = XCUIApplication(); app.launch()
+        XCTAssertTrue(app.buttons["Без рекламы"].waitForExistence(timeout: 15))
+        app.buttons["Без рекламы"].tap()
+        XCTAssertTrue(app.staticTexts["Сеть без рекламы"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.buttons["Восстановить покупки"].exists)
+        app.buttons["Готово"].tap()
+        app.tabBars.buttons["Настройки"].tap()
+        for _ in 0..<14 {
+            if app.switches["backgroundAnalysis"].isHittable { break }
+            app.swipeUp()
+        }
+        XCTAssertTrue(app.switches["backgroundAnalysis"].exists)
+        let image = XCTAttachment(screenshot: app.screenshot()); image.name = "06-Advanced-settings"; image.lifetime = .keepAlways; add(image)
+    }
     @MainActor func testStoreScreenshots() {
         let app = XCUIApplication(); app.launch()
         XCTAssertTrue(app.buttons["startScan"].waitForExistence(timeout:15))

@@ -10,20 +10,24 @@ struct ContentView: View {
     @EnvironmentObject var settings: SettingsStore
     @Environment(\.scenePhase) private var scenePhase
     var body: some View {
-        TabView {
+        VStack(spacing: 0) {
+            NetworkAdBanner()
+            TabView {
             DashboardView().tabItem { Label("Обзор", systemImage: "sparkles") }
             PhotosView().tabItem { Label("Фото", systemImage: "photo.on.rectangle") }
             FilesView().tabItem { Label("Файлы", systemImage: "folder") }
             ContactsView().tabItem { Label("Контакты", systemImage: "person.crop.circle") }
             SettingsView().tabItem { Label("Настройки", systemImage: "slider.horizontal.3") }
         }
+        }
         .task { model.automaticScan(settings: settings) }
+        .preferredColorScheme(.dark)
         .tint(Color(red: 0.1, green: 0.72, blue: 1))
         .alert("YETI³ Cleaner", isPresented: Binding(get: { model.message != nil }, set: { if !$0 { model.message = nil } })) { Button("Понятно", role: .cancel) {} } message: { Text(YetiL10n.text(model.message ?? "")) }
         .sheet(item: $model.preview) { preview in OptimizationView(preview: preview) }
         .onChange(of: scenePhase) { _, phase in
-            if phase == .active { model.refreshAccess(); model.automaticScan(settings: settings) }
-            if phase == .background { model.cancel() }
+            if phase == .active { model.refreshAccess(); model.automaticScan(settings: settings); Task { await NetworkPurchase.shared.refresh() } }
+            if phase == .background { model.cancel(); BackgroundAnalysis.schedule() }
         }
     }
 }
@@ -41,7 +45,7 @@ struct DashboardView: View {
                             ProgressView(value: Double(model.totalBytes-model.freeBytes), total: Double(model.totalBytes)).tint(.cyan)
                             Text("Свободно \(bytesLabel(model.freeBytes)) из \(bytesLabel(model.totalBytes))").font(.subheadline)
                         }
-                        Text("Локальный анализ · Без аккаунта · Без отправки данных").font(.caption).foregroundStyle(.secondary)
+                        Text("Локальный анализ · Очистка без аккаунта").font(.caption).foregroundStyle(.secondary)
                     }.padding(.vertical, 14)
                 }
                 Section("Стратегия") {
@@ -84,7 +88,7 @@ struct PhotosView: View {
             case .duplicate: return exact.contains(item.id)
             case .similar: return similar.contains(item.id)
             case .screenshot: return settings.options.screenshots && item.screenshot && (item.date ?? .distantFuture) < Date().addingTimeInterval(-Double(settings.options.screenshotDays)*86400)
-            case .video: return item.video && item.bytes >= Int64(settings.options.largeMegabytes)*1024*1024
+            case .video: return item.video && item.bytes >= Int64(settings.options.largeVideoMegabytes)*1024*1024 && item.duration >= Double(settings.options.minimumVideoSeconds)
             }
         }
     }
@@ -104,7 +108,7 @@ struct PhotosView: View {
                     HStack {
                         Button { if model.selectedPhotos.contains(item.id) { model.selectedPhotos.remove(item.id) } else { model.selectedPhotos.insert(item.id) } } label: {
                             Image(systemName: model.selectedPhotos.contains(item.id) ? "checkmark.circle.fill" : "circle").font(.title2)
-                        }.buttonStyle(.borderless).disabled(model.busy || item.favorite || item.digest == nil)
+                        }.buttonStyle(.borderless).disabled(model.busy || item.favorite || item.protected || item.digest == nil)
                             .accessibilityLabel("Выбрать фото \(item.date?.formatted() ?? "")")
                         NavigationLink {
                             PhotoDetail(item: item)
@@ -114,6 +118,7 @@ struct PhotosView: View {
                                 Text(item.video ? "Видео · \(Int(item.duration)) сек" : "\(item.width) × \(item.height)")
                                 Text(item.date?.formatted(date: .abbreviated, time: .shortened) ?? "Без даты").font(.caption)
                                 Text(item.digest == nil ? "Оригинал недоступен" : bytesLabel(item.bytes)).font(.caption).foregroundStyle(.secondary)
+                                if item.protected { Label("Свежий снимок защищён", systemImage: "lock.shield").font(.caption).foregroundStyle(.cyan) }
                                 if item.favorite { Label("Избранное защищено", systemImage: "heart.fill").font(.caption).foregroundStyle(.pink) }
                                 if let index = model.photos.duplicates.firstIndex(where: { $0.contains(item.id) }) { Text("Дубликаты · группа \(index + 1)").font(.caption).foregroundStyle(.cyan) }
                             }
@@ -264,6 +269,7 @@ struct DeletionReview: View {
 }
 struct ContactsView: View {
     @EnvironmentObject var model: CleanerModel
+    @EnvironmentObject var settings: SettingsStore
     @State private var selected: ContactItem?
     var body: some View {
         NavigationStack {
@@ -279,7 +285,7 @@ struct ContactsView: View {
                         ForEach(model.contacts.items.filter { ids.contains($0.id) }) { item in contactRow(item) }
                     }
                 }
-                Section("Неполные записи") { ForEach(model.contacts.items.filter(\.incomplete)) { item in contactRow(item) } }
+                if settings.options.showIncompleteContacts { Section("Неполные записи") { ForEach(model.contacts.items.filter(\.incomplete)) { item in contactRow(item) } } }
                 if model.contacts.items.isEmpty { ContentUnavailableView("Нет результатов", systemImage: "person.crop.circle", description: Text("Включите анализ контактов в настройках и запустите сканирование.")) }
             }.navigationTitle("Контакты")
             .sheet(item: $selected, onDismiss: { model.contacts = ContactReport() }) { item in ContactEditor(identifier: item.id) }

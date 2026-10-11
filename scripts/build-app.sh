@@ -46,7 +46,7 @@ for CPU in "${BUILD_ARCHES[@]}"; do
     --bin yeti3-cleaner --bin yeti3-cleaner-tray
   mkdir -p "target/$CPU$SWIFT_TARGET_SUFFIX"
   xcrun swiftc -O -parse-as-library -target "$CPU-apple-macosx$MIN_MACOS" \
-    Shared/Localization.swift native/DiskScanner.swift native/LiveScan.swift native/DiskCache.swift native/SettingsPanel.swift native/UpdatePolicy.swift native/DiskMap.swift \
+    Shared/Localization.swift Shared/AdAccessPolicy.swift Shared/NetworkPurchase.swift native/DiskScanner.swift native/LiveScan.swift native/DiskCache.swift native/SettingsPanel.swift native/UpdatePolicy.swift native/DiskMap.swift \
     -o "target/$CPU$SWIFT_TARGET_SUFFIX/yeti3-disk-map"
 done
 

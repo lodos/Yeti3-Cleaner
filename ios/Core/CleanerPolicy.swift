@@ -20,6 +20,64 @@ struct ScanOptions: Codable, Equatable {
     var largeMegabytes = 100
     var jpegQuality = 0.85
     var maxPixel = 2560
+    var recentProtectionDays = 7
+    var includeVideos = true
+    var largeVideoMegabytes = 250
+    var minimumVideoSeconds = 30
+    var similarityDistance = 6
+    var similarityWindowSeconds = 120
+    var photoLimit = 2000
+    var analysisSeconds = 120
+    var economical = true
+    var minimumFileKilobytes = 0
+    var fileLimit = 3000
+    var excludedExtensions = "key,pem,p12,mobileprovision"
+    var archivesOnly = false
+    var minimumOptimizationPercent = 10
+    var matchContactPhones = true
+    var matchContactEmails = true
+    var showIncompleteContacts = true
+    var minimumPhoneDigits = 7
+    func protects(date: Date?, now: Date = Date()) -> Bool {
+        recentProtectionDays > 0 && (date == nil || date! > now.addingTimeInterval(-Double(recentProtectionDays) * 86400))
+    }
+    func includesFile(_ url: URL, bytes: Int64) -> Bool {
+        let excluded = Set(excludedExtensions.lowercased().split(separator: ",").map { $0.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: ".", with: "") })
+        let ext = url.pathExtension.lowercased()
+        return !excluded.contains(ext) && bytes >= Int64(minimumFileKilobytes) * 1024 && (!archivesOnly || ["zip", "rar", "7z", "tar", "gz", "dmg"].contains(ext))
+    }
+    enum CodingKeys: String, CodingKey { case photos, contacts, files, similar, screenshots, screenshotDays, largeMegabytes, jpegQuality, maxPixel, recentProtectionDays, includeVideos, largeVideoMegabytes, minimumVideoSeconds, similarityDistance, similarityWindowSeconds, photoLimit, analysisSeconds, economical, minimumFileKilobytes, fileLimit, excludedExtensions, archivesOnly, minimumOptimizationPercent, matchContactPhones, matchContactEmails, showIncompleteContacts, minimumPhoneDigits }
+    init() {}
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        photos = try c.decodeIfPresent(Bool.self, forKey: .photos) ?? true
+        contacts = try c.decodeIfPresent(Bool.self, forKey: .contacts) ?? false
+        files = try c.decodeIfPresent(Bool.self, forKey: .files) ?? true
+        similar = try c.decodeIfPresent(Bool.self, forKey: .similar) ?? false
+        screenshots = try c.decodeIfPresent(Bool.self, forKey: .screenshots) ?? false
+        screenshotDays = try c.decodeIfPresent(Int.self, forKey: .screenshotDays) ?? 90
+        largeMegabytes = try c.decodeIfPresent(Int.self, forKey: .largeMegabytes) ?? 100
+        jpegQuality = try c.decodeIfPresent(Double.self, forKey: .jpegQuality) ?? 0.85
+        maxPixel = try c.decodeIfPresent(Int.self, forKey: .maxPixel) ?? 2560
+        recentProtectionDays = try c.decodeIfPresent(Int.self, forKey: .recentProtectionDays) ?? 7
+        includeVideos = try c.decodeIfPresent(Bool.self, forKey: .includeVideos) ?? true
+        largeVideoMegabytes = try c.decodeIfPresent(Int.self, forKey: .largeVideoMegabytes) ?? 250
+        minimumVideoSeconds = try c.decodeIfPresent(Int.self, forKey: .minimumVideoSeconds) ?? 30
+        similarityDistance = try c.decodeIfPresent(Int.self, forKey: .similarityDistance) ?? 6
+        similarityWindowSeconds = try c.decodeIfPresent(Int.self, forKey: .similarityWindowSeconds) ?? 120
+        photoLimit = try c.decodeIfPresent(Int.self, forKey: .photoLimit) ?? 2000
+        analysisSeconds = try c.decodeIfPresent(Int.self, forKey: .analysisSeconds) ?? 120
+        economical = try c.decodeIfPresent(Bool.self, forKey: .economical) ?? true
+        minimumFileKilobytes = try c.decodeIfPresent(Int.self, forKey: .minimumFileKilobytes) ?? 0
+        fileLimit = try c.decodeIfPresent(Int.self, forKey: .fileLimit) ?? 3000
+        excludedExtensions = try c.decodeIfPresent(String.self, forKey: .excludedExtensions) ?? "key,pem,p12,mobileprovision"
+        archivesOnly = try c.decodeIfPresent(Bool.self, forKey: .archivesOnly) ?? false
+        minimumOptimizationPercent = try c.decodeIfPresent(Int.self, forKey: .minimumOptimizationPercent) ?? 10
+        matchContactPhones = try c.decodeIfPresent(Bool.self, forKey: .matchContactPhones) ?? true
+        matchContactEmails = try c.decodeIfPresent(Bool.self, forKey: .matchContactEmails) ?? true
+        showIncompleteContacts = try c.decodeIfPresent(Bool.self, forKey: .showIncompleteContacts) ?? true
+        minimumPhoneDigits = try c.decodeIfPresent(Int.self, forKey: .minimumPhoneDigits) ?? 7
+    }
     static func preset(_ strategy: Strategy) -> Self {
         var result = Self()
         if strategy == .balanced { result.similar = true; result.screenshots = true; result.contacts = true }

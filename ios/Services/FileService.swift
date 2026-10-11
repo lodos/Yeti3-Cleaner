@@ -16,17 +16,18 @@ struct FileReport {
     var skipped = 0
 }
 actor FileService {
-    static func fingerprint(_ url: URL) throws -> ContentDigest {
+    static func fingerprint(_ url: URL, budget: AnalysisBudget? = nil) throws -> ContentDigest {
         let handle = try FileHandle(forReadingFrom: url); defer { try? handle.close() }
         var hasher = SHA256(); var size: Int64 = 0
         while let data = try handle.read(upToCount: 1024*1024), !data.isEmpty {
-            try Task.checkCancellation(); hasher.update(data: data); size += Int64(data.count)
+            try Task.checkCancellation(); try budget?.check(); hasher.update(data: data); size += Int64(data.count)
         }
         return .init(hash: hasher.finalize().map { String(format: "%02x", $0) }.joined(), bytes: size)
     }
-    func scan(roots: [URL], progress: @escaping @Sendable (Int) async -> Void) async throws -> FileReport {
+    func scan(roots: [URL], options: ScanOptions = ScanOptions(), progress: @escaping @Sendable (Int) async -> Void) async throws -> FileReport {
+        let budget = AnalysisBudget(options: options)
         var report = FileReport(); var seen: Set<String> = []
-        let keys: Set<URLResourceKey> = [.isDirectoryKey, .isRegularFileKey, .isSymbolicLinkKey, .contentModificationDateKey, .isUbiquitousItemKey, .ubiquitousItemDownloadingStatusKey]
+        let keys: Set<URLResourceKey> = [.isDirectoryKey, .isRegularFileKey, .isSymbolicLinkKey, .contentModificationDateKey, .isUbiquitousItemKey, .ubiquitousItemDownloadingStatusKey, .fileSizeKey]
         for root in roots {
             let scoped = root.startAccessingSecurityScopedResource()
             defer { if scoped { root.stopAccessingSecurityScopedResource() } }
@@ -37,7 +38,8 @@ actor FileService {
                 urls = AnySequence { AnyIterator { enumerator.nextObject() as? URL } }
             } else { urls = AnySequence([root]) }
             for url in urls {
-                try Task.checkCancellation()
+                try await budget.yield()
+                guard report.items.count < max(100, options.fileLimit) else { throw CleanerError.message("Достигнут лимит файлов. Сузьте выбранную папку или увеличьте лимит.") }
                 guard seen.insert(url.path).inserted else { continue }
                 do {
                     let value = try url.resourceValues(forKeys: keys)
@@ -45,9 +47,10 @@ actor FileService {
                     guard value.isRegularFile == true, value.isSymbolicLink != true,
                           url.resolvingSymlinksInPath().standardizedFileURL.path == url.standardizedFileURL.path,
                           value.isUbiquitousItem != true || value.ubiquitousItemDownloadingStatus == .current else { report.skipped += 1; continue }
+                    guard options.includesFile(url, bytes: Int64(value.fileSize ?? 0)) else { report.skipped += 1; continue }
                     var coordinationError: NSError?; var outcome: Result<ContentDigest, Error>?
                     NSFileCoordinator().coordinate(readingItemAt: url, options: .withoutChanges, error: &coordinationError) { coordinated in
-                        outcome = Result { try Self.fingerprint(coordinated) }
+                        outcome = Result { try Self.fingerprint(coordinated, budget: budget) }
                     }
                     if let coordinationError { throw coordinationError }
                     guard let outcome else { throw CleanerError.message("Файл недоступен") }
@@ -55,7 +58,7 @@ actor FileService {
                     report.items.append(.init(url: url, root: root, digest: digest, modified: value.contentModificationDate))
                     await progress(report.items.count)
                 } catch is CancellationError { throw CancellationError() }
-                catch { report.skipped += 1 }
+                catch { try budget.check(); report.skipped += 1 }
             }
         }
         let grouped = Dictionary(grouping: report.items, by: \.digest)

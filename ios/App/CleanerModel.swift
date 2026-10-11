@@ -37,7 +37,7 @@ import UIKit
         guard !busy else { return }
         busy = true; selectedPhotos = []; selectedFiles = []; photos = PhotoReport(); files = FileReport(); contacts = ContactReport(); lastScan = nil
         let chosenRoots = roots
-        task = Task {
+        task = Task(priority: .utility) {
             defer { busy = false; task = nil; refreshAccess() }
             do {
                 var notes: [String] = []
@@ -52,7 +52,7 @@ import UIKit
                 }
                 try Task.checkCancellation()
                 if options.files && !chosenRoots.isEmpty {
-                    files = try await fileService.scan(roots: chosenRoots) { count in
+                    files = try await fileService.scan(roots: chosenRoots, options: options) { count in
                         await MainActor.run { self.status = "Файлы: \(count)" }
                     }
                 }
@@ -61,7 +61,7 @@ import UIKit
                     do {
                         if contactAccess == .notDetermined { _ = try await CNContactStore().requestAccess(for: .contacts) }
                         contactAccess = CNContactStore.authorizationStatus(for: .contacts)
-                        if contactsReadable(contactAccess) { contacts = try await contactService.scan() }
+                        if contactsReadable(contactAccess) { contacts = try await contactService.scan(options: options) }
                         else { notes.append("Нет доступа к контактам") }
                     } catch { notes.append("Контакты: \(error.localizedDescription)") }
                 }
@@ -92,7 +92,7 @@ import UIKit
         scan(options)
     }
     func photoDryRun() -> CleanupDryRun {
-        .make(selected: selectedPhotos, sizes: Dictionary(uniqueKeysWithValues: photos.items.filter { !$0.favorite && $0.digest != nil }.map { ($0.id, $0.bytes) }), groups: photos.duplicates, scanDate: lastScan)
+        .make(selected: selectedPhotos, sizes: Dictionary(uniqueKeysWithValues: photos.items.filter { !$0.favorite && !$0.protected && $0.digest != nil }.map { ($0.id, $0.bytes) }), groups: photos.duplicates, scanDate: lastScan)
     }
     func fileDryRun() -> CleanupDryRun {
         .make(selected: selectedFiles, sizes: Dictionary(uniqueKeysWithValues: files.items.map { ($0.id, $0.digest.bytes) }), groups: files.duplicates, scanDate: lastScan)
@@ -136,7 +136,7 @@ import UIKit
     }
     private func run(_ operation: @escaping @MainActor () async throws -> Void) {
         guard !busy else { return }; busy = true
-        task = Task {
+        task = Task(priority: .utility) {
             defer { busy = false; task = nil; refreshAccess() }
             do { try await operation() } catch { message = error.localizedDescription }
         }

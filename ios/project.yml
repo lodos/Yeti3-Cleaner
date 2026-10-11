@@ -11,21 +11,23 @@ settings:
     CODE_SIGN_STYLE: Automatic
     DEVELOPMENT_TEAM: 49PHJ38L7T
     MARKETING_VERSION: "1.0.0"
-    CURRENT_PROJECT_VERSION: "3"
+    CURRENT_PROJECT_VERSION: "4"
     ENABLE_USER_SCRIPT_SANDBOXING: YES
     SWIFT_EMIT_LOC_STRINGS: YES
 targets:
   Yeti3Cleaner:
     type: application
     platform: iOS
-    sources: [App, Core, Services, Views, Resources, ../Shared/Localization.swift, ../Localization/Localizable.xcstrings, ../Localization/LocalizationTemplates.json, ../Localization/InfoPlist.xcstrings]
+    sources: [App, Core, Services, Views, Resources, ../Shared/NetworkPurchase.swift, ../Shared/AdAccessPolicy.swift, ../Shared/Localization.swift, ../Localization/Localizable.xcstrings, ../Localization/LocalizationTemplates.json, ../Localization/InfoPlist.xcstrings]
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: ru.yeti3.cleaner.ios
         INFOPLIST_FILE: Config/Info.plist
         CODE_SIGN_ENTITLEMENTS: Config/Yeti3Cleaner.entitlements
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
-        SUPPORTS_MACCATALYST: NO
+        "CODE_SIGN_ENTITLEMENTS[sdk=macosx*]": Config/Yeti3Cleaner-Mac.entitlements
+        SUPPORTS_MACCATALYST: YES
+        "PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]": maccatalyst.ru.yeti3.cleaner.ios
         SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD: NO
   Yeti3CleanerTests:
     type: bundle.unit-test

@@ -17,6 +17,7 @@ struct PhotoItem: Identifiable {
     let digest: ContentDigest?
     let similarity: UInt64?
     let duration: TimeInterval
+    var protected = false
     var bytes: Int64 { digest?.bytes ?? 0 }
 }
 struct PhotoReport {
@@ -30,26 +31,36 @@ private final class ResourceHasher: @unchecked Sendable {
     private let lock = NSLock()
     private var hasher = SHA256()
     private var bytes: Int64 = 0
+    private var request: PHAssetResourceDataRequestID?
+    private var cancelled = false
+    func install(_ id: PHAssetResourceDataRequestID) { lock.lock(); request = id; let stop = cancelled; lock.unlock(); if stop { PHAssetResourceManager.default().cancelDataRequest(id) } }
+    func cancel() { lock.lock(); cancelled = true; let id = request; lock.unlock(); if let id { PHAssetResourceManager.default().cancelDataRequest(id) } }
     func append(_ data: Data) { lock.lock(); defer { lock.unlock() }; hasher.update(data: data); bytes += Int64(data.count) }
     func result() -> ContentDigest { lock.lock(); defer { lock.unlock() }; return .init(hash: hasher.finalize().map { String(format: "%02x", $0) }.joined(), bytes: bytes) }
 }
 actor PhotoService {
-    static func resourceDigest(_ resource: PHAssetResource) async throws -> ContentDigest {
+    static func resourceDigest(_ resource: PHAssetResource, budget: AnalysisBudget? = nil) async throws -> ContentDigest {
         let options = PHAssetResourceRequestOptions(); options.isNetworkAccessAllowed = false
         let state = ResourceHasher()
-        return try await withCheckedThrowingContinuation { continuation in
-            PHAssetResourceManager.default().requestData(for: resource, options: options, dataReceivedHandler: { state.append($0) }, completionHandler: { error in
-                if let error { continuation.resume(throwing: error) } else { continuation.resume(returning: state.result()) }
-            })
-        }
+        return try await withTaskCancellationHandler {
+            try await withCheckedThrowingContinuation { continuation in
+                let id = PHAssetResourceManager.default().requestData(for: resource, options: options, dataReceivedHandler: { data in
+                    do { try budget?.check(); state.append(data) } catch { state.cancel() }
+                }, completionHandler: { error in
+                    if let error { continuation.resume(throwing: error) } else { continuation.resume(returning: state.result()) }
+                })
+                state.install(id)
+            }
+        } onCancel: { state.cancel() }
     }
-    static func digest(_ asset: PHAsset) async throws -> ContentDigest {
+
+    static func digest(_ asset: PHAsset, budget: AnalysisBudget? = nil) async throws -> ContentDigest {
         let resources = PHAssetResource.assetResources(for: asset)
         guard !resources.isEmpty else { throw CleanerError.message("Нет локальных ресурсов") }
         var components: [String] = []; var total: Int64 = 0
         for resource in resources {
             try Task.checkCancellation()
-            let digest = try await resourceDigest(resource)
+            let digest = try await resourceDigest(resource, budget: budget)
             components.append("\(resource.type.rawValue):\(digest.bytes):\(digest.hash)")
             total += digest.bytes
         }
@@ -79,18 +90,22 @@ actor PhotoService {
         return hash
     }
     func scan(options: ScanOptions, progress: @escaping @Sendable (Int, Int) async -> Void) async throws -> PhotoReport {
+        let budget = AnalysisBudget(options: options)
         let fetch = PHFetchOptions(); fetch.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         let assets = PHAsset.fetchAssets(with: fetch)
         var report = PhotoReport(); var exact: [String: [String]] = [:]
+        guard assets.count <= max(100, options.photoLimit) else { throw CleanerError.message("Медиатека превышает лимит анализа. Увеличьте лимит или предоставьте ограниченный доступ к Фото.") }
         for index in 0..<assets.count {
-            try Task.checkCancellation()
+            try await budget.yield()
             let asset = assets.object(at: index)
-            let digest = try? await Self.digest(asset)
+            if !options.includeVideos && asset.mediaType == .video { continue }
+            let digest = try? await Self.digest(asset, budget: budget)
+            try budget.check()
             try Task.checkCancellation()
             if digest == nil { report.unavailable += 1 }
             var hash: UInt64?
             if options.similar && asset.mediaType == .image, let image = await Self.image(asset.localIdentifier, size: CGSize(width: 160, height: 160)) { hash = Self.perceptualHash(image) }
-            report.items.append(.init(id: asset.localIdentifier, date: asset.creationDate, modified: asset.modificationDate, width: asset.pixelWidth, height: asset.pixelHeight, video: asset.mediaType == .video, favorite: asset.isFavorite, live: asset.mediaSubtypes.contains(.photoLive), screenshot: asset.mediaSubtypes.contains(.photoScreenshot), digest: digest, similarity: hash, duration: asset.duration))
+            report.items.append(.init(id: asset.localIdentifier, date: asset.creationDate, modified: asset.modificationDate, width: asset.pixelWidth, height: asset.pixelHeight, video: asset.mediaType == .video, favorite: asset.isFavorite, live: asset.mediaSubtypes.contains(.photoLive), screenshot: asset.mediaSubtypes.contains(.photoScreenshot), digest: digest, similarity: hash, duration: asset.duration, protected: options.protects(date: asset.creationDate)))
             if let digest { exact[digest.hash, default: []].append(asset.localIdentifier) }
             await progress(index+1, assets.count)
         }
@@ -99,12 +114,13 @@ actor PhotoService {
         if options.similar {
             var grouped: Set<String> = []
             for (i, item) in report.items.enumerated() where item.similarity != nil && !grouped.contains(item.id) {
+                try await budget.yield()
                 var group = [item.id]
                 for other in report.items.dropFirst(i+1).prefix(100) {
-                    guard let date = item.date, let next = other.date, abs(next.timeIntervalSince(date)) < 120,
+                    guard let date = item.date, let next = other.date, abs(next.timeIntervalSince(date)) < Double(options.similarityWindowSeconds),
                           let hash = other.similarity, !grouped.contains(other.id),
                           item.digest?.hash != other.digest?.hash,
-                          (item.similarity! ^ hash).nonzeroBitCount <= 6 else { continue }
+                          (item.similarity! ^ hash).nonzeroBitCount <= options.similarityDistance else { continue }
                     group.append(other.id)
                 }
                 if group.count > 1 { report.similar.append(group); grouped.formUnion(group) }
@@ -114,7 +130,7 @@ actor PhotoService {
     }
     func delete(_ selected: [PhotoItem], report: PhotoReport) async throws {
         let ids = Set(selected.map(\.id))
-        guard SafetyPolicy.deletionAllowed(selected: ids, known: Set(report.items.map(\.id)), duplicateGroups: report.duplicates), !selected.contains(where: \.favorite) else {
+        guard SafetyPolicy.deletionAllowed(selected: ids, known: Set(report.items.map(\.id)), duplicateGroups: report.duplicates), !selected.contains(where: { $0.favorite || $0.protected }) else {
             throw CleanerError.message("Избранное защищено. Оставьте хотя бы один объект в каждой группе дубликатов.")
         }
         for group in report.duplicates where !ids.isDisjoint(with: group) {
@@ -159,6 +175,7 @@ actor PhotoService {
         }
         try Task.checkCancellation()
         let encoded = try PhotoEncoder.encode(data, options: options)
+        guard Double(encoded.count) <= Double(data.count) * (1 - Double(options.minimumOptimizationPercent) / 100) else { throw CleanerError.message("Копия не достигает выбранной разницы размера. Измените качество или разрешение.") }
         return OptimizationPreview(sourceID: item.id, data: encoded, originalBytes: Int64(data.count), date: item.date)
     }
     func save(_ preview: OptimizationPreview) async throws {

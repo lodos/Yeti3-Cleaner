@@ -11,16 +11,21 @@
 		19231D892CC3CF5CE6E3DE2A /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE45136FF902B41CE0F2DA /* FileService.swift */; };
 		446C266AD267B9589B6CF9D0 /* CleanerPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F22BA813303E174D983538 /* CleanerPolicy.swift */; };
 		499D9A0A99EF5BB12849A016 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53EC3BE1577E28669A1640F8 /* Assets.xcassets */; };
+		4DA4D7D92EF2B6F5B982A106 /* AdAccessPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF85EDC01437417A39163DCC /* AdAccessPolicy.swift */; };
 		5B14DEF96D36FFF00B4D3746 /* Yeti3CleanerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B141730CAB23D0744B016B /* Yeti3CleanerApp.swift */; };
 		602E9366E8342C6B23480804 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 77DBA40AAD57A333876EB6A3 /* Localizable.xcstrings */; };
 		6A800C8C0A22C4C54CC1EC9F /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F44EE4633AF48E0E7B23ED7 /* Localization.swift */; };
+		6DAD08756F4EDCD17BB4F647 /* AdvancedPolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E237228B3524147C90FB6 /* AdvancedPolicyTests.swift */; };
 		78673A938F433376DBCB6B7F /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68A71CB8F73731E99FA1A72 /* SettingsStore.swift */; };
 		78C2E56150F2D58B8FDF9FC0 /* SafetyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2669595935E0B45924A900C /* SafetyTests.swift */; };
 		7B8674659D59BB75714A9E0F /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E888CA4A1578FA044719085 /* PhotoService.swift */; };
 		87CF0E8E79BDD23A00535302 /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BDA221FDD7706E430CA75B /* ContactService.swift */; };
+		8E72994FF9CED5A498F15161 /* NetworkPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB009FD4EF1B1BB201928F50 /* NetworkPurchase.swift */; };
 		AE4C4426AF186763C643B221 /* LaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D57C072C3A53AFC7E41D1A /* LaunchTests.swift */; };
+		B20BE9F164DC665AB7847205 /* BackgroundAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A03DEAA921454A8D623B6 /* BackgroundAnalysis.swift */; };
 		BC10E1651A4F380A5431C76A /* LocalizationTemplates.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EDDA42D1449BC85F5BC1276 /* LocalizationTemplates.json */; };
 		D0CA28973ACBF6E0BF0CEAF6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8ADA2F76B0679589AC11C /* SettingsView.swift */; };
+		D24B7E34779DF2A152145751 /* AnalysisBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C03A69B3F61E53BEA0C3A7 /* AnalysisBudget.swift */; };
 		DCC02AD3DB61A9E921F011D4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1045B7CCEEC7715A9CCC9712 /* PrivacyInfo.xcprivacy */; };
 		E45FE1447C2C5E722A4097D8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B226401D21F5EC6B35FECA /* ContentView.swift */; };
 		F51C713F4FE4A5E2266A1B2F /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9780EBAAA899B63B35B63E4E /* InfoPlist.xcstrings */; };
@@ -49,12 +54,15 @@
 		2EDDA42D1449BC85F5BC1276 /* LocalizationTemplates.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LocalizationTemplates.json; sourceTree = "<group>"; };
 		43BDA221FDD7706E430CA75B /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
 		44B141730CAB23D0744B016B /* Yeti3CleanerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yeti3CleanerApp.swift; sourceTree = "<group>"; };
+		460A03DEAA921454A8D623B6 /* BackgroundAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAnalysis.swift; sourceTree = "<group>"; };
 		53EC3BE1577E28669A1640F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5A0E237228B3524147C90FB6 /* AdvancedPolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedPolicyTests.swift; sourceTree = "<group>"; };
 		77DBA40AAD57A333876EB6A3 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		7F44EE4633AF48E0E7B23ED7 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		80F22BA813303E174D983538 /* CleanerPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanerPolicy.swift; sourceTree = "<group>"; };
 		8AC8ADA2F76B0679589AC11C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8E888CA4A1578FA044719085 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
+		93C03A69B3F61E53BEA0C3A7 /* AnalysisBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisBudget.swift; sourceTree = "<group>"; };
 		95A05B5479974B679FE782BA /* Yeti3CleanerTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = Yeti3CleanerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9780EBAAA899B63B35B63E4E /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		9C662F7BDE435BDF7C3DCE93 /* Yeti3CleanerUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = Yeti3CleanerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,14 +70,18 @@
 		B68A71CB8F73731E99FA1A72 /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStore.swift; sourceTree = "<group>"; };
 		B7B226401D21F5EC6B35FECA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C2669595935E0B45924A900C /* SafetyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyTests.swift; sourceTree = "<group>"; };
+		CB009FD4EF1B1BB201928F50 /* NetworkPurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPurchase.swift; sourceTree = "<group>"; };
 		E2CE45136FF902B41CE0F2DA /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		E5D57C072C3A53AFC7E41D1A /* LaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTests.swift; sourceTree = "<group>"; };
+		EF85EDC01437417A39163DCC /* AdAccessPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdAccessPolicy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		0765B2ACD41B836EDFEDB527 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				93C03A69B3F61E53BEA0C3A7 /* AnalysisBudget.swift */,
+				460A03DEAA921454A8D623B6 /* BackgroundAnalysis.swift */,
 				43BDA221FDD7706E430CA75B /* ContactService.swift */,
 				E2CE45136FF902B41CE0F2DA /* FileService.swift */,
 				8E888CA4A1578FA044719085 /* PhotoService.swift */,
@@ -99,6 +111,7 @@
 		64F1B5B7F3124BAB0DDD2983 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				5A0E237228B3524147C90FB6 /* AdvancedPolicyTests.swift */,
 				C2669595935E0B45924A900C /* SafetyTests.swift */,
 			);
 			path = Tests;
@@ -141,7 +154,9 @@
 		C41F129999BC66FD78E7192C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				EF85EDC01437417A39163DCC /* AdAccessPolicy.swift */,
 				7F44EE4633AF48E0E7B23ED7 /* Localization.swift */,
+				CB009FD4EF1B1BB201928F50 /* NetworkPurchase.swift */,
 			);
 			name = Shared;
 			path = ../Shared;
@@ -289,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DAD08756F4EDCD17BB4F647 /* AdvancedPolicyTests.swift in Sources */,
 				78C2E56150F2D58B8FDF9FC0 /* SafetyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,12 +313,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DA4D7D92EF2B6F5B982A106 /* AdAccessPolicy.swift in Sources */,
+				D24B7E34779DF2A152145751 /* AnalysisBudget.swift in Sources */,
+				B20BE9F164DC665AB7847205 /* BackgroundAnalysis.swift in Sources */,
 				012AB5750593D564431B8DEF /* CleanerModel.swift in Sources */,
 				446C266AD267B9589B6CF9D0 /* CleanerPolicy.swift in Sources */,
 				87CF0E8E79BDD23A00535302 /* ContactService.swift in Sources */,
 				E45FE1447C2C5E722A4097D8 /* ContentView.swift in Sources */,
 				19231D892CC3CF5CE6E3DE2A /* FileService.swift in Sources */,
 				6A800C8C0A22C4C54CC1EC9F /* Localization.swift in Sources */,
+				8E72994FF9CED5A498F15161 /* NetworkPurchase.swift in Sources */,
 				7B8674659D59BB75714A9E0F /* PhotoService.swift in Sources */,
 				78673A938F433376DBCB6B7F /* SettingsStore.swift in Sources */,
 				D0CA28973ACBF6E0BF0CEAF6 /* SettingsView.swift in Sources */,
@@ -339,6 +359,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Config/Yeti3Cleaner.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Config/Yeti3Cleaner-Mac.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Config/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -346,8 +367,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yeti3.cleaner.ios;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = maccatalyst.ru.yeti3.cleaner.ios;
 				SDKROOT = iphoneos;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -426,6 +448,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Config/Yeti3Cleaner.entitlements;
+				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Config/Yeti3Cleaner-Mac.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Config/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -433,8 +456,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yeti3.cleaner.ios;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = maccatalyst.ru.yeti3.cleaner.ios;
 				SDKROOT = iphoneos;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -475,7 +499,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 49PHJ38L7T;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -545,7 +569,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 49PHJ38L7T;
 				ENABLE_NS_ASSERTIONS = NO;
